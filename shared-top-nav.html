@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="prajavani">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shared Top Nav Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: "PV Headline";
+      src: url("PV-Revamp/PvHeadlineSemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "PV Text";
+      src: url("PV-Revamp/PvTextRegular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :root {
+      --brand-primary: #b82831;
+      --brand-accent: #ffc107;
+      --brand-text: #212121;
+      --brand-surface: #ffffff;
+      --brand-muted: #f7f7f7;
+      --brand-border: #eeeeee;
+      --brand-hover: #f0f0f0;
+      --button-primary-text: #ffffff;
+      --button-secondary-text: #212121;
+      --container-padding-mobile: 1rem;
+      --container-padding-desktop: 1.5rem;
+      --container-max-width: 1280px;
+      --font-nav: "PV Headline", "Noto Sans", sans-serif;
+      --font-body: "PV Text", "Noto Sans", sans-serif;
+      --logo-wordmark-font: "PV Headline", "Noto Sans", sans-serif;
+      --hero-bg: linear-gradient(180deg, #ffffff, #faf7f7);
+    }
+
+    html[data-brand="deccan-herald"] {
+      --brand-primary: #0091ac;
+      --brand-accent: #ffc107;
+      --brand-text: #1a1a1a;
+      --brand-surface: #ffffff;
+      --brand-muted: #f4f8fa;
+      --brand-border: #d9e7ec;
+      --brand-hover: #eef7fa;
+      --button-primary-text: #ffffff;
+      --button-secondary-text: #1a1a1a;
+      --font-nav: "Playfair Display", serif;
+      --font-body: "Roboto Slab", serif;
+      --logo-wordmark-font: "Playfair Display", serif;
+      --hero-bg: linear-gradient(180deg, #ffffff, #f4fbfd);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--brand-text);
+      background:
+        radial-gradient(circle at top right, rgba(0, 0, 0, 0.03), transparent 25%),
+        var(--hero-bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding-bottom: 4rem;
+    }
+
+    .demo-toolbar {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 1rem var(--container-padding-mobile);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: var(--brand-text);
+    }
+
+    .demo-toolbar h1 {
+      font-family: var(--logo-wordmark-font);
+      font-size: 1.2rem;
+      line-height: 1.1;
+    }
+
+    .demo-toolbar p {
+      font-size: 0.92rem;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .brand-switcher {
+      display: inline-flex;
+      gap: 0.4rem;
+      padding: 0.3rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 999px;
+      background: var(--brand-surface);
+    }
+
+    .brand-switcher button {
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      font-family: var(--font-nav);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-text);
+    }
+
+    .brand-switcher button[aria-pressed="true"] {
+      background: var(--brand-text);
+      color: #ffffff;
+    }
+
+    .site-header {
+      background-color: var(--brand-surface);
+      border-bottom: 1px solid var(--brand-border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 12px var(--container-padding-mobile);
+      min-height: 60px;
+      gap: 1rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .logo {
+      line-height: 0;
+      flex-shrink: 0;
+    }
+
+    .logo a {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo img {
+      display: none;
+      height: 36px;
+      width: auto;
+      max-width: 240px;
+    }
+
+    .logo-wordmark {
+      display: inline-block;
+      font-family: var(--logo-wordmark-font);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--brand-text);
+      white-space: nowrap;
+    }
+
+    .logo[data-logo-mode="image"] img {
+      display: block;
+    }
+
+    .logo[data-logo-mode="image"] .logo-wordmark {
+      display: none;
+    }
+
+    .desktop-nav-links {
+      display: none;
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .desktop-nav-links > ul {
+      display: flex;
+      align-items: stretch;
+      gap: 0.5rem;
+      height: 100%;
+      width: max-content;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .desktop-nav-links > ul::-webkit-scrollbar,
+    .mobile-nav-links ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    .desktop-nav-links > ul > li {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .desktop-nav-links > ul > li > a {
+      color: var(--brand-text);
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-nav);
+      white-space: nowrap;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      height: 100%;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .desktop-nav-links > ul > li > a:hover,
+    .desktop-nav-links > ul > li > a.is-active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      height: 100%;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      height: 100%;
+    }
+
+    .icon-button {
+      padding: 0.6rem;
+      color: var(--brand-text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+
+    .icon-button:hover {
+      color: var(--brand-primary);
+      background-color: var(--brand-hover);
+    }
+
+    .login-button,
+    .epaper-main-header-button {
+      padding: 0 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      font-family: var(--font-nav);
+      white-space: nowrap;
+      text-align: center;
+      line-height: 1.2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      min-height: 36px;
+      color: var(--button-primary-text);
+    }
+
+    .login-button {
+      background-color: var(--brand-primary);
+    }
+
+    .login-button:hover {
+      filter: brightness(0.92);
+      color: #ffffff;
+    }
+
+    .epaper-main-header-button {
+      background-color: var(--brand-accent);
+      color: var(--button-secondary-text);
+      gap: 0.4rem;
+    }
+
+    .epaper-main-header-button:hover {
+      filter: brightness(0.95);
+    }
+
+    .hamburger-icon {
+      font-size: 1.4rem;
+      margin-left: 0.25rem;
+    }
+
+    .mobile-menu-bar {
+      background-color: var(--brand-surface);
+      border-bottom: 1px solid var(--brand-border);
+      display: block;
+      width: 100%;
+    }
+
+    .menu-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      border-top: 1px solid var(--brand-border);
+      padding: 0 0.4rem;
+    }
+
+    .mobile-nav-links {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .mobile-nav-links ul {
+      display: flex;
+      white-space: nowrap;
+      scrollbar-width: none;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .mobile-nav-links li {
+      flex-shrink: 0;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .mobile-nav-links a {
+      color: var(--brand-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-nav);
+      display: block;
+      padding: 0.5rem 0.25rem;
+      text-align: center;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      width: 100%;
+    }
+
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.is-active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    .featured-bar {
+      background-color: var(--brand-surface);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--brand-border);
+      font-size: 0.85rem;
+    }
+
+    .featured-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding-mobile);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .featured-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .featured-icon-label {
+      font-size: 1rem;
+      color: var(--brand-primary);
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .featured-bar ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 0.75rem;
+    }
+
+    .featured-bar li {
+      flex-shrink: 0;
+    }
+
+    .featured-bar a {
+      background-color: #e8e8e8;
+      color: var(--brand-text);
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+      display: inline-block;
+      font-weight: 700;
+      font-family: var(--font-body);
+      line-height: 1.3;
+    }
+
+    .featured-bar a:hover {
+      background-color: #d8d8d8;
+      color: var(--brand-text);
+    }
+
+    .featured-bar a.featured-highlight {
+      background-color: var(--brand-primary);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .featured-bar a.featured-highlight:hover {
+      filter: brightness(0.9);
+      color: #ffffff;
+    }
+
+    .desktop-featured-bar {
+      display: block;
+    }
+
+    .content {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 2rem var(--container-padding-mobile);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .note,
+    .placeholder-story {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--brand-border);
+      border-radius: 18px;
+      padding: 1.25rem;
+    }
+
+    .note h2,
+    .placeholder-story h2 {
+      font-family: var(--font-nav);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+
+    .placeholder-story p {
+      max-width: 52rem;
+    }
+
+    @media (min-width: 992px) {
+      .header-container {
+        padding: 12px var(--container-padding-desktop);
+        min-height: 64px;
+      }
+
+      .featured-container {
+        padding: 0 var(--container-padding-desktop);
+      }
+
+      .desktop-nav-links {
+        display: flex;
+      }
+
+      .mobile-menu-bar {
+        display: none;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .header-container {
+        min-height: 56px;
+      }
+
+      .desktop-nav-links {
+        display: flex;
+      }
+
+      .mobile-menu-bar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .demo-toolbar {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .header-container {
+        padding: 12px;
+        min-height: auto;
+      }
+
+      .logo img {
+        height: 28px;
+      }
+
+      .logo-wordmark {
+        font-size: 1.55rem;
+      }
+
+      .desktop-nav-links {
+        display: none;
+      }
+
+      .mobile-menu-bar {
+        display: block;
+      }
+
+      .search-icon {
+        display: none;
+      }
+
+      .main-nav {
+        gap: 0.25rem;
+      }
+
+      .login-button,
+      .epaper-main-header-button {
+        padding: 0 0.5rem;
+        height: 30px;
+        min-height: 30px;
+        line-height: 1.2;
+      }
+
+      .featured-container {
+        justify-content: flex-start;
+      }
+
+      .desktop-featured-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="demo-toolbar">
+      <div>
+        <h1>Shared Top Nav</h1>
+        <p>Standalone file using the PV revamp header structure with brand-driven tokens and content.</p>
+      </div>
+      <div class="brand-switcher" role="group" aria-label="Brand switcher">
+        <button type="button" data-brand-target="prajavani" aria-pressed="true">Prajavani</button>
+        <button type="button" data-brand-target="deccan-herald" aria-pressed="false">Deccan Herald</button>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="header-container">
+        <div class="header-left">
+          <div class="logo" id="logoLockup" data-logo-mode="image">
+            <a href="/" id="mainLogoAnchor" aria-label="Homepage">
+              <img src="PV-Revamp/pv logo.svg" alt="Prajavani Home" id="mainLogoImage">
+              <img src="data:image/svg+xml,%3Csvg%20width%3D%2278%22%20height%3D%2268%22%20viewBox%3D%220%200%2078%2068%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M45.5002%2061.9605V61.749H42.3882V61.9605C42.3882%2061.9605%2043.0137%2061.9671%2043.2302%2062.3098V64.3787H40.8029V62.3098C40.8029%2062.3098%2040.9183%2062.0024%2041.6513%2061.9643V61.7515H38.5409V61.9643C38.5409%2061.9643%2039.1648%2061.9696%2039.3803%2062.3136V67.1215C39.1647%2067.4656%2038.5409%2067.4708%2038.5409%2067.4708V67.6822H41.6513V67.4708C40.9183%2067.4342%2040.8029%2067.1239%2040.8029%2067.1239V64.7622H43.2302V67.1175C43.0137%2067.4644%2042.3882%2067.4669%2042.3882%2067.4669V67.6797H45.5002V67.4669C44.7656%2067.4313%2044.6515%2067.1214%2044.6515%2067.1214V62.3072C44.6515%2062.3072%2044.7656%2061.9999%2045.5002%2061.9605Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M58.3047%2067.4918C58.2428%2067.476%2058.1771%2067.4456%2058.1104%2067.4065C57.6676%2067.1423%2057.1476%2066.4437%2057.1476%2066.4437C56.2752%2065.0867%2055.7893%2064.8464%2055.7893%2064.8464C55.7893%2064.8464%2056.9371%2064.5312%2057.1791%2063.6812C57.3405%2063.2753%2057.1581%2062.7276%2057.1581%2062.7276C56.7271%2061.7004%2055.4584%2061.7504%2055.4584%2061.7504H51.5742V61.9645C51.5742%2061.9645%2052.1519%2061.9673%2052.3505%2062.3138V67.1217C52.1519%2067.4657%2051.5742%2067.471%2051.5742%2067.471V67.6823H54.7294V67.471C54.0544%2067.4343%2053.86%2067.1241%2053.86%2067.1241V65.0972C53.9176%2065.0867%2054.5181%2064.9922%2055.2918%2066.2281C55.2918%2066.2281%2056.2139%2067.593%2056.4172%2067.6665L57.8213%2067.6755L58.5004%2067.6808L58.3047%2067.4918ZM53.8596%2064.669V62.3097C53.8596%2062.3097%2053.8464%2062.2651%2053.8663%2062.2084L53.873%2062.2099C53.873%2062.2099%2055.6699%2061.8171%2055.8287%2063.1122C55.8287%2063.1122%2055.8551%2063.4012%2055.7526%2063.7007C55.3256%2064.757%2053.9333%2064.6756%2053.8596%2064.669Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M51.047%2065.9627C50.8343%2066.8559%2050.636%2067.0436%2050.636%2067.0436C49.6441%2067.4221%2048.5052%2067.2236%2048.5052%2067.2236C48.1663%2067.204%2048.1044%2066.8638%2048.0926%2066.7624V64.7449H49.3653C49.5481%2064.7805%2049.7292%2065.6172%2049.7502%2065.7473H50.004V63.3448H49.7556C49.7308%2063.497%2049.5548%2064.3062%2049.3734%2064.3798H48.0926V62.2571C48.2883%2062.2138%2049.5309%2061.9681%2050.3771%2062.3255C50.3771%2062.3255%2050.6015%2062.4832%2050.8171%2063.3792H51.055L51.0668%2061.7608L45.8259%2061.749V61.9605C45.8259%2061.9605%2046.3211%2061.9671%2046.4932%2062.3098V67.1215C46.321%2067.4655%2045.8259%2067.4708%2045.8259%2067.4708V67.6822H51.2301L51.2904%2065.9522L51.047%2065.9627Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M64.0898%2066.9797L61.8159%2061.749H59.6536V61.9907C59.6536%2061.9907%2060.3301%2061.9974%2060.4969%2062.3325L58.7026%2066.997C58.5935%2067.2532%2058.3231%2067.361%2058.1101%2067.4068C57.9487%2067.441%2057.8213%2067.4397%2057.8213%2067.4397V67.6827H60.0557V67.4397C59.3622%2067.4292%2059.2242%2067.0745%2059.2242%2067.0745L59.6944%2065.8411H62.0589L62.5881%2067.0968C62.4726%2067.3938%2061.7528%2067.4397%2061.7528%2067.4397L61.7556%2067.6827H64.9764V67.4397C64.2907%2067.446%2064.0898%2066.9797%2064.0898%2066.9797ZM59.8405%2065.452L60.8165%2062.8813L61.8976%2065.452H59.8405Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M70.2774%2065.7699C70.1065%2066.6656%2069.8585%2067.0372%2069.8585%2067.0372C68.9259%2067.3656%2067.7648%2067.2148%2067.7648%2067.2148C67.4798%2067.199%2067.4179%2066.8614%2067.4103%2066.7616V62.3231C67.5126%2062.2165%2067.5497%2062.0222%2068.2431%2061.9736V61.749H65.1377V61.9828C65.1377%2061.9828%2065.8206%2062.0275%2065.9574%2062.3741L65.9469%2067.0741C65.8101%2067.4196%2065.1377%2067.4353%2065.1377%2067.4353V67.6823H70.4496L70.4968%2065.754L70.2774%2065.7699Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M77.1135%2063.4268C76.3477%2061.693%2074.334%2061.7492%2074.334%2061.7492H70.7098V61.97C70.7098%2061.97%2071.4336%2062.0029%2071.5451%2062.3574V67.0772C71.4332%2067.4294%2070.7098%2067.4622%2070.7098%2067.4622V67.6829H73.9609C75.4241%2067.654%2076.6403%2066.9775%2077.1436%2065.903C77.6702%2064.6485%2077.1135%2063.4268%2077.1135%2063.4268ZM73.5825%2067.2967C72.9757%2067.2494%2072.9666%2066.8645%2072.9666%2066.8645L72.9638%2062.2014C72.9638%2062.2014%2073.3317%2062.0989%2074.1%2062.1212C74.1%2062.1212%2074.791%2062.095%2075.244%2062.6611C75.244%2062.6611%2075.6776%2063.206%2075.7078%2064.0968L75.7264%2064.6499C75.7264%2064.6499%2075.7551%2065.7255%2075.4111%2066.3128C74.8987%2067.4056%2073.5825%2067.2967%2073.5825%2067.2967Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M6.18561%2063.4341C5.44606%2061.7578%203.49935%2061.8105%203.49935%2061.8105H0V62.46528C0%2062.46528%203.99194%2062.70435%204.60932%2065.25661V39.3226C3.99194%2041.8737%200%2042.1112%200%2042.1112V43.7124H17.9499C26.0415%2043.5049%2032.7644%2038.6132%2035.5413%2030.8526C38.4403%2021.8063%2035.3679%2012.9752%2035.3679%2012.9752ZM7.12481%2039.4738H5.8848V5.0911H7.12481V39.4738ZM15.8601%2040.9174C12.5104%2040.581%2012.4658%2037.803%2012.4658%2037.803L12.45%204.12957C12.45%204.12957%2014.4782%203.39528%2018.7276%203.54897C18.7276%203.54897%2022.5461%203.36244%2025.0353%207.44502C25.0353%207.44502%2027.4405%2011.3949%2027.6113%2017.8209L27.7071%2021.8168C27.7071%2021.8168%2027.8621%2029.5669%2025.9706%2033.8097C23.1333%2041.7043%2015.8601%2040.9174%2015.8601%2040.9174ZM24.1776%2038.9628C24.1776%2038.9628%2029.1626%2035.4425%2029.3268%2022.0953C29.357%2021.9665%2029.4148%2019.9804%2029.2861%2018.3358C29.114%2016.1514%2028.7396%2014.185%2028.7396%2014.185C27.43%206.44671%2024.1067%204.52758%2024.0029%204.46978C28.1932%205.79518%2030.3829%2012.8215%2030.618%2020.2208C30.8794%2028.4515%2028.716%2037.1434%2024.1776%2038.9628Z%22%20fill%3D%22%230091ac%22/%3E%3Cpath%20d%3D%22M77.3726%202.34476V0.814453H58.2404V2.34476C58.2404%202.34476%2062.0918%202.38417%2063.4159%204.87601V19.8389H48.4871V4.87733C48.4871%204.87733%2049.2016%202.64032%2053.7048%202.36578V0.834156H34.5726V2.36578C34.5726%202.36578%2038.424%202.40387%2039.7481%204.89703V39.6896C38.424%2042.1826%2034.5713%2042.221%2034.5713%2042.221V43.7513H53.7048V42.221C49.202%2041.9451%2048.4871%2039.7094%2048.4871%2039.7094V22.612H63.4159V39.6688C62.0918%2042.1607%2058.2404%2042.1988%2058.2404%2042.1988V43.7304H77.3726V42.1988C72.8708%2041.9255%2072.1562%2039.6897%2072.1562%2039.6897V4.85513C72.1565%204.85513%2072.8709%202.61812%2077.3726%202.34476ZM42.5013%2039.6739H41.1272V5.09157H42.5013V39.6739ZM66.2189%2039.6556H64.8448V5.07305H66.2189V39.6556Z%22%20fill%3D%22%230091ac%22/%3E%3C/svg%3E" alt="Deccan Herald Home" id="dhLogoImage">
+              <span class="logo-wordmark" id="mainLogoWordmark">Deccan Herald</span>
+              <span class="sr-only" id="logoLabel">Prajavani</span>
+            </a>
+          </div>
+          <nav class="desktop-nav-links" id="desktopNav" aria-label="Primary navigation">
+            <ul id="desktopNavUl"></ul>
+          </nav>
+        </div>
+        <div class="header-right">
+          <nav class="main-nav" aria-label="Header actions">
+            <button class="icon-button search-icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <a href="/login" class="login-button" aria-label="Login to Account" id="loginButton">ಲಾಗಿನ್</a>
+            <a href="/epaper" class="epaper-main-header-button" id="epaperButton"><i class="fas fa-newspaper"></i> <span class="epaper-text" id="epaperText">ಇ-ಪೇಪರ್</span></a>
+            <button class="icon-button hamburger-icon" aria-label="Open Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu-bar" id="mobileMenuBar">
+      <div class="menu-container">
+        <nav class="mobile-nav-links" aria-label="Mobile section navigation">
+          <ul id="mobileNavUl"></ul>
+        </nav>
+      </div>
+    </div>
+
+    <nav class="featured-bar desktop-featured-bar" aria-label="Featured Topics">
+      <div class="featured-container">
+        <i class="fas fa-bullhorn featured-icon-label" aria-hidden="true"></i>
+        <ul id="secondaryNavList"></ul>
+      </div>
+    </nav>
+
+    <main class="content">
+      <section class="note">
+        <h2>Scope</h2>
+        <p>This file focuses on the visible top nav only: logo, desktop primary navigation, right-side actions, and the mobile category strip. It does not yet include the PV mega-menu, overlay menu, or featured bar behavior.</p>
+      </section>
+
+      <section class="placeholder-story">
+        <h2 id="storyTitle">ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಎರಡು ಸುದ್ದಿ ಬ್ರ್ಯಾಂಡ್‌ಗಳ ಮೇಲ್ನೋಟ ನಾವಿಗೇಶನ್</h2>
+        <p id="storyBody">ಈ ಹೆಡರ್ ಘಟಕವನ್ನು ಹಂಚಿಕೊಂಡ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಇಡಬಹುದು. ಬ್ರ್ಯಾಂಡ್‌ಗೆ ಅನುಗುಣವಾಗಿ ಲೋಗೋ, ಅಕ್ಷರಶೈಲಿ, ಬಣ್ಣ ಮತ್ತು ವಿಭಾಗ ಹೆಸರುಗಳು ಮಾತ್ರ ಬದಲಾಗುತ್ತವೆ.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const brandData = {
+      prajavani: {
+        logoMode: "image",
+        logoText: "Prajavani",
+        logoSrc: "PV-Revamp/pv logo.svg",
+        logoAlt: "Prajavani Home",
+        logoVariant: "pv",
+        desktopNav: ["ಸುದ್ದಿ", "ಜಿಲ್ಲೆ", "ಅಭಿಮತ", "ಭವಿಷ್ಯ", "ಜೀವನಶೈಲಿ", "ವಾಣಿಜ್ಯ"],
+        mobileNav: ["ಸುದ್ದಿ", "ಜಿಲ್ಲೆ", "ಅಭಿಮತ", "ಭವಿಷ್ಯ", "ಜೀವನಶೈಲಿ"],
+        secondaryNav: [
+          { label: "ಪ್ರೀಮಿಯಂ", emphasis: true },
+          { label: "ಚುನಾವಣೆ" },
+          { label: "ಪಾಡ್ಕಾಸ್ಟ್" },
+          { label: "ಕ್ರಿಕೆಟ್" },
+          { label: "ಬೆಂಗಳೂರು" }
+        ],
+        loginLabel: "ಲಾಗಿನ್",
+        epaperLabel: "ಇ-ಪೇಪರ್",
+        storyTitle: "ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಎರಡು ಸುದ್ದಿ ಬ್ರ್ಯಾಂಡ್‌ಗಳ ಮೇಲ್ನೋಟ ನಾವಿಗೇಶನ್",
+        storyBody: "ಈ ಹೆಡರ್ ಘಟಕವನ್ನು ಹಂಚಿಕೊಂಡ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಇಡಬಹುದು. ಬ್ರ್ಯಾಂಡ್‌ಗೆ ಅನುಗುಣವಾಗಿ ಲೋಗೋ, ಅಕ್ಷರಶೈಲಿ, ಬಣ್ಣ ಮತ್ತು ವಿಭಾಗ ಹೆಸರುಗಳು ಮಾತ್ರ ಬದಲಾಗುತ್ತವೆ."
+      },
+      "deccan-herald": {
+        logoMode: "image",
+        logoText: "Deccan Herald",
+        logoSrc: "",
+        logoAlt: "Deccan Herald Home",
+        logoVariant: "dh",
+        desktopNav: ["News", "Bengaluru", "Opinion", "India", "World", "Sports"],
+        mobileNav: ["News", "Cities", "Opinion", "World", "Sports"],
+        secondaryNav: [
+          { label: "Premium", emphasis: true },
+          { label: "Elections" },
+          { label: "Explainers" },
+          { label: "Cricket" },
+          { label: "Bengaluru" }
+        ],
+        loginLabel: "Login",
+        epaperLabel: "Read ePaper",
+        storyTitle: "One shared top navigation system for two editorial brands",
+        storyBody: "The structure, spacing, and responsive logic stay common. Only the logo, font stack, colors, and section labels change per publication."
+      }
+    };
+
+    const elements = {
+      html: document.documentElement,
+      logoLockup: document.getElementById("logoLockup"),
+      mainLogoImage: document.getElementById("mainLogoImage"),
+      dhLogoImage: document.getElementById("dhLogoImage"),
+      mainLogoWordmark: document.getElementById("mainLogoWordmark"),
+      logoLabel: document.getElementById("logoLabel"),
+      desktopNavUl: document.getElementById("desktopNavUl"),
+      mobileNavUl: document.getElementById("mobileNavUl"),
+      secondaryNavList: document.getElementById("secondaryNavList"),
+      loginButton: document.getElementById("loginButton"),
+      epaperText: document.getElementById("epaperText"),
+      storyTitle: document.getElementById("storyTitle"),
+      storyBody: document.getElementById("storyBody")
+    };
+
+    function populateMenu(listElement, items) {
+      listElement.replaceChildren();
+      items.forEach((item, index) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "/";
+        link.textContent = item;
+        if (index === 0) {
+          link.classList.add("is-active");
+        }
+        li.appendChild(link);
+        listElement.appendChild(li);
+      });
+    }
+
+    function populateSecondaryNav(items) {
+      elements.secondaryNavList.replaceChildren();
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "/";
+        link.textContent = item.label;
+        if (item.emphasis) {
+          link.classList.add("featured-highlight");
+        }
+        li.appendChild(link);
+        elements.secondaryNavList.appendChild(li);
+      });
+    }
+
+    function applyBrand(brandKey) {
+      const brand = brandData[brandKey];
+      if (!brand) return;
+
+      elements.html.setAttribute("data-brand", brandKey);
+      elements.logoLockup.dataset.logoMode = brand.logoMode;
+      elements.logoLockup.dataset.logoVariant = brand.logoVariant || "";
+      elements.mainLogoWordmark.textContent = brand.logoText;
+      elements.mainLogoImage.src = brand.logoSrc || "";
+      elements.mainLogoImage.alt = brand.logoAlt;
+      elements.mainLogoImage.style.display = brand.logoVariant === "pv" ? "block" : "none";
+      elements.dhLogoImage.style.display = brand.logoVariant === "dh" ? "block" : "none";
+      elements.logoLabel.textContent = brand.logoText;
+      elements.loginButton.textContent = brand.loginLabel;
+      elements.epaperText.textContent = brand.epaperLabel;
+      elements.storyTitle.textContent = brand.storyTitle;
+      elements.storyBody.textContent = brand.storyBody;
+      populateMenu(elements.desktopNavUl, brand.desktopNav);
+      populateMenu(elements.mobileNavUl, brand.mobileNav);
+      populateSecondaryNav(brand.secondaryNav);
+
+      document.querySelectorAll(".brand-switcher button").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.brandTarget === brandKey));
+      });
+    }
+
+    document.querySelectorAll(".brand-switcher button").forEach((button) => {
+      button.addEventListener("click", () => applyBrand(button.dataset.brandTarget));
+    });
+
+    applyBrand(document.documentElement.getAttribute("data-brand"));
+  </script>
+</body>
+</html>

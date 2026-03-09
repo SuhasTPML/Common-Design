@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="deccan-herald">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common News Design System Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Prajavani Headline";
+      src: url("https://fea.assettype.com/tpml/assets/PvHeadlineSemibold3.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Prajavani Text Semibold";
+      src: url("https://fea.assettype.com/tpml/assets/PrajavaniTextSemibold.woff2") format("woff2");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Prajavani Text Regular";
+      src: url("https://fea.assettype.com/tpml/assets/PrajavaniTextRegular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --page-bg: #f4f1ea;
+      --surface: #fffdf8;
+      --surface-muted: #f7f2ea;
+      --text-strong: #151515;
+      --text-body: #403933;
+      --text-muted: #756b61;
+      --border-soft: rgba(21, 21, 21, 0.1);
+      --shadow-soft: 0 24px 70px rgba(17, 24, 39, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.5rem;
+      --space-6: 2rem;
+      --space-7: 3rem;
+      --space-8: 4rem;
+      --container: 1180px;
+      --font-docs: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-headline: "Playfair Display", Georgia, serif;
+      --font-subhead: "Roboto Slab", Georgia, serif;
+      --font-body: "Roboto Slab", Georgia, serif;
+      --font-accent: "Segoe UI", Arial, sans-serif;
+      --brand-name: "Deccan Herald";
+      --brand-tagline: "Intelligent journalism with a calm editorial voice";
+      --brand-primary: #0091ac;
+      --brand-secondary: #00a9c7;
+      --brand-highlight: #ee9b00;
+      --brand-logo-bg: linear-gradient(135deg, #0091ac, #00a9c7);
+      --brand-chip-bg: rgba(0, 145, 172, 0.12);
+      --brand-chip-text: #0091ac;
+      --hero-kicker: "National Edition";
+      --sample-headline: "Leading the public conversation with sharp, credible reporting.";
+      --sample-subhead: "A shared platform can preserve each newsroom's identity without splitting the product.";
+      --sample-body: "The common system owns structure, spacing, hierarchy, and component behavior. Each publication then applies its own fonts, logo, and color accents through brand tokens instead of duplicate templates.";
+      --sample-quote: "Design system first. Brand expression second. Forking last.";
+      --section-label-1: "Politics";
+      --section-label-2: "Opinion";
+      --section-label-3: "Culture";
+      --font-note: "Playfair Display for headlines, Roboto Slab for subheads and reading text.";
+      --hero-pattern: radial-gradient(circle at top right, rgba(238, 155, 0, 0.2), transparent 35%), linear-gradient(135deg, rgba(0, 145, 172, 0.08), rgba(0, 169, 199, 0.02));
+    }
+
+    html[data-brand="prajavani"] {
+      --page-bg: #f5efe9;
+      --surface: #fffaf6;
+      --surface-muted: #f9f0ea;
+      --text-strong: #1b1717;
+      --text-body: #433737;
+      --text-muted: #7a6a6a;
+      --font-headline: "Prajavani Headline", "Noto Sans Kannada", sans-serif;
+      --font-subhead: "Prajavani Text Semibold", "Noto Sans Kannada", sans-serif;
+      --font-body: "Prajavani Text Regular", "Noto Sans Kannada", sans-serif;
+      --brand-name: "Prajavani";
+      --brand-tagline: "Kannada journalism with depth, reach, and cultural memory";
+      --brand-primary: #b82831;
+      --brand-secondary: #b82831;
+      --brand-highlight: #f08c44;
+      --brand-logo-bg: linear-gradient(135deg, #991f27, #b82831);
+      --brand-chip-bg: rgba(184, 40, 49, 0.12);
+      --brand-chip-text: #b82831;
+      --hero-kicker: "ಕರ್ನಾಟಕ ಆವೃತ್ತಿ";
+      --sample-headline: "ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಬ್ರ್ಯಾಂಡ್ ವೈಶಿಷ್ಟ್ಯ ಕಾಪಾಡುವ ಸುದ್ದಿ ವಿನ್ಯಾಸ.";
+      --sample-subhead: "ಸಾಮಾನ್ಯ ಕೋಡ್‌ಬೇಸ್ ಮೇಲೆ ಪ್ರಜಾವಾಣಿ ತನ್ನದೇ ಧ್ವನಿ, ಬಣ್ಣ ಮತ್ತು ಅಕ್ಷರಶೈಲಿಯನ್ನು ಉಳಿಸಿಕೊಳ್ಳಬಹುದು.";
+      --sample-body: "ಹಂಚಿಕೊಂಡ ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆ ವಿನ್ಯಾಸ ಕ್ರಮ, ಘಟಕಗಳ ನಡೆ, ಅಂತರ ಹಾಗೂ ವಿನ್ಯಾಸ ನಿಯಮಗಳನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ. ಪ್ರತಿ ಬ್ರ್ಯಾಂಡ್ ತನ್ನ ಲೋಗೋ, ಬಣ್ಣ ಮತ್ತು ಕನ್ನಡ ಟೈಪೋಗ್ರಫಿಯನ್ನು ಟೋಕನ್‌ಗಳ ಮೂಲಕ ಅನ್ವಯಿಸಬಹುದು.";
+      --sample-quote: "ಒಂದು ವೇದಿಕೆ. ಎರಡು ಧ್ವನಿಗಳು. ಸ್ಪಷ್ಟ ಬ್ರ್ಯಾಂಡ್ ಗುರುತು.";
+      --section-label-1: "ರಾಜಕೀಯ";
+      --section-label-2: "ಅಭಿಪ್ರಾಯ";
+      --section-label-3: "ಸಂಸ್ಕೃತಿ";
+      --font-note: "PV Headline headlineಗಳಿಗೆ, Prajavani Text ಓದು ಮತ್ತು ಉಪಶೀರ್ಷಿಕೆಗಳಿಗೆ.";
+      --hero-pattern: radial-gradient(circle at top right, rgba(240, 140, 68, 0.22), transparent 35%), linear-gradient(135deg, rgba(184, 40, 49, 0.08), rgba(153, 31, 39, 0.02));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-docs);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
+        var(--page-bg);
+      color: var(--text-strong);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: var(--space-7) 0 var(--space-8);
+    }
+
+    .nav-demo {
+      margin-bottom: var(--space-6);
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .nav-demo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px solid var(--border-soft);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.94));
+    }
+
+    .nav-demo-header .section-copy {
+      margin-top: var(--space-1);
+    }
+
+    .nav-demo-badge {
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      background: var(--brand-chip-bg);
+      color: var(--brand-chip-text);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .shared-site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .shared-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-5);
+      min-height: 72px;
+      padding: 0.9rem var(--space-5);
+    }
+
+    .shared-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .shared-logo-link {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .shared-logo-wordmark {
+      font-family: var(--font-headline);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--text-strong);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+
+    .shared-logo-image {
+      display: none;
+      height: 34px;
+      width: auto;
+      max-width: 220px;
+    }
+
+    .shared-logo-link[data-logo-mode="image"] .shared-logo-image {
+      display: block;
+    }
+
+    .shared-logo-link[data-logo-mode="image"] .shared-logo-wordmark {
+      display: none;
+    }
+
+    .shared-desktop-nav {
+      min-width: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+
+    .shared-desktop-nav ul,
+    .shared-mobile-strip ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .shared-desktop-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .shared-desktop-nav ul::-webkit-scrollbar,
+    .shared-mobile-strip ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    .shared-desktop-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 56px;
+      padding: 0.5rem 0.8rem;
+      border-bottom: 3px solid transparent;
+      color: var(--text-strong);
+      font-family: var(--font-subhead);
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .shared-desktop-nav a.is-active,
+    .shared-desktop-nav a:hover,
+    .shared-mobile-strip a.is-active,
+    .shared-mobile-strip a:hover {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    .shared-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .nav-icon-button,
+    .nav-action-button {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      text-decoration: none;
+    }
+
+    .nav-icon-button {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-strong);
+      font-size: 1rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-icon-button:hover {
+      background: var(--brand-chip-bg);
+      color: var(--brand-primary);
+    }
+
+    .nav-action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 1rem;
+      border-radius: 999px;
+      font-family: var(--font-subhead);
+      font-size: 0.96rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-action-button.login {
+      background: var(--brand-primary);
+      color: #fff;
+    }
+
+    .nav-action-button.epaper {
+      background: color-mix(in srgb, var(--brand-highlight) 82%, white 18%);
+      color: var(--text-strong);
+    }
+
+    .shared-mobile-strip {
+      display: none;
+      border-top: 1px solid var(--border-soft);
+      background: var(--surface-muted);
+      padding: 0 var(--space-4);
+    }
+
+    .shared-mobile-strip ul {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.25rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .shared-mobile-strip a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.5rem 0.4rem;
+      border-bottom: 3px solid transparent;
+      color: var(--text-strong);
+      font-family: var(--font-subhead);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-6);
+      padding: var(--space-7);
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .masthead::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--hero-pattern);
+      z-index: -1;
+    }
+
+    .brand-panel,
+    .preview-panel,
+    .guide-section,
+    .token-card,
+    .type-card,
+    .component-card {
+      background: var(--surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background: var(--brand-logo-bg);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-headline);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    .brand-name {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 0.95;
+    }
+
+    .brand-tagline {
+      margin: var(--space-2) 0 0;
+      max-width: 36rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin: var(--space-5) 0 0;
+    }
+
+    .chip {
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      background: var(--brand-chip-bg);
+      color: var(--brand-chip-text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .preview-panel {
+      padding: var(--space-5);
+      align-self: start;
+    }
+
+    .preview-label {
+      margin: 0 0 var(--space-4);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .story-card {
+      padding: var(--space-5);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.95));
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+    }
+
+    .story-kicker {
+      font-family: var(--font-subhead);
+      color: var(--brand-secondary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .story-headline {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 3vw, 2.85rem);
+      line-height: 1.05;
+    }
+
+    .story-subhead {
+      margin: var(--space-4) 0 0;
+      font-family: var(--font-subhead);
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: var(--text-body);
+    }
+
+    .story-meta {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+
+    .guide-section {
+      padding: var(--space-6);
+    }
+
+    .section-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-2);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brand-secondary);
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 1.8rem;
+      line-height: 1.1;
+    }
+
+    .section-copy {
+      margin: var(--space-2) 0 0;
+      color: var(--text-body);
+      line-height: 1.65;
+      max-width: 40rem;
+    }
+
+    .theme-switcher {
+      display: inline-flex;
+      padding: 0.35rem;
+      background: var(--surface-muted);
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      gap: 0.35rem;
+    }
+
+    .theme-button {
+      border: 0;
+      background: transparent;
+      color: var(--text-body);
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .theme-button[aria-pressed="true"] {
+      background: var(--text-strong);
+      color: #fff;
+    }
+
+    .token-grid,
+    .type-grid,
+    .component-grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .token-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .token-card,
+    .type-card,
+    .component-card {
+      padding: var(--space-4);
+    }
+
+    .token-swatch {
+      width: 100%;
+      height: 84px;
+      border-radius: 16px;
+      margin-bottom: var(--space-4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    }
+
+    .token-name,
+    .label {
+      margin: 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 800;
+    }
+
+    .token-value,
+    .type-name {
+      margin: var(--space-2) 0 0;
+      font-size: 1rem;
+      color: var(--text-strong);
+      font-weight: 700;
+    }
+
+    .type-grid {
+      grid-template-columns: 1fr;
+      margin-top: var(--space-5);
+    }
+
+    .type-specimen {
+      margin: var(--space-3) 0 0;
+      color: var(--text-strong);
+    }
+
+    .type-headline {
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      line-height: 0.98;
+    }
+
+    .type-subhead {
+      font-family: var(--font-subhead);
+      font-size: 1.45rem;
+      line-height: 1.35;
+    }
+
+    .type-body {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-body);
+    }
+
+    .quote-card {
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--brand-chip-bg), rgba(255, 255, 255, 0.75));
+      border: 1px solid var(--border-soft);
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: 1.7rem;
+      line-height: 1.2;
+    }
+
+    .component-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: var(--space-5);
+    }
+
+    .news-card {
+      overflow: hidden;
+    }
+
+    .news-card-media {
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent),
+        linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      margin-bottom: var(--space-4);
+    }
+
+    .news-card-title {
+      margin: var(--space-2) 0 0;
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .news-card-copy {
+      margin: var(--space-3) 0 0;
+      font-family: var(--font-body);
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-family: var(--font-docs);
+      border: 1px solid transparent;
+    }
+
+    .button-primary {
+      background: var(--text-strong);
+      color: #fff;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--brand-primary);
+      border-color: var(--brand-primary);
+    }
+
+    .sidebar-list {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .sidebar-item {
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .sidebar-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .sidebar-item h4 {
+      margin: var(--space-2) 0 0;
+      font-family: var(--font-subhead);
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+
+    .system-note {
+      margin-top: var(--space-6);
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      background: var(--text-strong);
+      color: #fff;
+    }
+
+    .system-note p {
+      margin: 0;
+      max-width: 52rem;
+      line-height: 1.7;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 960px) {
+      .masthead,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-intro {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .shared-header-inner {
+        min-height: 64px;
+      }
+
+      .shared-desktop-nav {
+        display: none;
+      }
+
+      .shared-mobile-strip {
+        display: block;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(calc(100% - 1rem), var(--container));
+        padding-top: var(--space-5);
+      }
+
+      .masthead,
+      .guide-section {
+        padding: var(--space-5);
+      }
+
+      .token-grid,
+      .component-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-lockup {
+        align-items: start;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.45rem;
+      }
+
+      .nav-demo-header,
+      .shared-header-inner {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+      }
+
+      .shared-logo-image {
+        height: 28px;
+      }
+
+      .shared-logo-wordmark {
+        font-size: 1.55rem;
+      }
+
+      .shared-header-actions {
+        gap: 0.35rem;
+      }
+
+      .nav-action-button {
+        min-height: 32px;
+        padding: 0 0.75rem;
+        font-size: 0.84rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <section class="nav-demo">
+      <div class="nav-demo-header">
+        <div>
+          <p class="eyebrow">Shared Header</p>
+          <h2 class="section-title">Top navigation driven by the same system</h2>
+          <p class="section-copy">
+            This header structure is based on the `PV-Revamp` top nav pattern: logo on the left, primary nav in the middle, action buttons on the right, and a mobile category strip below.
+          </p>
+        </div>
+        <div class="nav-demo-badge">Top Nav Demo</div>
+      </div>
+
+      <header class="shared-site-header" aria-label="Site header preview">
+        <div class="shared-header-inner">
+          <div class="shared-header-left">
+            <a class="shared-logo-link" href="/" id="shared-logo-link" data-logo-mode="text" aria-label="Homepage">
+              <img class="shared-logo-image" id="shared-logo-image" src="PV-Revamp/pv logo.svg" alt="">
+              <span class="shared-logo-wordmark" id="shared-logo-wordmark">Deccan Herald</span>
+            </a>
+
+            <nav class="shared-desktop-nav" aria-label="Primary navigation">
+              <ul id="desktop-nav-list"></ul>
+            </nav>
+          </div>
+
+          <div class="shared-header-actions">
+            <button class="nav-icon-button" id="search-button" type="button" aria-label="Search">⌕</button>
+            <a class="nav-action-button login" id="login-button" href="/login">Login</a>
+            <a class="nav-action-button epaper" id="epaper-button" href="/epaper">Read ePaper</a>
+            <button class="nav-icon-button" id="menu-button" type="button" aria-label="Open menu">☰</button>
+          </div>
+        </div>
+
+        <nav class="shared-mobile-strip" aria-label="Mobile section navigation">
+          <ul id="mobile-nav-list"></ul>
+        </nav>
+      </header>
+    </section>
+
+    <header class="masthead">
+      <section class="brand-panel">
+        <div class="brand-lockup">
+          <div class="brand-logo" id="brand-logo">DH</div>
+          <div>
+            <p class="eyebrow">Common News System</p>
+            <h1 class="brand-name" id="brand-name">Deccan Herald</h1>
+          </div>
+        </div>
+        <p class="brand-tagline" id="brand-tagline">
+          Intelligent journalism with a calm editorial voice
+        </p>
+        <div class="chip-row">
+          <span class="chip" id="chip-1">Politics</span>
+          <span class="chip" id="chip-2">Opinion</span>
+          <span class="chip" id="chip-3">Culture</span>
+        </div>
+      </section>
+
+      <aside class="preview-panel">
+        <p class="preview-label">Live Brand Preview</p>
+        <article class="story-card">
+          <div class="story-kicker" id="hero-kicker">National Edition</div>
+          <h2 class="story-headline" id="sample-headline">
+            Leading the public conversation with sharp, credible reporting.
+          </h2>
+          <p class="story-subhead" id="sample-subhead">
+            A shared platform can preserve each newsroom's identity without splitting the product.
+          </p>
+          <div class="story-meta">
+            <span>Updated 9 Mar 2026</span>
+            <span>8 min read</span>
+          </div>
+        </article>
+      </aside>
+    </header>
+
+    <div class="section-grid">
+      <section class="guide-section">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">Theme Controls</p>
+            <h2 class="section-title">One UI system, two editorial identities</h2>
+            <p class="section-copy">
+              Switch the active brand. The layout and components stay the same; only tokens, typography, and identity assets change.
+            </p>
+            <p class="section-copy">
+              Documentation labels, controls, and notes use a neutral docs font. The headline, subhead, body, and quote specimens are the actual brand typography.
+            </p>
+          </div>
+          <div class="theme-switcher" role="group" aria-label="Brand switcher">
+            <button class="theme-button" data-brand-target="deccan-herald" aria-pressed="true" type="button">Deccan Herald</button>
+            <button class="theme-button" data-brand-target="prajavani" aria-pressed="false" type="button">Prajavani</button>
+          </div>
+        </div>
+
+        <div class="token-grid">
+          <article class="token-card">
+            <div class="token-swatch" id="swatch-primary"></div>
+            <p class="token-name">Primary Color</p>
+            <p class="token-value" id="token-primary">#0091AC</p>
+          </article>
+          <article class="token-card">
+            <div class="token-swatch" id="swatch-secondary"></div>
+            <p class="token-name">Secondary Color</p>
+            <p class="token-value" id="token-secondary">#00A9C7</p>
+          </article>
+          <article class="token-card">
+            <div class="token-swatch" id="swatch-highlight"></div>
+            <p class="token-name">Highlight Color</p>
+            <p class="token-value" id="token-highlight">#EE9B00</p>
+          </article>
+          <article class="token-card">
+            <div class="token-swatch" id="swatch-logo"></div>
+            <p class="token-name">Logo Treatment</p>
+            <p class="token-value">Gradient token</p>
+          </article>
+        </div>
+
+        <div class="type-grid">
+          <article class="type-card">
+            <p class="label">Headline Style</p>
+            <div class="type-specimen type-headline" id="type-headline">
+              Leading the narrative with editorial authority.
+            </div>
+          </article>
+          <article class="type-card">
+            <p class="label">Subhead Style</p>
+            <div class="type-specimen type-subhead" id="type-subhead">
+              Shared components can still feel native to each newsroom if the typography system is explicit.
+            </div>
+          </article>
+          <article class="type-card">
+            <p class="label">Body Style</p>
+            <div class="type-specimen type-body" id="type-body">
+              The body type is responsible for long-form readability across article pages, live blogs, section landing pages, and premium explainers. It should stay legible, stable, and comfortable over long sessions.
+            </div>
+          </article>
+        </div>
+
+        <div class="quote-card">
+          <p class="label">System Principle</p>
+          <blockquote id="sample-quote">
+            Design system first. Brand expression second. Forking last.
+          </blockquote>
+        </div>
+
+        <div class="quote-card">
+          <p class="label">Typography Scope</p>
+          <blockquote>
+            Docs UI uses <code>system-ui</code>. Brand specimens use the active newsroom font stack only.
+          </blockquote>
+        </div>
+      </section>
+
+      <aside class="guide-section">
+        <p class="eyebrow">Shared Components</p>
+        <h2 class="section-title">Common building blocks for every news property</h2>
+        <p class="section-copy">
+          These components are identical in structure across brands. They consume tokens from the active theme rather than hardcoded colors or fonts.
+        </p>
+
+        <div class="component-grid">
+          <article class="component-card news-card">
+            <div class="news-card-media"></div>
+            <p class="label">Story Card</p>
+            <h3 class="news-card-title">Homepage module with shared template and brand-aware typography</h3>
+            <p class="news-card-copy" id="sample-body">
+              The common system owns structure, spacing, hierarchy, and component behavior. Each publication then applies its own fonts, logo, and color accents through brand tokens instead of duplicate templates.
+            </p>
+            <div class="button-row">
+              <a class="button button-primary" href="/">Read Story</a>
+              <a class="button button-secondary" href="/">Save</a>
+            </div>
+          </article>
+
+          <article class="component-card">
+            <p class="label">Sidebar Stack</p>
+            <div class="sidebar-list">
+              <div class="sidebar-item">
+                <p class="label">Live</p>
+                <h4>Election tracker, minute by minute updates, and district swings</h4>
+              </div>
+              <div class="sidebar-item">
+                <p class="label">Explainer</p>
+                <h4>Why common templates help scale two brands without doubling maintenance</h4>
+              </div>
+              <div class="sidebar-item">
+                <p class="label">Newsletter</p>
+                <h4>Morning briefing module driven by the same signup component</h4>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="system-note">
+          <p>
+            Start with tokens like <code>--brand-primary</code>, <code>--font-headline</code>, and <code>--brand-logo-bg</code>. Keep templates shared. If a brand needs special treatment, override the token or asset first and only fork a component when the editorial behavior truly differs.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const brandData = {
+      "deccan-herald": {
+        logoMode: "text",
+        logoText: "Deccan Herald",
+        logoSrc: "",
+        logo: "DH",
+        name: "Deccan Herald",
+        tagline: "Intelligent journalism with a calm editorial voice",
+        nav: ["News", "Bengaluru", "Opinion", "India", "World", "Sports"],
+        mobileNav: ["News", "Cities", "Opinion", "Sports", "Epaper"],
+        loginLabel: "Login",
+        epaperLabel: "Read ePaper",
+        heroKicker: "National Edition",
+        headline: "Leading the public conversation with sharp, credible reporting.",
+        subhead: "A shared platform can preserve each newsroom's identity without splitting the product.",
+        body: "The common system owns structure, spacing, hierarchy, and component behavior. Each publication then applies its own fonts, logo, and color accents through brand tokens instead of duplicate templates.",
+        quote: "Design system first. Brand expression second. Forking last.",
+        chips: ["Politics", "Opinion", "Culture"],
+        typeHeadline: "Leading the narrative with editorial authority.",
+        typeSubhead: "Shared components can still feel native to each newsroom if the typography system is explicit.",
+        typeBody: "The body type is responsible for long-form readability across article pages, live blogs, section landing pages, and premium explainers. It should stay legible, stable, and comfortable over long sessions.",
+        tokens: {
+          primary: "#0091AC",
+          secondary: "#00A9C7",
+          highlight: "#EE9B00",
+          logo: "linear-gradient(135deg, #0091ac, #00a9c7)"
+        }
+      },
+      "prajavani": {
+        logoMode: "image",
+        logoText: "Prajavani",
+        logoSrc: "PV-Revamp/pv logo.svg",
+        logo: "ಪ್ರ",
+        name: "Prajavani",
+        tagline: "Kannada journalism with depth, reach, and cultural memory",
+        nav: ["ಸುದ್ದಿ", "ಜಿಲ್ಲೆ", "ಅಭಿಮತ", "ಭವಿಷ್ಯ", "ಜೀವನಶೈಲಿ", "ವಾಣಿಜ್ಯ"],
+        mobileNav: ["ಸುದ್ದಿ", "ಜಿಲ್ಲೆ", "ಅಭಿಮತ", "ಭವಿಷ್ಯ", "ಜೀವನಶೈಲಿ"],
+        loginLabel: "ಲಾಗಿನ್",
+        epaperLabel: "ಇ-ಪೇಪರ್",
+        heroKicker: "ಕರ್ನಾಟಕ ಆವೃತ್ತಿ",
+        headline: "ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಬ್ರ್ಯಾಂಡ್ ವೈಶಿಷ್ಟ್ಯ ಕಾಪಾಡುವ ಸುದ್ದಿ ವಿನ್ಯಾಸ.",
+        subhead: "ಸಾಮಾನ್ಯ ಕೋಡ್‌ಬೇಸ್ ಮೇಲೆ ಪ್ರಜಾವಾಣಿ ತನ್ನದೇ ಧ್ವನಿ, ಬಣ್ಣ ಮತ್ತು ಅಕ್ಷರಶೈಲಿಯನ್ನು ಉಳಿಸಿಕೊಳ್ಳಬಹುದು.",
+        body: "ಹಂಚಿಕೊಂಡ ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆ ವಿನ್ಯಾಸ ಕ್ರಮ, ಘಟಕಗಳ ನಡೆ, ಅಂತರ ಹಾಗೂ ವಿನ್ಯಾಸ ನಿಯಮಗಳನ್ನು ನೋಡಿಕೊಳ್ಳುತ್ತದೆ. ಪ್ರತಿ ಬ್ರ್ಯಾಂಡ್ ತನ್ನ ಲೋಗೋ, ಬಣ್ಣ ಮತ್ತು ಕನ್ನಡ ಟೈಪೋಗ್ರಫಿಯನ್ನು ಟೋಕನ್‌ಗಳ ಮೂಲಕ ಅನ್ವಯಿಸಬಹುದು.",
+        quote: "ಒಂದು ವೇದಿಕೆ. ಎರಡು ಧ್ವನಿಗಳು. ಸ್ಪಷ್ಟ ಬ್ರ್ಯಾಂಡ್ ಗುರುತು.",
+        chips: ["ರಾಜಕೀಯ", "ಅಭಿಪ್ರಾಯ", "ಸಂಸ್ಕೃತಿ"],
+        typeHeadline: "ಒಗ್ಗಟ್ಟಿನ ವಿನ್ಯಾಸ, ಪ್ರತ್ಯೇಕ ಸಂಪಾದಕೀಯ ಧ್ವನಿ.",
+        typeSubhead: "ಒಂದೇ ಘಟಕ ವ್ಯವಸ್ಥೆಯನ್ನು ಬಳಸಿದರೂ ಪ್ರತಿ ಬ್ರ್ಯಾಂಡ್ ತನ್ನದೇ ಶೈಲಿಯನ್ನು ಉಳಿಸಿಕೊಳ್ಳಬಹುದು.",
+        typeBody: "ಉದ್ದವಾದ ವರದಿ, ವಿಶ್ಲೇಷಣೆ, ಲೈವ್ ಬ್ಲಾಗ್ ಮತ್ತು ವಿಶೇಷ ಲೇಖನಗಳ ಓದುಗ ಅನುಭವಕ್ಕೆ ದೇಹ ಅಕ್ಷರಶೈಲಿ ಮುಖ್ಯ. ಅದು ಸ್ಪಷ್ಟ, ಸುಲಭ ಮತ್ತು ನಿರಂತರ ಓದಿಗೆ ಅನುಕೂಲಕರವಾಗಿರಬೇಕು.",
+        tokens: {
+          primary: "#B82831",
+          secondary: "#B82831",
+          highlight: "#F08C44",
+          logo: "linear-gradient(135deg, #991f27, #b82831)"
+        }
+      }
+    };
+
+    const elements = {
+      html: document.documentElement,
+      sharedLogoLink: document.getElementById("shared-logo-link"),
+      sharedLogoImage: document.getElementById("shared-logo-image"),
+      sharedLogoWordmark: document.getElementById("shared-logo-wordmark"),
+      desktopNavList: document.getElementById("desktop-nav-list"),
+      mobileNavList: document.getElementById("mobile-nav-list"),
+      loginButton: document.getElementById("login-button"),
+      epaperButton: document.getElementById("epaper-button"),
+      logo: document.getElementById("brand-logo"),
+      name: document.getElementById("brand-name"),
+      tagline: document.getElementById("brand-tagline"),
+      kicker: document.getElementById("hero-kicker"),
+      headline: document.getElementById("sample-headline"),
+      subhead: document.getElementById("sample-subhead"),
+      body: document.getElementById("sample-body"),
+      quote: document.getElementById("sample-quote"),
+      chip1: document.getElementById("chip-1"),
+      chip2: document.getElementById("chip-2"),
+      chip3: document.getElementById("chip-3"),
+      typeHeadline: document.getElementById("type-headline"),
+      typeSubhead: document.getElementById("type-subhead"),
+      typeBody: document.getElementById("type-body"),
+      tokenPrimary: document.getElementById("token-primary"),
+      tokenSecondary: document.getElementById("token-secondary"),
+      tokenHighlight: document.getElementById("token-highlight"),
+      swatchPrimary: document.getElementById("swatch-primary"),
+      swatchSecondary: document.getElementById("swatch-secondary"),
+      swatchHighlight: document.getElementById("swatch-highlight"),
+      swatchLogo: document.getElementById("swatch-logo")
+    };
+
+    function populateNav(listElement, items) {
+      listElement.replaceChildren();
+      items.forEach((label, index) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "/";
+        link.textContent = label;
+        if (index === 0) {
+          link.classList.add("is-active");
+        }
+        li.appendChild(link);
+        listElement.appendChild(li);
+      });
+    }
+
+    function applyBrand(brandKey) {
+      const brand = brandData[brandKey];
+      if (!brand) return;
+
+      elements.html.setAttribute("data-brand", brandKey);
+      elements.sharedLogoLink.dataset.logoMode = brand.logoMode;
+      elements.sharedLogoWordmark.textContent = brand.logoText;
+      elements.sharedLogoImage.src = brand.logoSrc || "";
+      elements.sharedLogoImage.alt = brand.name + " logo";
+      populateNav(elements.desktopNavList, brand.nav);
+      populateNav(elements.mobileNavList, brand.mobileNav);
+      elements.loginButton.textContent = brand.loginLabel;
+      elements.epaperButton.textContent = brand.epaperLabel;
+      elements.logo.textContent = brand.logo;
+      elements.name.textContent = brand.name;
+      elements.tagline.textContent = brand.tagline;
+      elements.kicker.textContent = brand.heroKicker;
+      elements.headline.textContent = brand.headline;
+      elements.subhead.textContent = brand.subhead;
+      elements.body.textContent = brand.body;
+      elements.quote.textContent = brand.quote;
+      elements.chip1.textContent = brand.chips[0];
+      elements.chip2.textContent = brand.chips[1];
+      elements.chip3.textContent = brand.chips[2];
+      elements.typeHeadline.textContent = brand.typeHeadline;
+      elements.typeSubhead.textContent = brand.typeSubhead;
+      elements.typeBody.textContent = brand.typeBody;
+      elements.tokenPrimary.textContent = brand.tokens.primary;
+      elements.tokenSecondary.textContent = brand.tokens.secondary;
+      elements.tokenHighlight.textContent = brand.tokens.highlight;
+      elements.swatchPrimary.style.background = brand.tokens.primary;
+      elements.swatchSecondary.style.background = brand.tokens.secondary;
+      elements.swatchHighlight.style.background = brand.tokens.highlight;
+      elements.swatchLogo.style.background = brand.tokens.logo;
+
+      document.querySelectorAll(".theme-button").forEach((button) => {
+        const pressed = button.dataset.brandTarget === brandKey;
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+    }
+
+    document.querySelectorAll(".theme-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        applyBrand(button.dataset.brandTarget);
+      });
+    });
+
+    applyBrand(document.documentElement.getAttribute("data-brand"));
+  </script>
+</body>
+</html>
