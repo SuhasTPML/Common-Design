@@ -118,38 +118,24 @@
 
     .page {
       min-height: 100vh;
-      padding-bottom: 4rem;
-    }
-
-    .demo-toolbar {
-      max-width: var(--container-max-width);
-      margin: 0 auto;
-      padding: 1rem var(--container-padding-mobile);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      color: var(--brand-text);
-    }
-
-    .demo-toolbar h1 {
-      font-family: var(--logo-wordmark-font);
-      font-size: 1.2rem;
-      line-height: 1.1;
-    }
-
-    .demo-toolbar p {
-      font-size: 0.92rem;
-      color: rgba(0, 0, 0, 0.65);
+      padding-bottom: 6rem;
     }
 
     .brand-switcher {
+      position: fixed;
+      z-index: 1300;
       display: inline-flex;
+      align-items: center;
       gap: 0.4rem;
       padding: 0.3rem;
       border: 1px solid var(--brand-border);
       border-radius: 999px;
-      background: var(--brand-surface);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(10px);
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .brand-switcher button {
@@ -164,6 +150,24 @@
     .brand-switcher button[aria-pressed="true"] {
       background: var(--brand-text);
       color: #ffffff;
+    }
+
+    .brand-switcher-handle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      color: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.06);
+      cursor: grab;
+      flex-shrink: 0;
+    }
+
+    .brand-switcher-handle:active,
+    .brand-switcher.is-dragging .brand-switcher-handle {
+      cursor: grabbing;
     }
 
     .site-header {
@@ -487,7 +491,7 @@
     .content {
       max-width: var(--container-max-width);
       margin: 0 auto;
-      padding: 2rem var(--container-padding-mobile);
+      padding: 2rem var(--container-padding-mobile) 4rem;
       display: grid;
       gap: 1.5rem;
     }
@@ -602,8 +606,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: var(--brand-accent);
-      color: #000000;
+      background-color: var(--brand-primary);
+      color: #ffffff;
       padding: 4px 12px;
       font-size: 11px;
       font-weight: 700;
@@ -1639,11 +1643,6 @@
     }
 
     @media (max-width: 767.98px) {
-      .demo-toolbar {
-        flex-direction: column;
-        align-items: start;
-      }
-
       .header-container {
         padding: 12px;
         min-height: auto;
@@ -1667,6 +1666,16 @@
 
       .search-icon {
         display: none;
+      }
+
+      .brand-switcher button {
+        padding: 0.55rem 0.8rem;
+        font-size: 0.82rem;
+      }
+
+      .brand-switcher-handle {
+        width: 1.85rem;
+        height: 1.85rem;
       }
 
       .main-nav {
@@ -1947,15 +1956,10 @@
 </head>
 <body>
   <div class="page">
-    <div class="demo-toolbar">
-      <div>
-        <h1>Shared Top Nav</h1>
-        <p>Standalone file using the PV revamp header structure with brand-driven tokens and content.</p>
-      </div>
-      <div class="brand-switcher" role="group" aria-label="Brand switcher">
-        <button type="button" data-brand-target="prajavani" aria-pressed="true">Prajavani</button>
-        <button type="button" data-brand-target="deccan-herald" aria-pressed="false">Deccan Herald</button>
-      </div>
+    <div class="brand-switcher" role="group" aria-label="Brand switcher">
+      <span class="brand-switcher-handle" aria-hidden="true"><i class="fas fa-grip-lines-vertical"></i></span>
+      <button type="button" data-brand-target="prajavani" aria-pressed="true">Prajavani</button>
+      <button type="button" data-brand-target="deccan-herald" aria-pressed="false">Deccan Herald</button>
     </div>
 
     <header class="site-header">
@@ -2563,7 +2567,77 @@
       });
     }
 
-    document.querySelectorAll(".brand-switcher button").forEach((button) => {
+    const brandSwitcher = document.querySelector(".brand-switcher");
+    const brandSwitcherHandle = document.querySelector(".brand-switcher-handle");
+
+    function positionBrandSwitcherAtMidRight() {
+      if (!brandSwitcher) return;
+      const viewportMargin = window.innerWidth <= 767.98 ? 12 : 16;
+      const maxLeft = Math.max(viewportMargin, window.innerWidth - brandSwitcher.offsetWidth - viewportMargin);
+      const top = Math.max(viewportMargin, (window.innerHeight - brandSwitcher.offsetHeight) / 2);
+      brandSwitcher.style.left = `${maxLeft}px`;
+      brandSwitcher.style.top = `${top}px`;
+    }
+
+    function clampBrandSwitcherToViewport() {
+      if (!brandSwitcher) return;
+      const viewportMargin = window.innerWidth <= 767.98 ? 12 : 16;
+      const maxLeft = Math.max(viewportMargin, window.innerWidth - brandSwitcher.offsetWidth - viewportMargin);
+      const maxTop = Math.max(viewportMargin, window.innerHeight - brandSwitcher.offsetHeight - viewportMargin);
+      const currentLeft = Number.parseFloat(brandSwitcher.style.left) || maxLeft;
+      const currentTop = Number.parseFloat(brandSwitcher.style.top) || viewportMargin;
+      brandSwitcher.style.left = `${Math.min(Math.max(currentLeft, viewportMargin), maxLeft)}px`;
+      brandSwitcher.style.top = `${Math.min(Math.max(currentTop, viewportMargin), maxTop)}px`;
+    }
+
+    let brandSwitcherDragState = null;
+
+    if (brandSwitcher && brandSwitcherHandle) {
+      positionBrandSwitcherAtMidRight();
+
+      brandSwitcherHandle.addEventListener("pointerdown", (event) => {
+        const rect = brandSwitcher.getBoundingClientRect();
+        brandSwitcherDragState = {
+          pointerId: event.pointerId,
+          offsetX: event.clientX - rect.left,
+          offsetY: event.clientY - rect.top
+        };
+        brandSwitcher.classList.add("is-dragging");
+        brandSwitcherHandle.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+      });
+
+      window.addEventListener("pointermove", (event) => {
+        if (!brandSwitcherDragState || event.pointerId !== brandSwitcherDragState.pointerId) return;
+        const viewportMargin = window.innerWidth <= 767.98 ? 12 : 16;
+        const maxLeft = Math.max(viewportMargin, window.innerWidth - brandSwitcher.offsetWidth - viewportMargin);
+        const maxTop = Math.max(viewportMargin, window.innerHeight - brandSwitcher.offsetHeight - viewportMargin);
+        const left = Math.min(Math.max(event.clientX - brandSwitcherDragState.offsetX, viewportMargin), maxLeft);
+        const top = Math.min(Math.max(event.clientY - brandSwitcherDragState.offsetY, viewportMargin), maxTop);
+        brandSwitcher.style.left = `${left}px`;
+        brandSwitcher.style.top = `${top}px`;
+      });
+
+      const endBrandSwitcherDrag = (event) => {
+        if (!brandSwitcherDragState || (event.pointerId !== undefined && event.pointerId !== brandSwitcherDragState.pointerId)) return;
+        brandSwitcherHandle.releasePointerCapture?.(brandSwitcherDragState.pointerId);
+        brandSwitcherDragState = null;
+        brandSwitcher.classList.remove("is-dragging");
+      };
+
+      window.addEventListener("pointerup", endBrandSwitcherDrag);
+      window.addEventListener("pointercancel", endBrandSwitcherDrag);
+      window.addEventListener("resize", () => {
+        if (brandSwitcherDragState) return;
+        if (!brandSwitcher.style.left || !brandSwitcher.style.top) {
+          positionBrandSwitcherAtMidRight();
+          return;
+        }
+        clampBrandSwitcherToViewport();
+      });
+    }
+
+    document.querySelectorAll(".brand-switcher button[data-brand-target]").forEach((button) => {
       button.addEventListener("click", () => applyBrand(button.dataset.brandTarget));
     });
 
