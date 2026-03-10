@@ -41,4 +41,6 @@ All UI work in this workspace must follow the shared style guide before using ex
 - In shared editorial/card layouts, hero cards must always use larger headline text than non-hero/supporting cards. Use the first-row hero treatment as the reference hierarchy and preserve that contrast across breakpoints.
 - In shared editorial/card layouts, the read-time and publish-time metadata row must align to the bottom of the card content area. Within that row, publish time must align to the right edge of the card.
 - In mobile shared editorial/card layouts, all headlines must be clamped to 3 lines with ellipsis.
+- In shared editorial/card layouts, all card images must maintain a strict `3:2` aspect ratio across breakpoints. Do not stretch, auto-fill, or relax the ratio to match adjacent card heights.
+- If a shared editorial/card layout needs extra card height to align with adjacent cards, increase the non-image content area. Keep the image at strict `3:2` and let the text/overlay portion absorb the extra height.
 - If there is a conflict between a template and the style guide, the style guide wins.
