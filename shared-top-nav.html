@@ -617,6 +617,9 @@
     .template-grid-hero44 .headline-overlay,
     .template-small-hero6 .headline-overlay,
     .template-four-two .headline-overlay {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       padding: 12px;
       font-family: var(--font-headline);
       font-size: 24px;
@@ -624,17 +627,34 @@
       line-height: 1.3;
     }
 
-    .top-news-block .hero-headline,
-    .template-grid-hero4 .hero-headline,
-    .template-grid-hero42 .hero-headline,
-    .template-grid-hero44 .hero-headline,
-    .template-small-hero6 .hero-headline,
-    .template-four-two .hero-headline {
+    .top-news-block .story-headline,
+    .template-grid-hero4 .story-headline,
+    .template-grid-hero42 .story-headline,
+    .template-grid-hero44 .story-headline,
+    .template-small-hero6 .story-headline,
+    .template-four-two .story-headline {
       margin: 0;
-      font-size: 24px;
       font-family: var(--font-headline);
       font-weight: 700;
       line-height: 1.3;
+    }
+
+    .story-headline--support {
+      font-size: 18px;
+    }
+
+    .story-headline--hero {
+      font-size: 26px;
+    }
+
+    .story-card--hero .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+    }
+
+    .story-card--support .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
     }
 
     .top-news-block .hero-subheadline,
@@ -693,7 +713,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 8px;
+      margin-top: auto;
+      padding-top: 8px;
       font-size: 12px;
       font-weight: 500;
       font-family: var(--font-body);
@@ -706,7 +727,7 @@
     .top-news-block .hero-grid .story-metadata {
       color: rgba(0, 0, 0, 0.7);
       font-size: 10px;
-      margin-top: 6px;
+      padding-top: 6px;
     }
 
     .metadata-separator {
@@ -728,6 +749,15 @@
       display: flex;
       align-items: center;
       gap: 4px;
+    }
+
+    .top-news-block .publish-time,
+    .template-grid-hero4 .publish-time,
+    .template-grid-hero42 .publish-time,
+    .template-grid-hero44 .publish-time,
+    .template-small-hero6 .publish-time,
+    .template-four-two .publish-time {
+      margin-left: auto;
     }
 
     .top-news-block .read-icon,
@@ -772,8 +802,6 @@
     }
 
     .template-grid-hero4 .row-1 .headline-overlay {
-      background-color: var(--top-news-hero-bg);
-      color: var(--top-news-hero-text);
       padding: 16px;
     }
 
@@ -789,12 +817,10 @@
     }
 
     .template-grid-hero4 .hero-grid .headline-overlay {
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
       padding: 10px;
     }
 
-    .template-grid-hero4 .hero-grid .hero-headline {
+    .template-grid-hero4 .hero-grid .story-headline--support {
       font-size: 16px;
     }
 
@@ -812,8 +838,6 @@
     }
 
     .template-grid-hero42 .row-1 .headline-overlay {
-      background-color: var(--top-news-hero-bg);
-      color: var(--top-news-hero-text);
       padding: 16px;
     }
 
@@ -829,12 +853,10 @@
     }
 
     .template-grid-hero42 .hero-grid .headline-overlay {
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
       padding: 10px;
     }
 
-    .template-grid-hero42 .hero-grid .hero-headline {
+    .template-grid-hero42 .hero-grid .story-headline--support {
       font-size: 16px;
     }
 
@@ -861,14 +883,12 @@
     .template-grid-hero42 .row-4 .headline-overlay {
       width: 60%;
       padding: 12px;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
     }
 
     .template-grid-hero42 .content-grid .story-metadata {
       color: rgba(0, 0, 0, 0.7);
       font-size: 11px;
-      margin-top: 6px;
+      padding-top: 6px;
     }
 
     .template-grid-hero42 .content-grid .read-icon,
@@ -891,8 +911,6 @@
     }
 
     .template-grid-hero44 .row-1 .headline-overlay {
-      background-color: var(--top-news-hero-bg);
-      color: var(--top-news-hero-text);
       padding: 16px;
     }
 
@@ -908,12 +926,10 @@
     }
 
     .template-grid-hero44 .hero-grid .headline-overlay {
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
       padding: 10px;
     }
 
-    .template-grid-hero44 .hero-grid .hero-headline {
+    .template-grid-hero44 .hero-grid .story-headline--support {
       font-size: 16px;
     }
 
@@ -937,14 +953,12 @@
     .template-grid-hero44 .four-grid .headline-overlay {
       width: 55%;
       padding: 12px;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
     }
 
     .template-grid-hero44 .four-grid .story-metadata {
       color: rgba(0, 0, 0, 0.7);
       font-size: 11px;
-      margin-top: 6px;
+      padding-top: 6px;
     }
 
     .template-grid-hero44 .four-grid .read-icon,
@@ -966,8 +980,6 @@
     }
 
     .template-small-hero6 .hero-card .headline-overlay {
-      background-color: var(--top-news-hero-bg);
-      color: var(--top-news-hero-text);
       padding: 16px;
     }
 
@@ -985,8 +997,6 @@
     .template-small-hero6 .support-card .headline-overlay {
       width: 55%;
       padding: 12px;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
     }
 
     .template-small-hero6 .support-card:nth-of-type(n+4) {
@@ -1006,7 +1016,7 @@
     .template-small-hero6 .support-card .story-metadata {
       color: rgba(0, 0, 0, 0.7);
       font-size: 11px;
-      margin-top: 6px;
+      padding-top: 6px;
     }
 
     .template-small-hero6 .support-card .read-icon,
@@ -1033,12 +1043,10 @@
     }
 
     .template-four-two .left-grid .headline-overlay {
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
       padding: 10px;
     }
 
-    .template-four-two .left-grid .hero-headline {
+    .template-four-two .left-grid .story-headline--support {
       font-size: 16px;
     }
 
@@ -1062,14 +1070,12 @@
     .template-four-two .right-stack .headline-overlay {
       width: 60%;
       padding: 12px;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
     }
 
     .template-four-two .right-stack .story-metadata {
       color: rgba(0, 0, 0, 0.7);
       font-size: 11px;
-      margin-top: 6px;
+      padding-top: 6px;
     }
 
     .template-four-two .right-stack .read-icon,
@@ -1147,7 +1153,7 @@
         justify-content: space-between;
       }
 
-      .top-news-block .hero-section .row-1 .hero-headline {
+      .top-news-block .hero-section .row-1 .story-headline--hero {
         font-size: 30px;
       }
 
@@ -1206,7 +1212,7 @@
         min-height: 280px;
       }
 
-      .template-grid-hero4 .row-1 .hero-headline {
+      .template-grid-hero4 .row-1 .story-headline--hero {
         font-size: 30px;
       }
 
@@ -1214,7 +1220,7 @@
         gap: 20px;
       }
 
-      .template-grid-hero4 .hero-grid .hero-headline {
+      .template-grid-hero4 .hero-grid .story-headline--support {
         font-size: 22px;
       }
 
@@ -1234,7 +1240,7 @@
         min-height: 280px;
       }
 
-      .template-grid-hero42 .row-1 .hero-headline {
+      .template-grid-hero42 .row-1 .story-headline--hero {
         font-size: 30px;
       }
 
@@ -1242,7 +1248,7 @@
         gap: 20px;
       }
 
-      .template-grid-hero42 .hero-grid .hero-headline {
+      .template-grid-hero42 .hero-grid .story-headline--support {
         font-size: 22px;
       }
 
@@ -1267,7 +1273,7 @@
         min-height: 280px;
       }
 
-      .template-grid-hero44 .row-1 .hero-headline {
+      .template-grid-hero44 .row-1 .story-headline--hero {
         font-size: 30px;
       }
 
@@ -1275,13 +1281,17 @@
         gap: 20px;
       }
 
-      .template-grid-hero44 .hero-grid .hero-headline {
+      .template-grid-hero44 .hero-grid .story-headline--support {
         font-size: 22px;
       }
 
       .template-grid-hero44 .four-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 20px;
+      }
+
+      .template-grid-hero44 .four-grid .story-headline--support {
+        font-size: 18px;
       }
 
       .template-small-hero6 .hero-section {
@@ -1292,6 +1302,14 @@
       .template-small-hero6 .hero-card {
         grid-column: 1 / span 1;
         grid-row: 1 / span 2;
+      }
+
+      .template-small-hero6 .hero-card .story-headline--hero {
+        font-size: 30px;
+      }
+
+      .template-small-hero6 .support-card .story-headline--support {
+        font-size: 18px;
       }
 
       .template-small-hero6 .support-card:nth-of-type(n+4) {
@@ -1311,6 +1329,11 @@
       .template-four-two .hero-section {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 20px;
+      }
+
+      .template-four-two .left-grid .story-headline--support,
+      .template-four-two .right-stack .story-headline--support {
+        font-size: 18px;
       }
 
       .template-four-two .left-grid,
@@ -1396,8 +1419,16 @@
         grid-template-columns: 1fr;
       }
 
-      .top-news-block .hero-headline {
+      .top-news-block .story-headline {
         font-size: 21px;
+      }
+
+      .top-news-block .story-headline--hero {
+        font-size: 28px;
+      }
+
+      .top-news-block .story-headline--support {
+        font-size: 18px;
       }
 
       .top-news-block .hero-subheadline {
@@ -1464,20 +1495,19 @@
       <h2 class="top-news-title"><span id="topNewsTitle">Top News</span><span class="group-template-name" id="topNewsTemplateName">1 hero + 2</span></h2>
       <div class="hero-section">
         <div class="row-1">
-          <article class="story-card">
+          <article class="story-card story-card--hero story-card--layout-top-news">
             <div class="story-image-container">
               <img src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=1200" alt="" class="story-image" id="heroImage">
               <span class="category-badge" id="heroCategory">India</span>
             </div>
-            <div class="headline-overlay">
-              <h3 class="hero-headline" id="heroHeadline">Parliament passes landmark bill on electoral reforms amid fierce opposition debate</h3>
+            <div class="headline-overlay headline-overlay--hero">
+              <h3 class="story-headline story-headline--hero" id="heroHeadline">Parliament passes landmark bill on electoral reforms amid fierce opposition debate</h3>
               <p class="hero-subheadline" id="heroSubheadline">The new legislation introduces sweeping changes to voting procedures across the nation.</p>
               <div class="story-metadata">
                 <span class="read-time">
                   <svg class="read-icon" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span id="heroReadTime">6 min read</span>
                 </span>
-                <span class="metadata-separator">&bull;</span>
                 <span class="publish-time">
                   <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
                   <span id="heroPublishTime">2h ago</span>
@@ -1863,23 +1893,28 @@
       });
     }
 
-    function createStoryCard(story, className = "story-card", showSubheadline = false) {
+    function createStoryCard(story, options = {}) {
+      const {
+        className = "",
+        showSubheadline = false,
+        role = "support",
+        layout = "default"
+      } = options;
       const article = document.createElement("article");
-      article.className = className;
+      article.className = ["story-card", className, `story-card--${role}`, `story-card--layout-${layout}`].filter(Boolean).join(" ");
       article.innerHTML = `
         <div class="story-image-container">
           <img src="${story.image}" alt="${story.headline}" class="story-image">
           <span class="category-badge">${story.category}</span>
         </div>
-        <div class="headline-overlay">
-          <div class="hero-headline">${story.headline}</div>
+        <div class="headline-overlay headline-overlay--${role}">
+          <div class="story-headline story-headline--${role}">${story.headline}</div>
           ${showSubheadline && story.subheadline ? `<p class="hero-subheadline">${story.subheadline}</p>` : ""}
           <div class="story-metadata">
             <span class="read-time">
               <svg class="read-icon" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
               <span>${story.readTime}</span>
             </span>
-            <span class="metadata-separator">&bull;</span>
             <span class="publish-time">
               <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
               <span>${story.publishTime}</span>
@@ -1891,7 +1926,7 @@
     }
 
     function createSupportingCard(story) {
-      return createStoryCard(story);
+      return createStoryCard(story, { role: "support", layout: "top-news" });
     }
 
     function createGroupSection(group) {
@@ -1923,12 +1958,12 @@
 
         const row1 = document.createElement("div");
         row1.className = "row-1";
-        row1.appendChild(createStoryCard(group.hero, "story-card", true));
+        row1.appendChild(createStoryCard(group.hero, { role: "hero", layout: group.type, showSubheadline: true }));
         heroSection.appendChild(row1);
 
         const heroGrid = document.createElement("div");
         heroGrid.className = "hero-grid";
-        group.supporting.forEach((story) => heroGrid.appendChild(createStoryCard(story)));
+        group.supporting.forEach((story) => heroGrid.appendChild(createStoryCard(story, { role: "support", layout: group.type })));
         heroSection.appendChild(heroGrid);
         section.appendChild(heroSection);
 
@@ -1938,7 +1973,7 @@
           group.extra.forEach((story, index) => {
             const row = document.createElement("div");
             row.className = index === 0 ? "row-3" : "row-4";
-            row.appendChild(createStoryCard(story));
+            row.appendChild(createStoryCard(story, { role: "support", layout: group.type }));
             contentGrid.appendChild(row);
           });
           section.appendChild(contentGrid);
@@ -1947,7 +1982,7 @@
         if (group.type === "hero44") {
           const fourGrid = document.createElement("div");
           fourGrid.className = "four-grid";
-          group.extra.forEach((story) => fourGrid.appendChild(createStoryCard(story)));
+          group.extra.forEach((story) => fourGrid.appendChild(createStoryCard(story, { role: "support", layout: group.type })));
           section.appendChild(fourGrid);
         }
       }
@@ -1955,8 +1990,8 @@
       if (group.type === "smallHero6") {
         const heroSection = document.createElement("div");
         heroSection.className = "hero-section";
-        heroSection.appendChild(createStoryCard(group.hero, "story-card hero-card", true));
-        group.supporting.forEach((story) => heroSection.appendChild(createStoryCard(story, "story-card support-card")));
+        heroSection.appendChild(createStoryCard(group.hero, { className: "hero-card", role: "hero", layout: group.type, showSubheadline: true }));
+        group.supporting.forEach((story) => heroSection.appendChild(createStoryCard(story, { className: "support-card", role: "support", layout: group.type })));
         section.appendChild(heroSection);
       }
 
@@ -1966,11 +2001,11 @@
 
         const leftGrid = document.createElement("div");
         leftGrid.className = "left-grid";
-        group.left.forEach((story) => leftGrid.appendChild(createStoryCard(story)));
+        group.left.forEach((story) => leftGrid.appendChild(createStoryCard(story, { role: "support", layout: group.type })));
 
         const rightStack = document.createElement("div");
         rightStack.className = "right-stack";
-        group.right.forEach((story) => rightStack.appendChild(createStoryCard(story)));
+        group.right.forEach((story) => rightStack.appendChild(createStoryCard(story, { role: "support", layout: group.type })));
 
         heroSection.append(leftGrid, rightStack);
         section.appendChild(heroSection);
