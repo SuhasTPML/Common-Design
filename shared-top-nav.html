@@ -50,10 +50,16 @@
       --container-padding-mobile: 1rem;
       --container-padding-desktop: 1.5rem;
       --container-max-width: 1280px;
+      --font-headline: "PV Headline", "Noto Sans", sans-serif;
+      --font-subhead: "PV Headline", "Noto Sans", sans-serif;
       --font-nav: "PV Headline", "Noto Sans", sans-serif;
       --font-body: "PV Text", "Noto Sans", sans-serif;
       --logo-wordmark-font: "PV Headline", "Noto Sans", sans-serif;
       --hero-bg: linear-gradient(180deg, #ffffff, #faf7f7);
+      --top-news-hero-bg: #b82831;
+      --top-news-hero-text: #ffffff;
+      --top-news-support-bg: #f8e9ea;
+      --top-news-support-text: #111111;
     }
 
     html[data-brand="deccan-herald"] {
@@ -66,10 +72,16 @@
       --brand-hover: #eef7fa;
       --button-primary-text: #ffffff;
       --button-secondary-text: #1a1a1a;
+      --font-headline: "Playfair Display", serif;
+      --font-subhead: "Roboto Slab", serif;
       --font-nav: "Playfair Display", serif;
       --font-body: "Roboto Slab", serif;
       --logo-wordmark-font: "Playfair Display", serif;
       --hero-bg: linear-gradient(180deg, #ffffff, #f4fbfd);
+      --top-news-hero-bg: #0091ac;
+      --top-news-hero-text: #ffffff;
+      --top-news-support-bg: #e5f4f8;
+      --top-news-support-text: #111111;
     }
 
     * {
@@ -479,6 +491,593 @@
       gap: 1.5rem;
     }
 
+    .top-news-block {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 1rem var(--container-padding-mobile) 0;
+    }
+
+    .template-stack {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 1.25rem var(--container-padding-mobile) 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .news-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .group-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--brand-text);
+    }
+
+    .group-template-name {
+      font-family: var(--font-body);
+      font-size: 0.82em;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.55);
+      margin-left: 0.45rem;
+    }
+
+    .top-news-title {
+      margin: 0 0 0.9rem;
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--brand-text);
+    }
+
+    .top-news-block .hero-section {
+      display: block;
+    }
+
+    .top-news-block .row-1 {
+      margin-bottom: 12px;
+    }
+
+    .top-news-block .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .top-news-block .story-card,
+    .template-grid-hero4 .story-card,
+    .template-grid-hero42 .story-card,
+    .template-grid-hero44 .story-card,
+    .template-small-hero6 .story-card,
+    .template-four-two .story-card {
+      border: 1px solid var(--brand-border);
+      background: var(--brand-surface);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .top-news-block .story-image-container,
+    .template-grid-hero4 .story-image-container,
+    .template-grid-hero42 .story-image-container,
+    .template-grid-hero44 .story-image-container,
+    .template-small-hero6 .story-image-container,
+    .template-four-two .story-image-container {
+      position: relative;
+      width: 100%;
+      padding-top: 66.67%;
+      overflow: hidden;
+    }
+
+    .top-news-block .story-image,
+    .template-grid-hero4 .story-image,
+    .template-grid-hero42 .story-image,
+    .template-grid-hero44 .story-image,
+    .template-small-hero6 .story-image,
+    .template-four-two .story-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .top-news-block .category-badge,
+    .template-grid-hero4 .category-badge,
+    .template-grid-hero42 .category-badge,
+    .template-grid-hero44 .category-badge,
+    .template-small-hero6 .category-badge,
+    .template-four-two .category-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--brand-accent);
+      color: #000000;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 0 0 4px 0;
+      letter-spacing: 0.5px;
+      z-index: 10;
+      font-family: var(--font-body);
+    }
+
+    .top-news-block .headline-overlay,
+    .template-grid-hero4 .headline-overlay,
+    .template-grid-hero42 .headline-overlay,
+    .template-grid-hero44 .headline-overlay,
+    .template-small-hero6 .headline-overlay,
+    .template-four-two .headline-overlay {
+      padding: 12px;
+      font-family: var(--font-headline);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .top-news-block .hero-headline,
+    .template-grid-hero4 .hero-headline,
+    .template-grid-hero42 .hero-headline,
+    .template-grid-hero44 .hero-headline,
+    .template-small-hero6 .hero-headline,
+    .template-four-two .hero-headline {
+      margin: 0;
+      font-size: 24px;
+      font-family: var(--font-headline);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .top-news-block .hero-subheadline,
+    .template-grid-hero4 .hero-subheadline,
+    .template-grid-hero42 .hero-subheadline,
+    .template-grid-hero44 .hero-subheadline,
+    .template-small-hero6 .hero-subheadline {
+      display: -webkit-box;
+      margin: 12px 0 0 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: var(--font-body);
+    }
+
+    .top-news-block .hero-grid .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-news-block .hero-grid .story-card .headline-overlay {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .top-news-block .hero-grid .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+      font-size: 16px;
+      padding: 10px;
+    }
+
+    .top-news-block .row-1 .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+    }
+
+    .top-news-block .hero-grid .category-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+
+    .top-news-block .story-metadata,
+    .template-grid-hero4 .story-metadata,
+    .template-grid-hero42 .story-metadata,
+    .template-grid-hero44 .story-metadata,
+    .template-small-hero6 .story-metadata,
+    .template-four-two .story-metadata {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-body);
+    }
+
+    .top-news-block .row-1 .story-metadata {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .top-news-block .hero-grid .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 10px;
+      margin-top: 6px;
+    }
+
+    .metadata-separator {
+      opacity: 0.5;
+    }
+
+    .top-news-block .read-time,
+    .top-news-block .publish-time,
+    .template-grid-hero4 .read-time,
+    .template-grid-hero4 .publish-time,
+    .template-grid-hero42 .read-time,
+    .template-grid-hero42 .publish-time,
+    .template-grid-hero44 .read-time,
+    .template-grid-hero44 .publish-time,
+    .template-small-hero6 .read-time,
+    .template-small-hero6 .publish-time,
+    .template-four-two .read-time,
+    .template-four-two .publish-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .top-news-block .read-icon,
+    .top-news-block .time-icon,
+    .template-grid-hero4 .read-icon,
+    .template-grid-hero4 .time-icon,
+    .template-grid-hero42 .read-icon,
+    .template-grid-hero42 .time-icon,
+    .template-grid-hero44 .read-icon,
+    .template-grid-hero44 .time-icon,
+    .template-small-hero6 .read-icon,
+    .template-small-hero6 .time-icon,
+    .template-four-two .read-icon,
+    .template-four-two .time-icon {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .top-news-block .hero-grid .read-icon,
+    .top-news-block .hero-grid .time-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .template-grid-hero4 .hero-section {
+      display: block;
+    }
+
+    .template-grid-hero4 .row-1 {
+      margin-bottom: 12px;
+    }
+
+    .template-grid-hero4 .row-1 .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero4 .row-1 .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+      padding: 16px;
+    }
+
+    .template-grid-hero4 .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .template-grid-hero4 .hero-grid .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero4 .hero-grid .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+      padding: 10px;
+    }
+
+    .template-grid-hero4 .hero-grid .hero-headline {
+      font-size: 16px;
+    }
+
+    .template-grid-hero42 .hero-section {
+      display: block;
+    }
+
+    .template-grid-hero42 .row-1 {
+      margin-bottom: 12px;
+    }
+
+    .template-grid-hero42 .row-1 .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero42 .row-1 .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+      padding: 16px;
+    }
+
+    .template-grid-hero42 .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .template-grid-hero42 .hero-grid .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero42 .hero-grid .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+      padding: 10px;
+    }
+
+    .template-grid-hero42 .hero-grid .hero-headline {
+      font-size: 16px;
+    }
+
+    .template-grid-hero42 .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .template-grid-hero42 .row-3 .story-card,
+    .template-grid-hero42 .row-4 .story-card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .template-grid-hero42 .row-3 .story-image-container,
+    .template-grid-hero42 .row-4 .story-image-container {
+      width: 40%;
+      padding-top: 26.67%;
+      flex-shrink: 0;
+    }
+
+    .template-grid-hero42 .row-3 .headline-overlay,
+    .template-grid-hero42 .row-4 .headline-overlay {
+      width: 60%;
+      padding: 12px;
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+    }
+
+    .template-grid-hero42 .content-grid .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .template-grid-hero42 .content-grid .read-icon,
+    .template-grid-hero42 .content-grid .time-icon {
+      width: 11px;
+      height: 11px;
+    }
+
+    .template-grid-hero44 .hero-section {
+      display: block;
+    }
+
+    .template-grid-hero44 .row-1 {
+      margin-bottom: 12px;
+    }
+
+    .template-grid-hero44 .row-1 .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero44 .row-1 .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+      padding: 16px;
+    }
+
+    .template-grid-hero44 .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .template-grid-hero44 .hero-grid .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-grid-hero44 .hero-grid .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+      padding: 10px;
+    }
+
+    .template-grid-hero44 .hero-grid .hero-headline {
+      font-size: 16px;
+    }
+
+    .template-grid-hero44 .four-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .template-grid-hero44 .four-grid .story-card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .template-grid-hero44 .four-grid .story-image-container {
+      width: 45%;
+      padding-top: 26.67%;
+      flex-shrink: 0;
+    }
+
+    .template-grid-hero44 .four-grid .headline-overlay {
+      width: 55%;
+      padding: 12px;
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+    }
+
+    .template-grid-hero44 .four-grid .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .template-grid-hero44 .four-grid .read-icon,
+    .template-grid-hero44 .four-grid .time-icon {
+      width: 11px;
+      height: 11px;
+    }
+
+    .template-small-hero6 .hero-section {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .template-small-hero6 .hero-card {
+      grid-column: 1 / span 2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-small-hero6 .hero-card .headline-overlay {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+      padding: 16px;
+    }
+
+    .template-small-hero6 .support-card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .template-small-hero6 .support-card .story-image-container {
+      width: 45%;
+      padding-top: 26.67%;
+      flex-shrink: 0;
+    }
+
+    .template-small-hero6 .support-card .headline-overlay {
+      width: 55%;
+      padding: 12px;
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+    }
+
+    .template-small-hero6 .support-card:nth-of-type(n+4) {
+      flex-direction: column;
+    }
+
+    .template-small-hero6 .support-card:nth-of-type(n+4) .story-image-container {
+      width: 100%;
+      padding-top: 66.67%;
+    }
+
+    .template-small-hero6 .support-card:nth-of-type(n+4) .headline-overlay {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .template-small-hero6 .support-card .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .template-small-hero6 .support-card .read-icon,
+    .template-small-hero6 .support-card .time-icon {
+      width: 11px;
+      height: 11px;
+    }
+
+    .template-four-two .hero-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .template-four-two .left-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .template-four-two .left-grid .story-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .template-four-two .left-grid .headline-overlay {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+      padding: 10px;
+    }
+
+    .template-four-two .left-grid .hero-headline {
+      font-size: 16px;
+    }
+
+    .template-four-two .right-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .template-four-two .right-stack .story-card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .template-four-two .right-stack .story-image-container {
+      width: 40%;
+      padding-top: 26.67%;
+      flex-shrink: 0;
+    }
+
+    .template-four-two .right-stack .headline-overlay {
+      width: 60%;
+      padding: 12px;
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+    }
+
+    .template-four-two .right-stack .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .template-four-two .right-stack .read-icon,
+    .template-four-two .right-stack .time-icon {
+      width: 11px;
+      height: 11px;
+    }
+
     .note,
     .placeholder-story {
       background: rgba(255, 255, 255, 0.8);
@@ -506,6 +1105,217 @@
 
       .featured-container {
         padding: 0 var(--container-padding-desktop);
+      }
+
+      .top-news-block,
+      .template-stack,
+      .content {
+        padding-left: var(--container-padding-desktop);
+        padding-right: var(--container-padding-desktop);
+      }
+
+      .top-news-block .hero-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .top-news-block .hero-section .row-1 {
+        margin-bottom: 0;
+        width: 100%;
+      }
+
+      .top-news-block .hero-section .row-1 .story-card {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+      }
+
+      .top-news-block .hero-section .row-1 .story-image-container {
+        padding-top: 0;
+        width: 50%;
+        flex-shrink: 0;
+        min-height: 100%;
+      }
+
+      .top-news-block .hero-section .row-1 .headline-overlay {
+        width: 50%;
+        padding: 18px;
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .top-news-block .hero-section .row-1 .hero-headline {
+        font-size: 30px;
+      }
+
+      .top-news-block .hero-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .top-news-block .hero-grid .story-card {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+      }
+
+      .top-news-block .hero-grid .story-card .story-image-container {
+        flex-shrink: 0;
+        width: 40%;
+        padding-top: 0;
+      }
+
+      .top-news-block .hero-grid .story-card .headline-overlay {
+        width: 60%;
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      .top-news-block .hero-grid .category-badge {
+        font-size: 12px;
+        padding: 4px 10px;
+      }
+
+      .top-news-block .hero-grid .story-metadata {
+        font-size: 11px;
+      }
+
+      .top-news-block .hero-grid .read-icon,
+      .top-news-block .hero-grid .time-icon {
+        width: 11px;
+        height: 11px;
+      }
+
+      .template-grid-hero4 .hero-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .template-grid-hero4 .row-1 {
+        margin-bottom: 0;
+      }
+
+      .template-grid-hero4 .row-1 .story-image-container {
+        padding-top: 0;
+        height: 0;
+        min-height: 280px;
+      }
+
+      .template-grid-hero4 .row-1 .hero-headline {
+        font-size: 30px;
+      }
+
+      .template-grid-hero4 .hero-grid {
+        gap: 20px;
+      }
+
+      .template-grid-hero4 .hero-grid .hero-headline {
+        font-size: 22px;
+      }
+
+      .template-grid-hero42 .hero-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .template-grid-hero42 .row-1 {
+        margin-bottom: 0;
+      }
+
+      .template-grid-hero42 .row-1 .story-image-container {
+        padding-top: 0;
+        height: 0;
+        min-height: 280px;
+      }
+
+      .template-grid-hero42 .row-1 .hero-headline {
+        font-size: 30px;
+      }
+
+      .template-grid-hero42 .hero-grid {
+        gap: 20px;
+      }
+
+      .template-grid-hero42 .hero-grid .hero-headline {
+        font-size: 22px;
+      }
+
+      .template-grid-hero42 .content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .template-grid-hero44 .hero-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .template-grid-hero44 .row-1 {
+        margin-bottom: 0;
+      }
+
+      .template-grid-hero44 .row-1 .story-image-container {
+        padding-top: 0;
+        height: 0;
+        min-height: 280px;
+      }
+
+      .template-grid-hero44 .row-1 .hero-headline {
+        font-size: 30px;
+      }
+
+      .template-grid-hero44 .hero-grid {
+        gap: 20px;
+      }
+
+      .template-grid-hero44 .hero-grid .hero-headline {
+        font-size: 22px;
+      }
+
+      .template-grid-hero44 .four-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .template-small-hero6 .hero-section {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .template-small-hero6 .hero-card {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 2;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(n+4) {
+        flex-direction: row;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(n+4) .story-image-container {
+        width: 45%;
+        padding-top: 0;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(n+4) .headline-overlay {
+        width: 55%;
+        padding: 12px;
+      }
+
+      .template-four-two .hero-section {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .template-four-two .left-grid,
+      .template-four-two .right-stack {
+        gap: 20px;
       }
 
       .desktop-nav-links {
@@ -581,6 +1391,18 @@
       .desktop-featured-bar {
         display: none;
       }
+
+      .top-news-block .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top-news-block .hero-headline {
+        font-size: 21px;
+      }
+
+      .top-news-block .hero-subheadline {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -638,6 +1460,39 @@
       </div>
     </nav>
 
+    <section class="top-news-block" aria-label="Top news">
+      <h2 class="top-news-title"><span id="topNewsTitle">Top News</span><span class="group-template-name" id="topNewsTemplateName">1 hero + 2</span></h2>
+      <div class="hero-section">
+        <div class="row-1">
+          <article class="story-card">
+            <div class="story-image-container">
+              <img src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=1200" alt="" class="story-image" id="heroImage">
+              <span class="category-badge" id="heroCategory">India</span>
+            </div>
+            <div class="headline-overlay">
+              <h3 class="hero-headline" id="heroHeadline">Parliament passes landmark bill on electoral reforms amid fierce opposition debate</h3>
+              <p class="hero-subheadline" id="heroSubheadline">The new legislation introduces sweeping changes to voting procedures across the nation.</p>
+              <div class="story-metadata">
+                <span class="read-time">
+                  <svg class="read-icon" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span id="heroReadTime">6 min read</span>
+                </span>
+                <span class="metadata-separator">&bull;</span>
+                <span class="publish-time">
+                  <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
+                  <span id="heroPublishTime">2h ago</span>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="hero-grid" id="supportingStories"></div>
+      </div>
+    </section>
+
+    <section class="template-stack" id="templateRows" aria-label="Additional editorial groups"></section>
+
     <main class="content">
       <section class="note">
         <h2>Scope</h2>
@@ -671,7 +1526,34 @@
         loginLabel: "ಲಾಗಿನ್",
         epaperLabel: "ಇ-ಪೇಪರ್",
         storyTitle: "ಒಂದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಎರಡು ಸುದ್ದಿ ಬ್ರ್ಯಾಂಡ್‌ಗಳ ಮೇಲ್ನೋಟ ನಾವಿಗೇಶನ್",
-        storyBody: "ಈ ಹೆಡರ್ ಘಟಕವನ್ನು ಹಂಚಿಕೊಂಡ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಇಡಬಹುದು. ಬ್ರ್ಯಾಂಡ್‌ಗೆ ಅನುಗುಣವಾಗಿ ಲೋಗೋ, ಅಕ್ಷರಶೈಲಿ, ಬಣ್ಣ ಮತ್ತು ವಿಭಾಗ ಹೆಸರುಗಳು ಮಾತ್ರ ಬದಲಾಗುತ್ತವೆ."
+        storyBody: "ಈ ಹೆಡರ್ ಘಟಕವನ್ನು ಹಂಚಿಕೊಂಡ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಇಡಬಹುದು. ಬ್ರ್ಯಾಂಡ್‌ಗೆ ಅನುಗುಣವಾಗಿ ಲೋಗೋ, ಅಕ್ಷರಶೈಲಿ, ಬಣ್ಣ ಮತ್ತು ವಿಭಾಗ ಹೆಸರುಗಳು ಮಾತ್ರ ಬದಲಾಗುತ್ತವೆ.",
+        topNewsTitle: "ಮುಖ್ಯ ಸುದ್ದಿಗಳು",
+        topNews: {
+          hero: {
+            category: "ರಾಜ್ಯ",
+            image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200",
+            headline: "ಕರ್ನಾಟಕ ರಾಜಕೀಯ ಬೆಳವಣಿಗೆಗಳ ನಡುವೆ ವಿಧಾನಸಭೆ ಮಹತ್ವದ ನಿರ್ಣಯ ಅಂಗೀಕರಿಸಿದೆ",
+            subheadline: "ಪಕ್ಷಗಳ ತೀವ್ರ ಚರ್ಚೆಯ ನಡುವೆ ಹೊಸ ತೀರ್ಮಾನ ರಾಜ್ಯ ಆಡಳಿತದ ಮುಂದಿನ ಹಂತವನ್ನು ನಿರ್ಧರಿಸಲಿದೆ.",
+            readTime: "6 ನಿಮಿಷ",
+            publishTime: "2 ಘಂ."
+          },
+          supporting: [
+            {
+              category: "ಕ್ರೀಡೆ",
+              image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700",
+              headline: "ಟೀಮ್ ಇಂಡಿಯಾ ಕೊನೆಯ ಓವರ್ ಥ್ರಿಲ್ಲರ್‌ನಲ್ಲಿ ಗೆಲುವು ಸಾಧಿಸಿದೆ",
+              readTime: "4 ನಿಮಿಷ",
+              publishTime: "45 ನಿ."
+            },
+            {
+              category: "ತಂತ್ರಜ್ಞಾನ",
+              image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700",
+              headline: "ಆರೋಗ್ಯ ಕ್ಷೇತ್ರದಲ್ಲಿ ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ ಬಳಕೆಗೆ ಹೊಸ ವೇದಿಕೆ ಬಿಡುಗಡೆ",
+              readTime: "5 ನಿಮಿಷ",
+              publishTime: "1 ಘಂ."
+            }
+          ]
+        }
       },
       "deccan-herald": {
         logoMode: "image",
@@ -691,8 +1573,238 @@
         loginLabel: "Login",
         epaperLabel: "Read ePaper",
         storyTitle: "One shared top navigation system for two editorial brands",
-        storyBody: "The structure, spacing, and responsive logic stay common. Only the logo, font stack, colors, and section labels change per publication."
+        storyBody: "The structure, spacing, and responsive logic stay common. Only the logo, font stack, colors, and section labels change per publication.",
+        topNewsTitle: "Top News",
+        topNews: {
+          hero: {
+            category: "India",
+            image: "https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=1200",
+            headline: "Parliament passes landmark bill on electoral reforms amid fierce opposition debate",
+            subheadline: "The new legislation introduces sweeping changes to voting procedures across the nation.",
+            readTime: "6 min read",
+            publishTime: "2h ago"
+          },
+          supporting: [
+            {
+              category: "Sports",
+              image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700",
+              headline: "India clinches thriller in final over against Australia",
+              readTime: "4 min read",
+              publishTime: "45m ago"
+            },
+            {
+              category: "Tech",
+              image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=700",
+              headline: "Tech giants announce major AI breakthrough in healthcare",
+              readTime: "5 min read",
+              publishTime: "1h ago"
+            }
+          ]
+        }
       }
+    };
+
+    const editorialGroups = {
+      prajavani: [
+        {
+          type: "hero4",
+          title: "ವಿಶೇಷ ವರದಿಗಳು",
+          hero: {
+            category: "ರಾಜ್ಯ",
+            image: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=1200",
+            headline: "ನಗರಾಭಿವೃದ್ಧಿ ಯೋಜನೆಗಳಿಗೆ ಹೊಸ ವೇಗ, ಮೂಲಸೌಕರ್ಯ ಕಾಮಗಾರಿಗಳಿಗೆ ಹೆಚ್ಚುವರಿ ಅನುದಾನ",
+            subheadline: "ಮಹಾನಗರ ಪ್ರದೇಶಗಳ ಸಂಚಾರ, ನೀರು ಮತ್ತು ವಸತಿ ಸೌಲಭ್ಯಗಳ ಮೇಲೆ ಸರ್ಕಾರ ಹೆಚ್ಚಿನ ಒತ್ತು ನೀಡಿದೆ.",
+            readTime: "7 ನಿಮಿಷ",
+            publishTime: "3 ಗಂಟೆ"
+          },
+          supporting: [
+            { category: "ಸಮಾಜ", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "ಗ್ರಾಮೀಣ ಶಾಲೆಗಳಲ್ಲಿ ಡಿಜಿಟಲ್ ತರಗತಿಗಳಿಗೆ ಬೇಡಿಕೆ ಹೆಚ್ಚಳ", readTime: "4 ನಿಮಿಷ", publishTime: "55 ನಿಮಿಷ" },
+            { category: "ಆರೋಗ್ಯ", image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700", headline: "ಸಾರ್ವಜನಿಕ ಆಸ್ಪತ್ರೆಗಳಲ್ಲಿ ಹೊಸ ಚಿಕಿತ್ಸಾ ಘಟಕಗಳ ಆರಂಭ", readTime: "5 ನಿಮಿಷ", publishTime: "1 ಗಂಟೆ" },
+            { category: "ಕೃಷಿ", image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700", headline: "ಬೆಳೆ ವಿಮೆ ಅರ್ಜಿಗಳಿಗೆ ರೈತರಿಂದ ಉತ್ತಮ ಪ್ರತಿಕ್ರಿಯೆ", readTime: "4 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಉದ್ಯಮ", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700", headline: "ಸಣ್ಣ ಉದ್ಯಮಗಳಿಗೆ ಬಡ್ಡಿದರ ರಿಯಾಯಿತಿ ಪ್ಯಾಕೇಜ್ ಘೋಷಣೆ", readTime: "3 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" }
+          ]
+        },
+        {
+          type: "hero42",
+          title: "ಆಳವಾದ ವಿಶ್ಲೇಷಣೆ",
+          hero: {
+            category: "ರಾಜಕೀಯ",
+            image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200",
+            headline: "ಬಜೆಟ್ ನಂತರ ರಾಜ್ಯ ರಾಜಕೀಯದಲ್ಲಿ ಹೊಸ ಜೋಡಣೆಗಳ ಚರ್ಚೆ ಗರಿಗೆದರಿತು",
+            subheadline: "ಆರ್ಥಿಕ ಆದ್ಯತೆಗಳು ಮತ್ತು ಪ್ರಾದೇಶಿಕ ಸಮತೋಲನದ ಪ್ರಶ್ನೆಗಳನ್ನು ವಿರೋಧ ಪಕ್ಷಗಳು ಎತ್ತಿಕೊಂಡಿವೆ.",
+            readTime: "8 ನಿಮಿಷ",
+            publishTime: "4 ಗಂಟೆ"
+          },
+          supporting: [
+            { category: "ನೀತಿ", image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700", headline: "ನಗರ ಆಡಳಿತದಲ್ಲಿ ಡೇಟಾ ಆಧಾರಿತ ನಿರ್ಧಾರಗಳಿಗೆ ಒಲವು", readTime: "4 ನಿಮಿಷ", publishTime: "1 ಗಂಟೆ" },
+            { category: "ಶಿಕ್ಷಣ", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700", headline: "ಪಠ್ಯಕ್ರಮ ಪರಿಷ್ಕರಣೆ ಕುರಿತು ತಜ್ಞ ಸಮಿತಿಯ ಶಿಫಾರಸು", readTime: "5 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಉದ್ಯೋಗ", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700", headline: "ಯುವಕರ ನೇಮಕಾತಿಗೆ ಖಾಸಗಿ ವಲಯದಲ್ಲಿ ಹೊಸ ಅವಕಾಶಗಳು", readTime: "3 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" },
+            { category: "ಸಂಸ್ಕೃತಿ", image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=700", headline: "ನಗರ ಹಬ್ಬಗಳಲ್ಲಿ ಸ್ಥಳೀಯ ಕಲಾವಿದರಿಗೆ ವಿಶಿಷ್ಟ ವೇದಿಕೆ", readTime: "4 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" }
+          ],
+          extra: [
+            { category: "ಅಭಿಪ್ರಾಯ", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=900", headline: "ಸಾರ್ವಜನಿಕ ನೀತಿಗಳಲ್ಲಿ ಪಾರದರ್ಶಕತೆ ಹೆಚ್ಚಿಸುವ ಸಮಯ ಬಂದಿದೆ", readTime: "6 ನಿಮಿಷ", publishTime: "5 ಗಂಟೆ" },
+            { category: "ವಿಶ್ಲೇಷಣೆ", image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=900", headline: "ನಗರ ಮತದಾನದ ಬದಲಾವಣೆ: ಯುವಕರ ಪ್ರಭಾವ ಏಕೆ ಹೆಚ್ಚುತ್ತಿದೆ", readTime: "5 ನಿಮಿಷ", publishTime: "6 ಗಂಟೆ" }
+          ]
+        },
+        {
+          type: "hero44",
+          title: "ಜಿಲ್ಲೆಗಳಿಂದ",
+          hero: {
+            category: "ಕರ್ನಾಟಕ",
+            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+            headline: "ಜಿಲ್ಲಾ ಕೇಂದ್ರಗಳಲ್ಲಿ ಹೊಸ ರಸ್ತೆ ಯೋಜನೆಗಳು, ಜನಸಂಪರ್ಕಕ್ಕೆ ಹೆಚ್ಚುವರಿ ಒತ್ತು",
+            subheadline: "ಅನೇಕ ನಗರಗಳಲ್ಲಿ ಸಾರಿಗೆ ಮತ್ತು ಕುಡಿಯುವ ನೀರಿನ ಕಾಮಗಾರಿಗಳು ವೇಗ ಪಡೆದಿವೆ.",
+            readTime: "6 ನಿಮಿಷ",
+            publishTime: "3 ಗಂಟೆ"
+          },
+          supporting: [
+            { category: "ಮೈಸೂರು", image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=700", headline: "ಪರ್ಯಟನ ಹಂಗಾಮಿಗೆ ಮೈಸೂರು ಸಿದ್ಧತೆ ಆರಂಭ", readTime: "3 ನಿಮಿಷ", publishTime: "1 ಗಂಟೆ" },
+            { category: "ಹುಬ್ಬಳ್ಳಿ", image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=700", headline: "ಹೊಸ ಕೈಗಾರಿಕಾ ಘಟಕಗಳಿಗೆ ಭೂಮಿ ಮೀಸಲು", readTime: "4 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ದಾವಣಗೆರೆ", image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=700", headline: "ರೈತ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಬೆಲೆ ಸ್ಥಿರತೆಗಾಗಿ ಕ್ರಮ", readTime: "3 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಬೆಳಗಾವಿ", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "ನಗರ ಸ್ವಚ್ಛತೆ ಅಭಿಯಾನಕ್ಕೆ ಸ್ಥಳೀಯರಿಂದ ಬೆಂಬಲ", readTime: "4 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" }
+          ],
+          extra: [
+            { category: "ಶಿವಮೊಗ್ಗ", image: "https://images.unsplash.com/photo-1503264116251-35a269479413?w=700", headline: "ಅರಣ್ಯ ಪ್ರದೇಶಗಳಲ್ಲಿ ಪರಿಸರ ಸಂರಕ್ಷಣಾ ಯೋಜನೆ", readTime: "3 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" },
+            { category: "ಕೊಡಗು", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700", headline: "ಮಳೆಪಾತ ಅಂದಾಜು ಹಿನ್ನೆಲೆ ತುರ್ತು ಸಭೆ", readTime: "2 ನಿಮಿಷ", publishTime: "4 ಗಂಟೆ" },
+            { category: "ಉಡುಪಿ", image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=700", headline: "ಸಮುದ್ರ ತೀರ ಪ್ರದೇಶಗಳಿಗೆ ಸುರಕ್ಷತಾ ಮಾರ್ಗಸೂಚಿ", readTime: "3 ನಿಮಿಷ", publishTime: "4 ಗಂಟೆ" },
+            { category: "ಮಂಡ್ಯ", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700", headline: "ಕೃಷಿ ನೀರಾವರಿ ಯೋಜನೆಗೆ ಹೆಚ್ಚುವರಿ ಹಣ", readTime: "4 ನಿಮಿಷ", publishTime: "5 ಗಂಟೆ" }
+          ]
+        },
+        {
+          type: "smallHero6",
+          title: "ಇನ್ನಷ್ಟು ಸುದ್ದಿಗಳು",
+          hero: {
+            category: "ಮುಖ್ಯಾಂಶ",
+            image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000",
+            headline: "ರಾಜ್ಯದ ಹಲವು ಭಾಗಗಳಲ್ಲಿ ಮಳೆ ಹೆಚ್ಚಳ, ಮುನ್ನೆಚ್ಚರಿಕೆ ಸೂಚನೆ",
+            subheadline: "ಹವಾಮಾನ ಇಲಾಖೆ ಮುಂದಿನ ಎರಡು ದಿನಗಳವರೆಗೆ ಜಾಗರೂಕತೆ ಸೂಚಿಸಿದೆ.",
+            readTime: "5 ನಿಮಿಷ",
+            publishTime: "1 ಗಂಟೆ"
+          },
+          supporting: [
+            { category: "ಬೆಂಗಳೂರು", image: "https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=700", headline: "ರಸ್ತೆ ದುರಸ್ತಿ ಕಾಮಗಾರಿಗಳಿಗೆ ವಾರಾಂತ್ಯ ವಿಶೇಷ ಕ್ರಮ", readTime: "2 ನಿಮಿಷ", publishTime: "40 ನಿಮಿಷ" },
+            { category: "ವಾಣಿಜ್ಯ", image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700", headline: "ಸಣ್ಣ ವ್ಯಾಪಾರಿಗಳಿಗೆ ಡಿಜಿಟಲ್ ಪಾವತಿ ತರಬೇತಿ", readTime: "3 ನಿಮಿಷ", publishTime: "1 ಗಂಟೆ" },
+            { category: "ಕ್ರೀಡೆ", image: "https://images.unsplash.com/photo-1509803874385-db7c23652552?w=700", headline: "ರಾಜ್ಯ ಕ್ರೀಡಾಕೂಟಕ್ಕೆ ತಂಡಗಳ ಅಂತಿಮ ಆಯ್ಕೆ", readTime: "3 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಶಿಕ್ಷಣ", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "ಸರ್ಕಾರಿ ಶಾಲೆಗಳಲ್ಲಿ ಸೇರ್ಪಡೆ ಅಭಿಯಾನಕ್ಕೆ ಹೊಸ ರೂಪ", readTime: "4 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಸಮಾಜ", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700", headline: "ಯುವಕರ ಸ್ವಯಂಸೇವಕ ಸಂಘಟನೆಗೆ ರಾಜ್ಯಮಟ್ಟದ ಮೆಚ್ಚುಗೆ", readTime: "3 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" },
+            { category: "ಸಂಸ್ಕೃತಿ", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700", headline: "ಜನಪದ ಹಬ್ಬಗಳಿಗೆ ಜಿಲ್ಲೆಗಳಿಂದ ಭಾರಿ ಸ್ಪಂದನೆ", readTime: "2 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" }
+          ]
+        },
+        {
+          type: "four2",
+          title: "ಸಂಪಾದಕರ ಆಯ್ಕೆ",
+          left: [
+            { category: "ವಿಮರ್ಶೆ", image: "https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=700", headline: "ರಾಜಕೀಯ ಸಂವಾದದ ಮಟ್ಟ ಏಕೆ ಕುಸಿಯುತ್ತಿದೆ?", readTime: "4 ನಿಮಿಷ", publishTime: "2 ಗಂಟೆ" },
+            { category: "ಪರಿಸರ", image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700", headline: "ನಗರ ವಾಯು ಗುಣಮಟ್ಟದ ಮೇಲೆ ಹೊಸ ಅಧ್ಯಯನ", readTime: "3 ನಿಮಿಷ", publishTime: "3 ಗಂಟೆ" },
+            { category: "ಆರ್ಥಿಕತೆ", image: "https://images.unsplash.com/photo-1509803874385-db7c23652552?w=700", headline: "ಸಣ್ಣ ಉಳಿತಾಯ ಯೋಜನೆಗಳತ್ತ ಜನರ ಒಲವು", readTime: "4 ನಿಮಿಷ", publishTime: "4 ಗಂಟೆ" },
+            { category: "ಜೀವನಶೈಲಿ", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "ನಗರ ಬದುಕಿನಲ್ಲಿ ನಿಧಾನ ಜೀವನಶೈಲಿಯ ಹೊಸ ಅಲೆ", readTime: "3 ನಿಮಿಷ", publishTime: "5 ಗಂಟೆ" }
+          ],
+          right: [
+            { category: "ಅಭಿಪ್ರಾಯ", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900", headline: "ಸಾರ್ವಜನಿಕ ಸೇವೆಯಲ್ಲಿ ಜವಾಬ್ದಾರಿತನ ಹೆಚ್ಚಿಸಲು ಬೇಕಾದ ಬದಲಾವಣೆಗಳು", readTime: "5 ನಿಮಿಷ", publishTime: "4 ಗಂಟೆ" },
+            { category: "ವಿಶೇಷ", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900", headline: "ನಗರ, ಗ್ರಾಮ ಮತ್ತು ಯುವಕರ ನಡುವೆ ಬೆಳೆಯುತ್ತಿರುವ ಹೊಸ ಸಂಬಂಧಗಳು", readTime: "6 ನಿಮಿಷ", publishTime: "6 ಗಂಟೆ" }
+          ]
+        }
+      ],
+      "deccan-herald": [
+        {
+          type: "hero4",
+          title: "Special Reports",
+          hero: {
+            category: "India",
+            image: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=1200",
+            headline: "Infrastructure push gains pace as cities prepare for a new round of public works",
+            subheadline: "State planners say transport, water and housing projects will define the next phase of spending.",
+            readTime: "7 min read",
+            publishTime: "3h ago"
+          },
+          supporting: [
+            { category: "Society", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "Rural schools seek faster digital classroom rollout", readTime: "4 min read", publishTime: "55m ago" },
+            { category: "Health", image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700", headline: "Public hospitals open specialised treatment units", readTime: "5 min read", publishTime: "1h ago" },
+            { category: "Agriculture", image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700", headline: "Crop insurance drive draws strong response from farmers", readTime: "4 min read", publishTime: "2h ago" },
+            { category: "Business", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700", headline: "Interest relief package announced for small enterprises", readTime: "3 min read", publishTime: "2h ago" }
+          ]
+        },
+        {
+          type: "hero42",
+          title: "Deep Dive",
+          hero: {
+            category: "Politics",
+            image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200",
+            headline: "Budget aftershocks reshape alliances as parties test new political equations",
+            subheadline: "Opposition leaders are using regional balance and spending priorities to frame the next debate.",
+            readTime: "8 min read",
+            publishTime: "4h ago"
+          },
+          supporting: [
+            { category: "Policy", image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700", headline: "Why data-led governance is moving to the centre of city planning", readTime: "4 min read", publishTime: "1h ago" },
+            { category: "Education", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700", headline: "Expert panel recommends broad curriculum overhaul", readTime: "5 min read", publishTime: "2h ago" },
+            { category: "Jobs", image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700", headline: "Private sector hiring opens new lanes for young graduates", readTime: "3 min read", publishTime: "3h ago" },
+            { category: "Culture", image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=700", headline: "City festivals create a wider stage for local artists", readTime: "4 min read", publishTime: "3h ago" }
+          ],
+          extra: [
+            { category: "Opinion", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=900", headline: "This is the moment to demand more transparency in public policy", readTime: "6 min read", publishTime: "5h ago" },
+            { category: "Analysis", image: "https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?w=900", headline: "How younger voters are quietly changing the urban political map", readTime: "5 min read", publishTime: "6h ago" }
+          ]
+        },
+        {
+          type: "hero44",
+          title: "From The Districts",
+          hero: {
+            category: "Karnataka",
+            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+            headline: "District centres get fresh road and civic upgrades as local outreach intensifies",
+            subheadline: "Officials say transport and water projects are moving faster across multiple towns.",
+            readTime: "6 min read",
+            publishTime: "3h ago"
+          },
+          supporting: [
+            { category: "Mysuru", image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=700", headline: "Tourism season preparations begin across Mysuru", readTime: "3 min read", publishTime: "1h ago" },
+            { category: "Hubballi", image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=700", headline: "More land set aside for new industrial units", readTime: "4 min read", publishTime: "2h ago" },
+            { category: "Davanagere", image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=700", headline: "Price stabilisation measures introduced at farm markets", readTime: "3 min read", publishTime: "2h ago" },
+            { category: "Belagavi", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "Residents back expanded urban cleanliness drive", readTime: "4 min read", publishTime: "3h ago" }
+          ],
+          extra: [
+            { category: "Shivamogga", image: "https://images.unsplash.com/photo-1503264116251-35a269479413?w=700", headline: "New conservation push targets forest fringe zones", readTime: "3 min read", publishTime: "3h ago" },
+            { category: "Kodagu", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=700", headline: "Emergency review held ahead of fresh rain forecast", readTime: "2 min read", publishTime: "4h ago" },
+            { category: "Udupi", image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=700", headline: "Coastal safety advisory issued for beach stretches", readTime: "3 min read", publishTime: "4h ago" },
+            { category: "Mandya", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700", headline: "Irrigation allocation expanded for farm belts", readTime: "4 min read", publishTime: "5h ago" }
+          ]
+        },
+        {
+          type: "smallHero6",
+          title: "More Stories",
+          hero: {
+            category: "Top Story",
+            image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000",
+            headline: "Heavy rain alert issued for several regions as weather activity intensifies",
+            subheadline: "Officials have advised local administrations to prepare for a spell of disruption over two days.",
+            readTime: "5 min read",
+            publishTime: "1h ago"
+          },
+          supporting: [
+            { category: "Bengaluru", image: "https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=700", headline: "Weekend road repair plan rolled out across key corridors", readTime: "2 min read", publishTime: "40m ago" },
+            { category: "Business", image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700", headline: "Small traders get digital payments training push", readTime: "3 min read", publishTime: "1h ago" },
+            { category: "Sports", image: "https://images.unsplash.com/photo-1509803874385-db7c23652552?w=700", headline: "Final squads named for the state games meet", readTime: "3 min read", publishTime: "2h ago" },
+            { category: "Education", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "School enrolment campaign gets a new city focus", readTime: "4 min read", publishTime: "2h ago" },
+            { category: "Society", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700", headline: "Volunteer network wins praise for civic response work", readTime: "3 min read", publishTime: "3h ago" },
+            { category: "Culture", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=700", headline: "Folk festivals draw wide participation from districts", readTime: "2 min read", publishTime: "3h ago" }
+          ]
+        },
+        {
+          type: "four2",
+          title: "Editors' Picks",
+          left: [
+            { category: "Review", image: "https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=700", headline: "Why the quality of political debate keeps slipping", readTime: "4 min read", publishTime: "2h ago" },
+            { category: "Environment", image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700", headline: "A new study tracks the cost of deteriorating air quality", readTime: "3 min read", publishTime: "3h ago" },
+            { category: "Economy", image: "https://images.unsplash.com/photo-1509803874385-db7c23652552?w=700", headline: "Small savings products are regaining appeal", readTime: "4 min read", publishTime: "4h ago" },
+            { category: "Lifestyle", image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=700", headline: "The quiet rise of slower living in Indian cities", readTime: "3 min read", publishTime: "5h ago" }
+          ],
+          right: [
+            { category: "Opinion", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900", headline: "What stronger accountability in public service should look like", readTime: "5 min read", publishTime: "4h ago" },
+            { category: "Feature", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900", headline: "How cities, towns and young voters are building new civic ties", readTime: "6 min read", publishTime: "6h ago" }
+          ]
+        }
+      ]
     };
 
     const elements = {
@@ -707,6 +1819,16 @@
       secondaryNavList: document.getElementById("secondaryNavList"),
       loginButton: document.getElementById("loginButton"),
       epaperText: document.getElementById("epaperText"),
+      topNewsTitle: document.getElementById("topNewsTitle"),
+      topNewsTemplateName: document.getElementById("topNewsTemplateName"),
+      heroImage: document.getElementById("heroImage"),
+      heroCategory: document.getElementById("heroCategory"),
+      heroHeadline: document.getElementById("heroHeadline"),
+      heroSubheadline: document.getElementById("heroSubheadline"),
+      heroReadTime: document.getElementById("heroReadTime"),
+      heroPublishTime: document.getElementById("heroPublishTime"),
+      supportingStories: document.getElementById("supportingStories"),
+      templateRows: document.getElementById("templateRows"),
       storyTitle: document.getElementById("storyTitle"),
       storyBody: document.getElementById("storyBody")
     };
@@ -741,6 +1863,126 @@
       });
     }
 
+    function createStoryCard(story, className = "story-card", showSubheadline = false) {
+      const article = document.createElement("article");
+      article.className = className;
+      article.innerHTML = `
+        <div class="story-image-container">
+          <img src="${story.image}" alt="${story.headline}" class="story-image">
+          <span class="category-badge">${story.category}</span>
+        </div>
+        <div class="headline-overlay">
+          <div class="hero-headline">${story.headline}</div>
+          ${showSubheadline && story.subheadline ? `<p class="hero-subheadline">${story.subheadline}</p>` : ""}
+          <div class="story-metadata">
+            <span class="read-time">
+              <svg class="read-icon" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>${story.readTime}</span>
+            </span>
+            <span class="metadata-separator">&bull;</span>
+            <span class="publish-time">
+              <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
+              <span>${story.publishTime}</span>
+            </span>
+          </div>
+        </div>
+      `;
+      return article;
+    }
+
+    function createSupportingCard(story) {
+      return createStoryCard(story);
+    }
+
+    function createGroupSection(group) {
+      const layoutClassByType = {
+        hero4: "template-grid-hero4",
+        hero42: "template-grid-hero42",
+        hero44: "template-grid-hero44",
+        smallHero6: "template-small-hero6",
+        four2: "template-four-two"
+      };
+      const templateNameByType = {
+        hero4: "1 hero + 4",
+        hero42: "1 hero + 4 + 2",
+        hero44: "1 hero + 4 + 4",
+        smallHero6: "1 small hero + 6",
+        four2: "4 + 2"
+      };
+      const section = document.createElement("section");
+      section.className = `news-group ${layoutClassByType[group.type] || ""}`;
+
+      const title = document.createElement("h2");
+      title.className = "group-title";
+      title.innerHTML = `${group.title}<span class="group-template-name">${templateNameByType[group.type] || ""}</span>`;
+      section.appendChild(title);
+
+      if (group.type === "hero4" || group.type === "hero42" || group.type === "hero44") {
+        const heroSection = document.createElement("div");
+        heroSection.className = "hero-section";
+
+        const row1 = document.createElement("div");
+        row1.className = "row-1";
+        row1.appendChild(createStoryCard(group.hero, "story-card", true));
+        heroSection.appendChild(row1);
+
+        const heroGrid = document.createElement("div");
+        heroGrid.className = "hero-grid";
+        group.supporting.forEach((story) => heroGrid.appendChild(createStoryCard(story)));
+        heroSection.appendChild(heroGrid);
+        section.appendChild(heroSection);
+
+        if (group.type === "hero42") {
+          const contentGrid = document.createElement("div");
+          contentGrid.className = "content-grid";
+          group.extra.forEach((story, index) => {
+            const row = document.createElement("div");
+            row.className = index === 0 ? "row-3" : "row-4";
+            row.appendChild(createStoryCard(story));
+            contentGrid.appendChild(row);
+          });
+          section.appendChild(contentGrid);
+        }
+
+        if (group.type === "hero44") {
+          const fourGrid = document.createElement("div");
+          fourGrid.className = "four-grid";
+          group.extra.forEach((story) => fourGrid.appendChild(createStoryCard(story)));
+          section.appendChild(fourGrid);
+        }
+      }
+
+      if (group.type === "smallHero6") {
+        const heroSection = document.createElement("div");
+        heroSection.className = "hero-section";
+        heroSection.appendChild(createStoryCard(group.hero, "story-card hero-card", true));
+        group.supporting.forEach((story) => heroSection.appendChild(createStoryCard(story, "story-card support-card")));
+        section.appendChild(heroSection);
+      }
+
+      if (group.type === "four2") {
+        const heroSection = document.createElement("div");
+        heroSection.className = "hero-section";
+
+        const leftGrid = document.createElement("div");
+        leftGrid.className = "left-grid";
+        group.left.forEach((story) => leftGrid.appendChild(createStoryCard(story)));
+
+        const rightStack = document.createElement("div");
+        rightStack.className = "right-stack";
+        group.right.forEach((story) => rightStack.appendChild(createStoryCard(story)));
+
+        heroSection.append(leftGrid, rightStack);
+        section.appendChild(heroSection);
+      }
+
+      return section;
+    }
+
+    function renderEditorialGroups(groups) {
+      elements.templateRows.replaceChildren(...groups.map(createGroupSection));
+    }
+
     function applyBrand(brandKey) {
       const brand = brandData[brandKey];
       if (!brand) return;
@@ -756,6 +1998,17 @@
       elements.logoLabel.textContent = brand.logoText;
       elements.loginButton.textContent = brand.loginLabel;
       elements.epaperText.textContent = brand.epaperLabel;
+      elements.topNewsTitle.textContent = brand.topNewsTitle;
+      elements.topNewsTemplateName.textContent = "1 hero + 2";
+      elements.heroImage.src = brand.topNews.hero.image;
+      elements.heroImage.alt = brand.topNews.hero.headline;
+      elements.heroCategory.textContent = brand.topNews.hero.category;
+      elements.heroHeadline.textContent = brand.topNews.hero.headline;
+      elements.heroSubheadline.textContent = brand.topNews.hero.subheadline;
+      elements.heroReadTime.textContent = brand.topNews.hero.readTime;
+      elements.heroPublishTime.textContent = brand.topNews.hero.publishTime;
+      elements.supportingStories.replaceChildren(...brand.topNews.supporting.map(createSupportingCard));
+      renderEditorialGroups(editorialGroups[brandKey] || []);
       elements.storyTitle.textContent = brand.storyTitle;
       elements.storyBody.textContent = brand.storyBody;
       populateMenu(elements.desktopNavUl, brand.desktopNav);
