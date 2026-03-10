@@ -40,4 +40,5 @@ All UI work in this workspace must follow the shared style guide before using ex
 - When adapting external layout templates, reuse the structure if useful, but remap typography, logo usage, and color treatment to the shared style guide.
 - In shared editorial/card layouts, hero cards must always use larger headline text than non-hero/supporting cards. Use the first-row hero treatment as the reference hierarchy and preserve that contrast across breakpoints.
 - In shared editorial/card layouts, the read-time and publish-time metadata row must align to the bottom of the card content area. Within that row, publish time must align to the right edge of the card.
+- In mobile shared editorial/card layouts, all headlines must be clamped to 3 lines with ellipsis.
 - If there is a conflict between a template and the style guide, the style guide wins.
