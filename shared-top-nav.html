@@ -1153,7 +1153,7 @@
       .top-news-block .hero-section {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 16px;
+        gap: 20px;
       }
 
       .top-news-block .hero-section .row-1 {
@@ -1208,7 +1208,7 @@
       .top-news-block .hero-grid {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 20px;
       }
 
       .top-news-block .hero-grid .story-card {
@@ -1379,46 +1379,196 @@
         gap: 20px;
       }
 
+      .template-grid-hero44 .four-grid .story-card {
+        background-color: var(--top-news-support-bg);
+      }
+
+      .template-grid-hero44 .four-grid .story-image-container {
+        width: 55%;
+      }
+
+      .template-grid-hero44 .four-grid .headline-overlay {
+        width: 45%;
+        padding: 10px;
+        background-color: transparent;
+      }
+
       .template-grid-hero44 .four-grid .story-headline--support {
-        font-size: 18px;
+        display: -webkit-box;
+        font-size: 16px;
+        line-height: 1.25;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .template-grid-hero44 .four-grid .story-metadata {
+        font-size: 10px;
+        padding-top: 4px;
+      }
+
+      .template-grid-hero44 .four-grid .read-icon,
+      .template-grid-hero44 .four-grid .time-icon {
+        width: 10px;
+        height: 10px;
       }
 
       .template-small-hero6 .hero-section {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, auto);
         gap: 20px;
+        align-items: stretch;
       }
 
       .template-small-hero6 .hero-card {
-        grid-column: 1 / span 1;
+        grid-column: 1;
         grid-row: 1 / span 2;
+        height: 100%;
+      }
+
+      .template-small-hero6 .hero-card .headline-overlay {
+        padding: 10px;
+        height: auto;
+        flex-grow: 1;
       }
 
       .template-small-hero6 .hero-card .story-headline--hero {
-        font-size: 30px;
+        display: -webkit-box;
+        font-size: 22px;
+        line-height: 1.2;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      .template-small-hero6 .support-card .story-headline--support {
-        font-size: 18px;
+      .template-small-hero6 .hero-card .hero-subheadline {
+        display: none;
       }
 
-      .template-small-hero6 .support-card:nth-of-type(n+4) {
-        flex-direction: row;
+      .template-small-hero6 .hero-card .story-metadata {
+        font-size: 9px;
+        padding-top: 3px;
       }
 
-      .template-small-hero6 .support-card:nth-of-type(n+4) .story-image-container {
-        width: 45%;
+      .template-small-hero6 .hero-card .read-icon,
+      .template-small-hero6 .hero-card .time-icon {
+        width: 10px;
+        height: 10px;
+      }
+
+      .template-small-hero6 .support-card {
+        display: none;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        height: 100%;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .story-image-container {
+        width: 100%;
         padding-top: 0;
         aspect-ratio: var(--thumbnail-aspect-ratio);
       }
 
-      .template-small-hero6 .support-card:nth-of-type(n+4) .headline-overlay {
-        width: 55%;
-        padding: 12px;
+      .template-small-hero6 .support-card:nth-of-type(2) .headline-overlay {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        flex-grow: 1;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .story-headline--support {
+        display: -webkit-box;
+        font-size: 18px;
+        line-height: 1.25;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .story-metadata {
+        font-size: 9px;
+        padding-top: 3px;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .read-icon,
+      .template-small-hero6 .support-card:nth-of-type(2) .time-icon {
+        width: 10px;
+        height: 10px;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3),
+      .template-small-hero6 .support-card:nth-of-type(4) {
+        display: flex;
+        flex-direction: row;
+        grid-column: 3 / span 2;
+        height: 100%;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) {
+        grid-row: 1;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(4) {
+        grid-row: 2;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) .story-headline--support,
+      .template-small-hero6 .support-card:nth-of-type(4) .story-headline--support {
+        display: -webkit-box;
+        font-size: 18px;
+        line-height: 1.25;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(4) .story-image-container {
+        width: 33%;
+        padding-top: 0;
+        aspect-ratio: var(--thumbnail-aspect-ratio);
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) .headline-overlay,
+      .template-small-hero6 .support-card:nth-of-type(4) .headline-overlay {
+        width: 67%;
+        padding: 8px;
+        height: auto;
+        align-self: stretch;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) .story-metadata,
+      .template-small-hero6 .support-card:nth-of-type(4) .story-metadata {
+        font-size: 9px;
+        padding-top: 3px;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3) .read-icon,
+      .template-small-hero6 .support-card:nth-of-type(3) .time-icon,
+      .template-small-hero6 .support-card:nth-of-type(4) .read-icon,
+      .template-small-hero6 .support-card:nth-of-type(4) .time-icon {
+        width: 10px;
+        height: 10px;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(n+5) {
+        display: none;
       }
 
       .template-four-two .hero-section {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, auto);
         gap: 20px;
+        align-items: stretch;
       }
 
       .template-four-two .left-grid .story-headline--support,
@@ -1428,7 +1578,41 @@
 
       .template-four-two .left-grid,
       .template-four-two .right-stack {
-        gap: 20px;
+        display: contents;
+      }
+
+      .template-four-two .left-grid .story-card:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .template-four-two .left-grid .story-card:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .template-four-two .left-grid .story-card:nth-child(3) {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .template-four-two .left-grid .story-card:nth-child(4) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .template-four-two .right-stack .story-card:nth-child(1) {
+        grid-column: 3 / span 2;
+        grid-row: 1;
+      }
+
+      .template-four-two .right-stack .story-card:nth-child(2) {
+        grid-column: 3 / span 2;
+        grid-row: 2;
+      }
+
+      .template-four-two .right-stack .story-card {
+        height: 100%;
       }
 
       .desktop-nav-links {
@@ -1601,17 +1785,45 @@
         width: 50%;
       }
 
-      .template-small-hero6 .support-card:nth-of-type(-n+4) {
-        grid-column: 1 / span 2;
+      .template-small-hero6 .hero-section {
+        grid-template-columns: 1fr;
+      }
+
+      .template-small-hero6 .hero-card,
+      .template-small-hero6 .support-card:nth-of-type(2),
+      .template-small-hero6 .support-card:nth-of-type(3),
+      .template-small-hero6 .support-card:nth-of-type(4) {
+        grid-column: 1;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(2) .headline-overlay {
+        width: 100%;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(3),
+      .template-small-hero6 .support-card:nth-of-type(4) {
+        display: flex;
         flex-direction: row;
       }
 
-      .template-small-hero6 .support-card:nth-of-type(-n+4) .story-image-container {
+      .template-small-hero6 .support-card:nth-of-type(3) .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(4) .story-image-container {
         width: 50%;
       }
 
-      .template-small-hero6 .support-card:nth-of-type(-n+4) .headline-overlay {
+      .template-small-hero6 .support-card:nth-of-type(3) .headline-overlay,
+      .template-small-hero6 .support-card:nth-of-type(4) .headline-overlay {
         width: 50%;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(n+5) {
+        display: none;
       }
 
       .story-card--hero .hero-subheadline,
@@ -1626,6 +1838,109 @@
       .template-small-hero6 .story-card--support .story-metadata,
       .template-four-two .story-card--support .story-metadata {
         font-size: 10px;
+      }
+
+    }
+
+    .story-card.story-card--hero,
+    .story-card.story-card--support {
+      background-clip: padding-box;
+    }
+
+    .story-card.story-card--hero {
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
+    }
+
+    .story-card.story-card--support {
+      background-color: var(--top-news-support-bg);
+      color: var(--top-news-support-text);
+    }
+
+    .story-card.story-card--hero .headline-overlay,
+    .story-card.story-card--support .headline-overlay {
+      background-color: transparent;
+    }
+
+    .template-grid-hero42 .row-3 .story-card,
+    .template-grid-hero42 .row-4 .story-card,
+    .template-grid-hero44 .four-grid .story-card,
+    .template-four-two .right-stack .story-card {
+      align-items: stretch;
+    }
+
+    .template-grid-hero42 .row-3 .story-image-container,
+    .template-grid-hero42 .row-4 .story-image-container,
+    .template-grid-hero44 .four-grid .story-image-container,
+    .template-four-two .right-stack .story-image-container {
+      align-self: stretch;
+      height: auto;
+    }
+
+    .template-grid-hero42 .row-3 .headline-overlay,
+    .template-grid-hero42 .row-4 .headline-overlay,
+    .template-grid-hero44 .four-grid .headline-overlay,
+    .template-four-two .right-stack .headline-overlay {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .template-grid-hero4 .row-1 .story-image-container,
+    .template-grid-hero4 .hero-grid .story-image-container,
+    .template-grid-hero42 .row-1 .story-image-container,
+    .template-grid-hero42 .hero-grid .story-image-container,
+    .template-grid-hero44 .row-1 .story-image-container,
+    .template-grid-hero44 .hero-grid .story-image-container,
+    .template-small-hero6 .hero-card .story-image-container,
+    .template-four-two .left-grid .story-image-container {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .template-grid-hero4 .row-1 .headline-overlay,
+    .template-grid-hero4 .hero-grid .headline-overlay,
+    .template-grid-hero42 .row-1 .headline-overlay,
+    .template-grid-hero42 .hero-grid .headline-overlay,
+    .template-grid-hero44 .row-1 .headline-overlay,
+    .template-grid-hero44 .hero-grid .headline-overlay,
+    .template-small-hero6 .hero-card .headline-overlay,
+    .template-four-two .left-grid .headline-overlay {
+      width: 100%;
+      align-self: stretch;
+    }
+
+    @media (min-width: 992px) {
+      .top-news-block .hero-section .row-1 .story-card,
+      .top-news-block .hero-grid .story-card,
+      .template-small-hero6 .support-card:nth-of-type(3),
+      .template-small-hero6 .support-card:nth-of-type(4) {
+        align-items: stretch;
+      }
+
+      .top-news-block .hero-section .row-1 .story-image-container,
+      .top-news-block .hero-grid .story-card .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(3) .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(4) .story-image-container {
+        align-self: stretch;
+        height: auto;
+      }
+
+      .top-news-block .hero-section .row-1 .headline-overlay,
+      .top-news-block .hero-grid .story-card .headline-overlay,
+      .template-small-hero6 .support-card:nth-of-type(3) .headline-overlay,
+      .template-small-hero6 .support-card:nth-of-type(4) .headline-overlay {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .template-small-hero6 .support-card:nth-of-type(2) .story-image-container,
+      .template-small-hero6 .support-card:nth-of-type(2) .headline-overlay {
+        width: 100%;
+        max-width: 100%;
       }
     }
   </style>
@@ -1899,7 +2214,7 @@
           hero: {
             category: "ಮುಖ್ಯಾಂಶ",
             image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000",
-            headline: "ರಾಜ್ಯದ ಹಲವು ಭಾಗಗಳಲ್ಲಿ ಮಳೆ ಹೆಚ್ಚಳ, ಮುನ್ನೆಚ್ಚರಿಕೆ ಸೂಚನೆ",
+            headline: "ರಾಜ್ಯದ ಹಲವು ಭಾಗಗಳಲ್ಲಿ ಮಳೆ ಹೆಚ್ಚಳ, ಬಲವಾದ ಗಾಳಿ ಎಚ್ಚರಿಕೆ ನಡುವೆ ಜಿಲ್ಲಾಡಳಿತಕ್ಕೆ ಹೆಚ್ಚುವರಿ ಮುನ್ನೆಚ್ಚರಿಕೆ ಸೂಚನೆ",
             subheadline: "ಹವಾಮಾನ ಇಲಾಖೆ ಮುಂದಿನ ಎರಡು ದಿನಗಳವರೆಗೆ ಜಾಗರೂಕತೆ ಸೂಚಿಸಿದೆ.",
             readTime: "5 ನಿಮಿಷ",
             publishTime: "1 ಗಂಟೆ"
@@ -1999,7 +2314,7 @@
           hero: {
             category: "Top Story",
             image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1000",
-            headline: "Heavy rain alert issued for several regions as weather activity intensifies",
+            headline: "Heavy rain alert expands across several regions as stronger weather activity prompts district administrations to prepare",
             subheadline: "Officials have advised local administrations to prepare for a spell of disruption over two days.",
             readTime: "5 min read",
             publishTime: "1h ago"
@@ -2134,7 +2449,7 @@
         hero4: "1 hero + 4",
         hero42: "1 hero + 4 + 2",
         hero44: "1 hero + 4 + 4",
-        smallHero6: "1 small hero + 6",
+        smallHero6: "1 small hero + 2",
         four2: "4 + 2"
       };
       const section = document.createElement("section");

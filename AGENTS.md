@@ -43,4 +43,5 @@ All UI work in this workspace must follow the shared style guide before using ex
 - In mobile shared editorial/card layouts, all headlines must be clamped to 3 lines with ellipsis.
 - In shared editorial/card layouts, all card images must maintain a strict `3:2` aspect ratio across breakpoints. Do not stretch, auto-fill, or relax the ratio to match adjacent card heights.
 - If a shared editorial/card layout needs extra card height to align with adjacent cards, increase the non-image content area. Keep the image at strict `3:2` and let the text/overlay portion absorb the extra height.
+- In shared editorial/card layouts, side-by-side cards must render the image as the full card height, and stacked/up-down cards must render the image as the full card width. Apply this as a shared system rule, not a one-off layout exception.
 - If there is a conflict between a template and the style guide, the style guide wins.
