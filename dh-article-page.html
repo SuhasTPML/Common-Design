@@ -795,7 +795,7 @@
     .inline-callout h3,
     .fact-sheet h3 {
       margin-bottom: 0.55rem;
-      font-family: var(--font-subhead);
+      font-family: var(--font-headline);
       font-size: 1rem;
       font-weight: 700;
     }
@@ -977,58 +977,90 @@
 
     .rail-list {
       display: grid;
-      gap: 0.8rem;
-    }
-
-    .rail-list li {
-      display: grid;
-      gap: 0.22rem;
-    }
-
-    .ranked-story {
-      display: grid;
-      grid-template-columns: auto 1fr;
       gap: 0.75rem;
-      align-items: start;
     }
 
-    .rank {
-      color: var(--brand-primary);
+    .rail-list .story-card {
+      display: flex;
+      flex-direction: row;
+      border: 1px solid var(--brand-border);
+      background: var(--brand-surface);
+      border-radius: 0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.24s ease;
+    }
+
+    .rail-list .story-card:hover {
+      border-color: var(--brand-primary);
+    }
+
+    .rail-list .story-card:hover .rail-headline {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.16em;
+    }
+
+    .rail-list .story-image-container {
+      position: relative;
+      width: 38%;
+      flex-shrink: 0;
+      align-self: stretch;
+      min-height: 80px;
+      overflow: hidden;
+    }
+
+    .rail-list .story-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rank-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: var(--brand-primary);
+      color: #ffffff;
+      width: 1.55rem;
+      height: 1.55rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-headline);
-      font-size: 1.45rem;
+      font-size: 0.88rem;
       font-weight: 700;
       line-height: 1;
     }
 
+    .rail-list .headline-overlay {
+      flex: 1;
+      padding: 0.6rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      background-color: var(--brand-surface-muted);
+      min-width: 0;
+    }
+
     .rail-kicker,
     .rail-time {
-      color: var(--brand-text-muted);
-      font-size: 0.78rem;
+      color: var(--brand-primary);
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
     }
 
-    .rail-title {
-      font-family: var(--font-subhead);
-      font-size: 0.98rem;
-      font-weight: 600;
-      line-height: 1.45;
-      color: #1f3036;
-    }
-
-    .rail-title:hover {
-      color: var(--brand-primary);
-    }
-
-    .latest-story {
-      padding-bottom: 0.8rem;
-      border-bottom: 1px dashed var(--brand-border);
-    }
-
-    .latest-story:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
+    .rail-headline {
+      font-family: var(--font-headline);
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--brand-text);
     }
 
     .picks-grid {
@@ -1036,74 +1068,102 @@
       gap: 0.95rem;
     }
 
-    .pick-card {
-      overflow: hidden;
+    .picks-grid .story-card {
       border: 1px solid var(--brand-border);
-      border-radius: 6px;
-      background: #ffffff;
-    }
-
-    .pick-thumb {
-      position: relative;
+      background: var(--brand-surface);
+      border-radius: 0;
       overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.24s ease;
+    }
+
+    .picks-grid .story-card:hover {
+      border-color: var(--brand-primary);
+    }
+
+    .picks-grid .story-card:hover .story-headline {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.16em;
+    }
+
+    .picks-grid .story-image-container {
+      position: relative;
+      width: 100%;
       aspect-ratio: 3 / 2;
-      background:
-        radial-gradient(circle at top left, rgba(255, 193, 7, 0.3), transparent 35%),
-        linear-gradient(135deg, rgba(0, 145, 172, 0.95), rgba(0, 111, 131, 0.92));
+      overflow: hidden;
     }
 
-    .pick-thumb.alt {
-      background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 25%),
-        linear-gradient(135deg, #7d6036, #d2a34b);
-    }
-
-    .pick-thumb::before,
-    .pick-thumb::after {
-      content: "";
+    .picks-grid .story-image {
       position: absolute;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.22);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .pick-thumb::before {
-      top: 15%;
-      left: 8%;
-      width: 5.5rem;
-      height: 5.5rem;
-    }
-
-    .pick-thumb::after {
-      right: -1.5rem;
-      bottom: -2rem;
-      width: 8rem;
-      height: 8rem;
-    }
-
-    .pick-badge {
+    .picks-grid .category-badge {
       position: absolute;
-      top: 0.75rem;
-      left: 0.75rem;
-      padding: 0.28rem 0.6rem;
-      border-radius: 3px;
+      top: 0;
+      left: 0;
+      background-color: var(--brand-primary);
       color: #ffffff;
-      background: rgba(0, 0, 0, 0.35);
-      font-size: 0.72rem;
+      padding: 2px 6px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: var(--font-body);
     }
 
-    .pick-copy {
-      display: grid;
-      gap: 0.32rem;
-      padding: 0.9rem;
+    .picks-grid .headline-overlay {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: var(--brand-surface-muted);
     }
 
-    .pick-copy p {
+    .picks-grid .story-headline {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      color: var(--brand-text);
+      margin: 0;
+    }
+
+    .picks-grid .story-metadata {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
       color: var(--brand-text-muted);
-      font-size: 0.84rem;
-      line-height: 1.45;
+      font-family: var(--font-body);
+    }
+
+    .picks-grid .read-time,
+    .picks-grid .publish-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .picks-grid .publish-time {
+      margin-left: auto;
+    }
+
+    .picks-grid .read-icon,
+    .picks-grid .time-icon {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .rail-widget.newsletter {
@@ -1298,11 +1358,9 @@
           <div class="author-meta">
             <div class="author-name-row">
               <span class="author-name" id="author-name">Nisha Saldanha</span>
-              <span class="author-role" id="author-role">Civic infrastructure correspondent</span>
             </div>
             <div class="meta-times">
               <span id="published-at">Published: March 11, 2026, 6:30 AM IST</span>
-              <span id="updated-at">Updated: March 11, 2026, 9:05 AM IST</span>
               <span id="read-time">6 min read</span>
             </div>
           </div>
@@ -1530,32 +1588,34 @@
         rail: {
           mostReadTitle: "Most Read",
           mostRead: [
-            { kicker: "Bengaluru", title: "Metro feeder rethink puts bus priority back at the centre of the commute debate" },
-            { kicker: "India", title: "Centre expands district heat advisories as March temperatures rise early" },
-            { kicker: "Opinion", title: "Why the best civic reforms begin with maintenance, not announcements" },
-            { kicker: "Business", title: "Insurers are pricing urban flood risk street by street. Cities should pay attention." },
-            { kicker: "Explainers", title: "What a \"cool roof\" actually does, and why it is back in city policy notes" }
+            { kicker: "Bengaluru", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&auto=format&fit=crop&q=80", title: "Metro feeder rethink puts bus priority back at the centre of the commute debate" },
+            { kicker: "India", image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=300&auto=format&fit=crop&q=80", title: "Centre expands district heat advisories as March temperatures rise early" },
+            { kicker: "Opinion", image: "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=300&auto=format&fit=crop&q=80", title: "Why the best civic reforms begin with maintenance, not announcements" },
+            { kicker: "Business", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&auto=format&fit=crop&q=80", title: "Insurers are pricing urban flood risk street by street. Cities should pay attention." },
+            { kicker: "Explainers", image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=300&auto=format&fit=crop&q=80", title: "What a \"cool roof\" actually does, and why it is back in city policy notes" }
           ],
           latestTitle: "Latest News",
           latest: [
-            { time: "9:18 AM IST", title: "BBMP clears new shaded waiting areas near government hospitals ahead of summer rush" },
-            { time: "8:54 AM IST", title: "Karnataka seeks ward-wise flood mitigation updates before monsoon review meeting" },
-            { time: "8:12 AM IST", title: "Traffic police to pilot cooler patrol booths at three high-exposure junctions" },
-            { time: "7:41 AM IST", title: "School route audits flag missing tree cover and unsafe crossings in eight wards" }
+            { time: "9:18 AM IST", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&auto=format&fit=crop&q=80", title: "BBMP clears new shaded waiting areas near government hospitals ahead of summer rush" },
+            { time: "8:54 AM IST", image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=300&auto=format&fit=crop&q=80", title: "Karnataka seeks ward-wise flood mitigation updates before monsoon review meeting" },
+            { time: "8:12 AM IST", image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=300&auto=format&fit=crop&q=80", title: "Traffic police to pilot cooler patrol booths at three high-exposure junctions" },
+            { time: "7:41 AM IST", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&auto=format&fit=crop&q=80", title: "School route audits flag missing tree cover and unsafe crossings in eight wards" }
           ],
           picksTitle: "DH Picks",
           picks: [
             {
-              badge: "Analysis",
-              title: "When data teams and public works teams finally work from the same map",
-              summary: "The value of city intelligence is highest when it changes capital works timing, not just presentations.",
-              alt: false
+              category: "Analysis",
+              image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80",
+              headline: "When data teams and public works teams finally work from the same map",
+              readTime: "5 min read",
+              publishTime: "2h ago"
             },
             {
-              badge: "Weekend Read",
-              title: "A quiet history of Bengaluru's shade: what old avenues still teach planners today",
-              summary: "Older neighbourhoods offer clues about canopy, walkability and why comfort is also a civic service.",
-              alt: true
+              category: "Weekend Read",
+              image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&auto=format&fit=crop&q=80",
+              headline: "A quiet history of Bengaluru's shade: what old avenues still teach planners today",
+              readTime: "7 min read",
+              publishTime: "8h ago"
             }
           ],
           newsletterTitle: "Morning Brief",
@@ -1679,32 +1739,34 @@
         rail: {
           mostReadTitle: "ಅತಿಹೆಚ್ಚು ಓದಿದವು",
           mostRead: [
-            { kicker: "ಬೆಂಗಳೂರು", title: "ಮೆಟ್ರೋ ಫೀಡರ್ ಮರುಪರಿಶೀಲನೆ: ಬಸ್ ಆದ್ಯತೆಯೇ ಮತ್ತೆ ಕೇಂದ್ರ ಚರ್ಚೆ" },
-            { kicker: "ಕರ್ನಾಟಕ", title: "ಬೇಸಿಗೆ ತೀವ್ರತೆಯ ನಡುವೆ ಜಿಲ್ಲಾವಾರು ಹೀಟ್ ಎಚ್ಚರಿಕೆ ವಿಸ್ತರಣೆ" },
-            { kicker: "ಅಭಿಮತ", title: "ನಿರ್ವಹಣೆಯಿಂದ ಆರಂಭವಾಗುವ ಸುಧಾರಣೆಗಳೇ ನಗರಕ್ಕೆ ಹೆಚ್ಚು ಉಪಯೋಗ" },
-            { kicker: "ವಾಣಿಜ್ಯ", title: "ಪ್ರವಾಹ ಅಪಾಯವನ್ನು ಬೀದಿ ಮಟ್ಟದಲ್ಲಿ ಅಳೆಯುತ್ತಿರುವ ವಿಮಾ ವಲಯ; ನಗರಗಳು ಗಮನಿಸಲೇಬೇಕು" },
-            { kicker: "ವಿವರಣೆ", title: "\"ತಂಪು ಮೇಲ್ಚಾವಣಿ\" ಎಂದರೇನು? ಅದು ಮತ್ತೆ ನೀತಿ ಟಿಪ್ಪಣಿಗಳಲ್ಲಿ ಯಾಕೆ ಮರಳಿದೆ?" }
+            { kicker: "ಬೆಂಗಳೂರು", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&auto=format&fit=crop&q=80", title: "ಮೆಟ್ರೋ ಫೀಡರ್ ಮರುಪರಿಶೀಲನೆ: ಬಸ್ ಆದ್ಯತೆಯೇ ಮತ್ತೆ ಕೇಂದ್ರ ಚರ್ಚೆ" },
+            { kicker: "ಕರ್ನಾಟಕ", image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=300&auto=format&fit=crop&q=80", title: "ಬೇಸಿಗೆ ತೀವ್ರತೆಯ ನಡುವೆ ಜಿಲ್ಲಾವಾರು ಹೀಟ್ ಎಚ್ಚರಿಕೆ ವಿಸ್ತರಣೆ" },
+            { kicker: "ಅಭಿಮತ", image: "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=300&auto=format&fit=crop&q=80", title: "ನಿರ್ವಹಣೆಯಿಂದ ಆರಂಭವಾಗುವ ಸುಧಾರಣೆಗಳೇ ನಗರಕ್ಕೆ ಹೆಚ್ಚು ಉಪಯೋಗ" },
+            { kicker: "ವಾಣಿಜ್ಯ", image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&auto=format&fit=crop&q=80", title: "ಪ್ರವಾಹ ಅಪಾಯವನ್ನು ಬೀದಿ ಮಟ್ಟದಲ್ಲಿ ಅಳೆಯುತ್ತಿರುವ ವಿಮಾ ವಲಯ; ನಗರಗಳು ಗಮನಿಸಲೇಬೇಕು" },
+            { kicker: "ವಿವರಣೆ", image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=300&auto=format&fit=crop&q=80", title: "\"ತಂಪು ಮೇಲ್ಚಾವಣಿ\" ಎಂದರೇನು? ಅದು ಮತ್ತೆ ನೀತಿ ಟಿಪ್ಪಣಿಗಳಲ್ಲಿ ಯಾಕೆ ಮರಳಿದೆ?" }
           ],
           latestTitle: "ಇತ್ತೀಚಿನ ಸುದ್ದಿ",
           latest: [
-            { time: "9:18 AM IST", title: "ಬೇಸಿಗೆ ಮುನ್ನ ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆಗಳ ಬಳಿ ಹೊಸ ನೆರಳು ನಿರೀಕ್ಷಣಾ ವಲಯಗಳಿಗೆ ಅನುಮೋದನೆ" },
-            { time: "8:54 AM IST", title: "ಮಳೆಗಾಲ ಪರಿಶೀಲನೆಗೂ ಮುನ್ನ ವಾರ್ಡ್‌ವಾರು ಪ್ರವಾಹ ತಡೆ ಕಾಮಗಾರಿಗಳ ವರದಿ ಕೋರಿದ ರಾಜ್ಯ" },
-            { time: "8:12 AM IST", title: "ತೀವ್ರ ಬಿಸಿಲಿನ ಜಂಕ್ಷನ್‌ಗಳಲ್ಲಿ ಪೊಲೀಸ್ ಸಿಬ್ಬಂದಿಗೆ ತಂಪು ಪೆಟ್ರೋಲ್ ಬೂತ್ ಪೈಲಟ್" },
-            { time: "7:41 AM IST", title: "ಎಂಟು ವಾರ್ಡ್‌ಗಳಲ್ಲಿ ಶಾಲಾ ಮಾರ್ಗ ಪರಿಶೀಲನೆ: ಮರನೆರಳು ಕೊರತೆ ಮತ್ತು ಅಪಾಯದ ದಾಟಣೆ ಪತ್ತೆ" }
+            { time: "9:18 AM IST", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=300&auto=format&fit=crop&q=80", title: "ಬೇಸಿಗೆ ಮುನ್ನ ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆಗಳ ಬಳಿ ಹೊಸ ನೆರಳು ನಿರೀಕ್ಷಣಾ ವಲಯಗಳಿಗೆ ಅನುಮೋದನೆ" },
+            { time: "8:54 AM IST", image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=300&auto=format&fit=crop&q=80", title: "ಮಳೆಗಾಲ ಪರಿಶೀಲನೆಗೂ ಮುನ್ನ ವಾರ್ಡ್‌ವಾರು ಪ್ರವಾಹ ತಡೆ ಕಾಮಗಾರಿಗಳ ವರದಿ ಕೋರಿದ ರಾಜ್ಯ" },
+            { time: "8:12 AM IST", image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=300&auto=format&fit=crop&q=80", title: "ತೀವ್ರ ಬಿಸಿಲಿನ ಜಂಕ್ಷನ್‌ಗಳಲ್ಲಿ ಪೊಲೀಸ್ ಸಿಬ್ಬಂದಿಗೆ ತಂಪು ಪೆಟ್ರೋಲ್ ಬೂತ್ ಪೈಲಟ್" },
+            { time: "7:41 AM IST", image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=300&auto=format&fit=crop&q=80", title: "ಎಂಟು ವಾರ್ಡ್‌ಗಳಲ್ಲಿ ಶಾಲಾ ಮಾರ್ಗ ಪರಿಶೀಲನೆ: ಮರನೆರಳು ಕೊರತೆ ಮತ್ತು ಅಪಾಯದ ದಾಟಣೆ ಪತ್ತೆ" }
           ],
           picksTitle: "ಪಿವಿ ಆಯ್ಕೆ",
           picks: [
             {
-              badge: "ವಿಶ್ಲೇಷಣೆ",
-              title: "ಡೇಟಾ ತಂಡ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿ ತಂಡ ಒಂದೇ ನಕ್ಷೆಯಲ್ಲಿ ಕೆಲಸ ಮಾಡಿದಾಗ ಏನು ಬದಲಾಗುತ್ತದೆ",
-              summary: "ನಗರ ಬುದ್ಧಿವಂತಿಕೆಯ ಬೆಲೆ ಅದು ಪ್ರಸ್ತುತಿಯಲ್ಲಲ್ಲ, ಕಾಮಗಾರಿಯ ವೇಳಾಪಟ್ಟಿಯಲ್ಲಿ ಬದಲಾವಣೆ ತರುವಾಗ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
-              alt: false
+              category: "ವಿಶ್ಲೇಷಣೆ",
+              image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&auto=format&fit=crop&q=80",
+              headline: "ಡೇಟಾ ತಂಡ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿ ತಂಡ ಒಂದೇ ನಕ್ಷೆಯಲ್ಲಿ ಕೆಲಸ ಮಾಡಿದಾಗ ಏನು ಬದಲಾಗುತ್ತದೆ",
+              readTime: "5 ನಿಮಿಷ",
+              publishTime: "2 ಘಂ."
             },
             {
-              badge: "ವಾರಾಂತ್ಯ ಓದು",
-              title: "ಬೆಂಗಳೂರು ಮರನೆರಳಿನ ಮೌನ ಇತಿಹಾಸ: ಹಳೆಯ ಅವೆನ್ಯೂಗಳು ಇಂದಿಗೂ ಯೋಜಕರಿಗೆ ಹೇಳುವ ಪಾಠಗಳು",
-              summary: "ಹಳೆಯ ಪ್ರದೇಶಗಳು ನೆರಳು, ನಡೆದುಹೋಗುವಿಕೆ ಮತ್ತು ಆರಾಮವೂ ಒಂದು ಸಾರ್ವಜನಿಕ ಸೇವೆಯೇ ಎಂಬುದಕ್ಕೆ ಸುಳಿವು ನೀಡುತ್ತವೆ.",
-              alt: true
+              category: "ವಾರಾಂತ್ಯ ಓದು",
+              image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&auto=format&fit=crop&q=80",
+              headline: "ಬೆಂಗಳೂರು ಮರನೆರಳಿನ ಮೌನ ಇತಿಹಾಸ: ಹಳೆಯ ಅವೆನ್ಯೂಗಳು ಇಂದಿಗೂ ಯೋಜಕರಿಗೆ ಹೇಳುವ ಪಾಠಗಳು",
+              readTime: "7 ನಿಮಿಷ",
+              publishTime: "8 ಘಂ."
             }
           ],
           newsletterTitle: "ಬೆಳಗಿನ ಬುಲೆಟಿನ್",
@@ -1728,9 +1790,7 @@
       authorAvatar: document.getElementById("author-avatar"),
       authorCardAvatar: document.getElementById("author-card-avatar"),
       authorName: document.getElementById("author-name"),
-      authorRole: document.getElementById("author-role"),
       publishedAt: document.getElementById("published-at"),
-      updatedAt: document.getElementById("updated-at"),
       readTime: document.getElementById("read-time"),
       followLabel: document.getElementById("follow-label"),
       followPrimaryText: document.getElementById("follow-primary-text"),
@@ -1890,8 +1950,16 @@
       container.replaceChildren();
       items.forEach((item, index) => {
         const li = document.createElement("li");
-        li.className = "ranked-story";
-        li.innerHTML = `<span class="rank">${index + 1}</span><div><div class="rail-kicker">${item.kicker}</div><a class="rail-title" href="#">${item.title}</a></div>`;
+        li.className = "story-card story-card--support";
+        li.innerHTML = `
+          <div class="story-image-container">
+            <img src="${item.image}" alt="${item.title}" class="story-image">
+            <span class="rank-badge">${index + 1}</span>
+          </div>
+          <div class="headline-overlay">
+            <div class="rail-kicker">${item.kicker}</div>
+            <a class="rail-headline" href="#">${item.title}</a>
+          </div>`;
         container.appendChild(li);
       });
     }
@@ -1900,8 +1968,15 @@
       container.replaceChildren();
       items.forEach((item) => {
         const li = document.createElement("li");
-        li.className = "latest-story";
-        li.innerHTML = `<div class="rail-time">${item.time}</div><a class="rail-title" href="#">${item.title}</a>`;
+        li.className = "story-card story-card--support";
+        li.innerHTML = `
+          <div class="story-image-container">
+            <img src="${item.image}" alt="${item.title}" class="story-image">
+          </div>
+          <div class="headline-overlay">
+            <div class="rail-time">${item.time}</div>
+            <a class="rail-headline" href="#">${item.title}</a>
+          </div>`;
         container.appendChild(li);
       });
     }
@@ -1910,8 +1985,25 @@
       container.replaceChildren();
       items.forEach((item) => {
         const article = document.createElement("article");
-        article.className = "pick-card";
-        article.innerHTML = `<div class="pick-thumb${item.alt ? " alt" : ""}"><span class="pick-badge">${item.badge}</span></div><div class="pick-copy"><a class="rail-title" href="#">${item.title}</a><p>${item.summary}</p></div>`;
+        article.className = "story-card story-card--support";
+        article.innerHTML = `
+          <div class="story-image-container">
+            <img src="${item.image}" alt="${item.headline}" class="story-image">
+            <span class="category-badge">${item.category}</span>
+          </div>
+          <div class="headline-overlay">
+            <div class="story-headline">${item.headline}</div>
+            <div class="story-metadata">
+              <span class="read-time">
+                <svg class="read-icon" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>${item.readTime}</span>
+              </span>
+              <span class="publish-time">
+                <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
+                <span>${item.publishTime}</span>
+              </span>
+            </div>
+          </div>`;
         container.appendChild(article);
       });
     }
@@ -1959,9 +2051,7 @@
       elements.authorAvatar.textContent = brand.author.initials;
       elements.authorCardAvatar.textContent = brand.author.initials;
       elements.authorName.textContent = brand.author.name;
-      elements.authorRole.textContent = brand.author.role;
       elements.publishedAt.textContent = brand.author.published;
-      elements.updatedAt.textContent = brand.author.updated;
       elements.readTime.textContent = brand.author.readTime;
       elements.followLabel.textContent = brand.follow.label;
       elements.followPrimaryText.textContent = brand.follow.primary;
