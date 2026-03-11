@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en" data-brand="deccan-herald">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deccan Herald | The long road from climate dashboards to cooler streets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "PV Headline";
+      src: url("PV-Revamp/PvHeadlineSemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "PV Text";
+      src: url("PV-Revamp/PvTextRegular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --brand-primary: #0091ac;
+      --brand-primary-deep: #006f83;
+      --brand-accent: #ffc107;
+      --brand-text: #1a1a1a;
+      --brand-text-muted: #5a6870;
+      --brand-surface: #ffffff;
+      --brand-surface-muted: #f4f8fa;
+      --brand-border: #d9e7ec;
+      --brand-border-strong: #c4d9e0;
+      --brand-hover: #e6f4f8;
+      --hero-bg-gradient:
+        radial-gradient(circle at top right, rgba(255, 193, 7, 0.18), transparent 18rem),
+        linear-gradient(180deg, #ffffff 0%, #f7fbfc 48%, #eef6f9 100%);
+      --hero-sky-start: #eaf7fb;
+      --hero-sky-end: #c9e9f1;
+      --hero-tower-start: #0b93ae;
+      --hero-tower-end: #06697b;
+      --hero-road-start: #40545d;
+      --hero-road-end: #5a717a;
+      --hero-hills-back: #d9eef4;
+      --hero-hills-front: #b8dbe4;
+      --hero-building-mid: #128faa;
+      --hero-building-dark: #0c7d93;
+      --hero-building-deep: #0a667a;
+      --hero-building-soft: #137f95;
+      --hero-card-stroke: #8dcddb;
+      --hero-detail-strong: #0f4d5b;
+      --hero-detail-muted: #36535b;
+      --hero-detail-subtle: #43646d;
+      --hero-road-line: #b8c4c9;
+      --container-max-width: 1280px;
+      --article-max-width: 760px;
+      --container-padding-mobile: 1rem;
+      --container-padding-desktop: 1.5rem;
+      --shadow-soft: 0 20px 45px rgba(0, 145, 172, 0.09);
+      --font-headline: "Playfair Display", Georgia, serif;
+      --font-subhead: "Roboto Slab", Georgia, serif;
+      --font-nav: "Playfair Display", Georgia, serif;
+      --font-body: "Roboto Slab", Georgia, serif;
+      --font-meta: "Roboto Slab", Georgia, serif;
+    }
+
+    html[data-brand="prajavani"] {
+      --brand-primary: #b82831;
+      --brand-primary-deep: #8f1f26;
+      --brand-text: #1b1717;
+      --brand-text-muted: #6e5f5f;
+      --brand-surface: #ffffff;
+      --brand-surface-muted: #fbf2ef;
+      --brand-border: #ead6d0;
+      --brand-border-strong: #d8bdb5;
+      --brand-hover: #f7ebe7;
+      --hero-bg-gradient:
+        radial-gradient(circle at top right, rgba(240, 140, 68, 0.18), transparent 18rem),
+        linear-gradient(180deg, #fffaf7 0%, #fbf1ec 48%, #f4e7e2 100%);
+      --hero-sky-start: #fff2ef;
+      --hero-sky-end: #f2d9d4;
+      --hero-tower-start: #b82831;
+      --hero-tower-end: #8f1f26;
+      --hero-road-start: #5a4848;
+      --hero-road-end: #7c6666;
+      --hero-hills-back: #f7e3df;
+      --hero-hills-front: #ebc7c1;
+      --hero-building-mid: #c2464d;
+      --hero-building-dark: #a92b34;
+      --hero-building-deep: #8f1f26;
+      --hero-building-soft: #c25a5e;
+      --hero-card-stroke: #d89d92;
+      --hero-detail-strong: #6f2326;
+      --hero-detail-muted: #7d4749;
+      --hero-detail-subtle: #94605f;
+      --hero-road-line: #cfbab3;
+      --shadow-soft: 0 20px 45px rgba(184, 40, 49, 0.08);
+      --font-headline: "PV Headline", "Noto Sans Kannada", sans-serif;
+      --font-subhead: "PV Text", "Noto Sans Kannada", sans-serif;
+      --font-nav: "PV Headline", "Noto Sans Kannada", sans-serif;
+      --font-body: "PV Text", "Noto Sans Kannada", sans-serif;
+      --font-meta: "PV Text", "Noto Sans Kannada", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--brand-text);
+      background: var(--hero-bg-gradient);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    .brand-switcher {
+      position: fixed;
+      z-index: 1300;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(10px);
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .brand-switcher button {
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      color: var(--brand-text);
+      font-family: var(--font-nav);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .brand-switcher button[aria-pressed="true"] {
+      color: #ffffff;
+      background: var(--brand-text);
+    }
+
+    .brand-switcher-handle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      color: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.06);
+      cursor: grab;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      letter-spacing: -0.08em;
+    }
+
+    .brand-switcher-handle:active,
+    .brand-switcher.is-dragging .brand-switcher-handle {
+      cursor: grabbing;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--brand-border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 60px;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 12px var(--container-padding-mobile);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .logo {
+      flex-shrink: 0;
+      line-height: 0;
+    }
+
+    .logo img {
+      height: 36px;
+      width: auto;
+      max-width: 240px;
+    }
+
+    .desktop-nav-links {
+      display: none;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .desktop-nav-links > ul {
+      display: flex;
+      align-items: stretch;
+      gap: 0.5rem;
+      width: max-content;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .desktop-nav-links > ul::-webkit-scrollbar,
+    .mobile-nav-links ul::-webkit-scrollbar,
+    .featured-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .desktop-nav-links li {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .desktop-nav-links a {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 3px solid transparent;
+      color: var(--brand-text);
+      font-family: var(--font-nav);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .desktop-nav-links a:hover,
+    .desktop-nav-links a.is-active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 999px;
+      color: var(--brand-text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .icon-button:hover {
+      background: var(--brand-hover);
+      color: var(--brand-primary);
+    }
+
+    .icon-button svg,
+    .share-button svg,
+    .follow-pill svg,
+    .topic-megaphone svg,
+    .comment-chip svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .login-button,
+    .epaper-main-header-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      min-height: 36px;
+      padding: 0 1.2rem;
+      border-radius: 6px;
+      font-family: var(--font-nav);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+      transition: filter 0.2s ease, background-color 0.2s ease;
+    }
+
+    .login-button {
+      color: #ffffff;
+      background: var(--brand-primary);
+    }
+
+    .login-button:hover {
+      filter: brightness(0.94);
+    }
+
+    .epaper-main-header-button {
+      color: var(--brand-text);
+      background: var(--brand-accent);
+    }
+
+    .epaper-main-header-button:hover {
+      filter: brightness(0.97);
+    }
+
+    .mobile-menu-bar {
+      width: 100%;
+      background: var(--brand-surface);
+      border-bottom: 1px solid var(--brand-border);
+    }
+
+    .menu-container {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0 0.4rem;
+      border-top: 1px solid var(--brand-border);
+    }
+
+    .mobile-nav-links {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .mobile-nav-links ul {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .mobile-nav-links li {
+      flex: 1 0 auto;
+      text-align: center;
+    }
+
+    .mobile-nav-links a {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.25rem;
+      border-bottom: 3px solid transparent;
+      color: var(--brand-text);
+      font-family: var(--font-nav);
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a.is-active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+
+    .featured-bar {
+      background: var(--brand-surface);
+      border-bottom: 1px solid var(--brand-border);
+      font-size: 0.85rem;
+    }
+
+    .featured-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 0.55rem var(--container-padding-mobile);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .topic-megaphone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-primary);
+      flex-shrink: 0;
+    }
+
+    .featured-bar ul {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .featured-bar li {
+      flex-shrink: 0;
+    }
+
+    .featured-bar a {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      background: #e8e8e8;
+      color: var(--brand-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      line-height: 1.3;
+      transition: background-color 0.2s ease;
+    }
+
+    .featured-bar a:hover {
+      background: #d8d8d8;
+    }
+
+    .featured-bar a.featured-highlight {
+      color: #ffffff;
+      background: var(--brand-primary);
+    }
+
+    .featured-bar a.featured-highlight:hover {
+      filter: brightness(0.92);
+    }
+
+    .page-shell {
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: 1.5rem var(--container-padding-mobile) 4rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 340px);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .story-main {
+      min-width: 0;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+      color: var(--brand-text-muted);
+      font-family: var(--font-meta);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--brand-primary);
+    }
+
+    .breadcrumb-separator {
+      color: #94a7af;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0.42rem 0.82rem;
+      border-radius: 4px;
+      color: var(--brand-primary);
+      background: rgba(0, 145, 172, 0.12);
+      font-family: var(--font-subhead);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .story-title {
+      max-width: 16ch;
+      margin-bottom: 1rem;
+      font-family: var(--font-headline);
+      font-size: clamp(2.55rem, 5.8vw, 4.25rem);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+
+    .story-deck {
+      max-width: 56rem;
+      margin-bottom: 1.7rem;
+      color: #30434a;
+      font-family: var(--font-subhead);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .story-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 28px rgba(0, 145, 172, 0.05);
+    }
+
+    .meta-author-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+
+    .author-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.1rem;
+      height: 3.1rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-deep));
+      font-family: var(--font-headline);
+      font-size: 1.15rem;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .author-meta {
+      display: grid;
+      gap: 0.3rem;
+      min-width: 0;
+    }
+
+    .author-name-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    .author-name {
+      font-family: var(--font-subhead);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .author-role {
+      color: var(--brand-text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .meta-times {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.1rem;
+      color: var(--brand-text-muted);
+      font-size: 0.86rem;
+    }
+
+    .follow-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.6rem;
+    }
+
+    .follow-label {
+      color: var(--brand-text-muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .follow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--brand-text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .follow-pill:hover {
+      color: var(--brand-primary);
+      border-color: var(--brand-primary);
+      background: var(--brand-hover);
+    }
+
+    .hero-figure {
+      margin-bottom: 2rem;
+      overflow: hidden;
+      border: 1px solid var(--brand-border);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-art {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1.15rem 1.1rem;
+      border-top: 1px solid var(--brand-border);
+      color: var(--brand-text-muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .hero-caption strong {
+      color: var(--brand-text);
+      font-weight: 700;
+    }
+
+    .story-body {
+      display: grid;
+      gap: 1.4rem;
+      font-size: 1.06rem;
+    }
+
+    .story-body p {
+      color: #23343a;
+    }
+
+    .story-body p.story-intro {
+      font-size: 1.16rem;
+      line-height: 1.8;
+      color: #18272c;
+    }
+
+    .story-body h2 {
+      margin-top: 0.8rem;
+      color: var(--brand-text);
+      font-family: var(--font-headline);
+      font-size: clamp(1.6rem, 2.8vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .inline-callout,
+    .pull-quote,
+    .fact-sheet {
+      padding: 1.15rem 1.2rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 6px;
+      background: linear-gradient(180deg, #ffffff, var(--brand-surface-muted));
+    }
+
+    .inline-callout {
+      border-left: 4px solid var(--brand-primary);
+    }
+
+    .inline-callout h3,
+    .fact-sheet h3 {
+      margin-bottom: 0.55rem;
+      font-family: var(--font-subhead);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .inline-callout ul,
+    .fact-sheet ul {
+      display: grid;
+      gap: 0.55rem;
+      padding-left: 1rem;
+      list-style: disc;
+    }
+
+    .pull-quote {
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem 1.3rem 1.25rem;
+    }
+
+    .pull-quote::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 0.35rem;
+      background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+    }
+
+    .pull-quote p {
+      color: var(--brand-text);
+      font-family: var(--font-headline);
+      font-size: clamp(1.45rem, 3vw, 1.8rem);
+      line-height: 1.35;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 0.85rem;
+      color: var(--brand-text-muted);
+      font-size: 0.9rem;
+      font-style: normal;
+    }
+
+    .tags-share {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--brand-border);
+    }
+
+    .tag-row,
+    .engagement-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .tags-label,
+    .engagement-label {
+      color: var(--brand-text-muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.52rem 0.8rem;
+      border-radius: 4px;
+      background: rgba(0, 145, 172, 0.08);
+      color: var(--brand-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .comment-chip,
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--brand-text);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .comment-chip:hover,
+    .share-button:hover {
+      color: var(--brand-primary);
+      border-color: var(--brand-primary);
+      background: var(--brand-hover);
+    }
+
+    .author-card {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 1.3rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff, #f7fbfd);
+      box-shadow: 0 16px 35px rgba(0, 145, 172, 0.06);
+    }
+
+    .author-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+    }
+
+    .author-card-copy {
+      display: grid;
+      gap: 0.28rem;
+    }
+
+    .author-card-copy h3 {
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    .author-card-copy p {
+      color: var(--brand-text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .author-card-bio {
+      color: #26383e;
+      font-size: 0.97rem;
+    }
+
+    .author-card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .author-card-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 0.85rem;
+      border-radius: 4px;
+      background: rgba(0, 145, 172, 0.08);
+      color: var(--brand-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .story-rail {
+      position: sticky;
+      top: 8.6rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .rail-widget {
+      padding: 1.1rem;
+      border: 1px solid var(--brand-border);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 14px 34px rgba(0, 145, 172, 0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .rail-widget h2 {
+      margin-bottom: 0.9rem;
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      line-height: 1.15;
+    }
+
+    .rail-list {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .rail-list li {
+      display: grid;
+      gap: 0.22rem;
+    }
+
+    .ranked-story {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+
+    .rank {
+      color: var(--brand-primary);
+      font-family: var(--font-headline);
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .rail-kicker,
+    .rail-time {
+      color: var(--brand-text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .rail-title {
+      font-family: var(--font-subhead);
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #1f3036;
+    }
+
+    .rail-title:hover {
+      color: var(--brand-primary);
+    }
+
+    .latest-story {
+      padding-bottom: 0.8rem;
+      border-bottom: 1px dashed var(--brand-border);
+    }
+
+    .latest-story:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .picks-grid {
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .pick-card {
+      overflow: hidden;
+      border: 1px solid var(--brand-border);
+      border-radius: 6px;
+      background: #ffffff;
+    }
+
+    .pick-thumb {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      background:
+        radial-gradient(circle at top left, rgba(255, 193, 7, 0.3), transparent 35%),
+        linear-gradient(135deg, rgba(0, 145, 172, 0.95), rgba(0, 111, 131, 0.92));
+    }
+
+    .pick-thumb.alt {
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 25%),
+        linear-gradient(135deg, #7d6036, #d2a34b);
+    }
+
+    .pick-thumb::before,
+    .pick-thumb::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .pick-thumb::before {
+      top: 15%;
+      left: 8%;
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+
+    .pick-thumb::after {
+      right: -1.5rem;
+      bottom: -2rem;
+      width: 8rem;
+      height: 8rem;
+    }
+
+    .pick-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 3px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.35);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pick-copy {
+      display: grid;
+      gap: 0.32rem;
+      padding: 0.9rem;
+    }
+
+    .pick-copy p {
+      color: var(--brand-text-muted);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    .rail-widget.newsletter {
+      background:
+        linear-gradient(145deg, rgba(0, 145, 172, 0.14), rgba(255, 193, 7, 0.13)),
+        #ffffff;
+    }
+
+    .newsletter p {
+      color: #244048;
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .newsletter-form {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 0.95rem;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 0.85rem 0.95rem;
+      border: 1px solid var(--brand-border-strong);
+      border-radius: 6px;
+      font: inherit;
+      color: var(--brand-text);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .newsletter-form button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.82rem 1rem;
+      border-radius: 6px;
+      color: #ffffff;
+      background: var(--brand-primary);
+      font-weight: 700;
+    }
+
+    .newsletter-form button:hover {
+      filter: brightness(0.95);
+    }
+
+    @media (min-width: 1024px) {
+      .desktop-nav-links {
+        display: block;
+      }
+
+      .mobile-menu-bar {
+        display: none;
+      }
+
+      .header-container {
+        padding: 12px var(--container-padding-desktop);
+      }
+
+      .featured-container {
+        padding-left: var(--container-padding-desktop);
+        padding-right: var(--container-padding-desktop);
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .story-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .story-main {
+        max-width: var(--article-max-width);
+      }
+
+      .story-rail {
+        position: static;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .header-container {
+        gap: 0.5rem;
+      }
+
+      .logo img {
+        height: 31px;
+      }
+
+      .main-nav {
+        gap: 0.45rem;
+      }
+
+      .login-button {
+        display: none;
+      }
+
+      .story-title {
+        max-width: 100%;
+      }
+
+      .story-meta-bar {
+        padding: 1rem;
+      }
+
+      .hero-caption {
+        flex-direction: column;
+      }
+
+      .story-rail {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        padding-top: 1rem;
+      }
+
+      .featured-container {
+        justify-content: flex-start;
+      }
+
+      .story-title {
+        font-size: clamp(2.2rem, 11vw, 3rem);
+      }
+
+      .story-deck {
+        font-size: 1rem;
+      }
+
+      .story-meta-bar {
+        gap: 0.9rem;
+      }
+
+      .follow-block {
+        justify-content: flex-start;
+      }
+
+      .story-body {
+        font-size: 1rem;
+      }
+
+      .rail-title {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="sharedNavRoot"></div>
+
+  <main class="page-shell">
+    <div class="story-grid">
+      <article class="story-main">
+        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+
+        <div class="section-label" id="section-label">Civic Affairs</div>
+        <h1 class="story-title" id="story-title">The long road from climate dashboards to cooler streets</h1>
+        <p class="story-deck" id="story-deck">
+          Bengaluru has no shortage of pilot projects, maps or climate pledges. The harder test is whether ward-level plans can survive budget cycles, contractor delays and the daily politics of roads, drains and shade.
+        </p>
+
+        <div class="story-meta-bar">
+          <div class="meta-author-group">
+            <div class="author-avatar" id="author-avatar" aria-hidden="true">NS</div>
+            <div class="author-meta">
+              <div class="author-name-row">
+                <span class="author-name" id="author-name">Nisha Saldanha</span>
+                <span class="author-role" id="author-role">Civic infrastructure correspondent</span>
+              </div>
+              <div class="meta-times">
+                <span id="published-at">Published: March 11, 2026, 6:30 AM IST</span>
+                <span id="updated-at">Updated: March 11, 2026, 9:05 AM IST</span>
+                <span id="read-time">6 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="follow-block" aria-label="Follow options">
+            <span class="follow-label" id="follow-label">Follow</span>
+            <a class="follow-pill" href="#" id="follow-primary">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12a8 8 0 0 1 8-8h3"></path>
+                <path d="M14 4h6v6"></path>
+                <path d="M20 4l-8 8"></path>
+              </svg>
+              <span id="follow-primary-text">WhatsApp</span>
+            </a>
+            <a class="follow-pill" href="#" id="follow-secondary">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5l7.5 7.5L4.5 20"></path>
+                <path d="M13 5h7"></path>
+                <path d="M13 12h7"></path>
+                <path d="M13 19h7"></path>
+              </svg>
+              <span id="follow-secondary-text">X Alerts</span>
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero-figure">
+          <img
+            class="hero-art"
+            src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&auto=format&fit=crop&q=80"
+            alt="Bengaluru street with tree canopy and urban infrastructure"
+          >
+          <figcaption class="hero-caption">
+            <span><strong id="hero-caption-label">Caption:</strong> <span id="hero-caption-text">A ward-level heat and flooding plan is most useful when it turns into a sequence of ordinary, visible fixes such as tree cover, shaded bus stops and targeted drain work.</span></span>
+            <span><strong id="hero-credit-label">Credit:</strong> <span id="hero-credit-text">Photo: Unsplash</span></span>
+          </figcaption>
+        </figure>
+
+        <div class="story-body" id="story-body"></div>
+
+        <div class="tags-share">
+          <div class="tag-row">
+            <span class="tags-label" id="tags-label">Tags</span>
+            <div class="tag-row" id="tag-list"></div>
+          </div>
+
+          <div class="engagement-row">
+            <span class="engagement-label" id="engagement-label">Comments &amp; Share</span>
+            <a class="comment-chip" href="#">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 6h14v9H9l-4 4V6z"></path>
+              </svg>
+              <span id="comment-count">52 Comments</span>
+            </a>
+            <div class="engagement-row" id="share-button-list"></div>
+          </div>
+        </div>
+
+        <section class="author-card" aria-labelledby="author-card-title">
+          <div class="author-card-header">
+            <div class="author-avatar" id="author-card-avatar" aria-hidden="true">NS</div>
+            <div class="author-card-copy">
+              <h3 id="author-card-title">About the author</h3>
+              <p id="author-card-summary">Nisha Saldanha covers civic infrastructure, public transport and city governance for Deccan Herald.</p>
+            </div>
+          </div>
+          <p class="author-card-bio" id="author-card-bio">
+            Her reporting focuses on how public systems are experienced on the ground: ward budgets, street design, heat stress, flooding and the everyday negotiations between city planning and city life.
+          </p>
+          <div class="author-card-links" id="author-card-links"></div>
+        </section>
+      </article>
+
+      <aside class="story-rail" aria-label="Sidebar">
+        <section class="rail-widget" aria-labelledby="most-read-title">
+          <h2 id="most-read-title">Most Read</h2>
+          <ol class="rail-list" id="most-read-list"></ol>
+        </section>
+
+        <section class="rail-widget" aria-labelledby="latest-news-title">
+          <h2 id="latest-news-title">Latest News</h2>
+          <ul class="rail-list" id="latest-news-list"></ul>
+        </section>
+
+        <section class="rail-widget" aria-labelledby="dh-picks-title">
+          <h2 id="dh-picks-title">DH Picks</h2>
+          <div class="picks-grid" id="picks-grid"></div>
+        </section>
+
+        <section class="rail-widget newsletter" aria-labelledby="newsletter-title">
+          <h2 id="newsletter-title">Morning Brief</h2>
+          <p id="newsletter-copy">
+            A concise digest of Bengaluru, India and global stories, sent before the city reaches full speed.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" id="newsletter-email" name="email" value="reader@example.com" aria-label="Email address" autocomplete="email">
+            <button type="button" id="newsletter-button">Subscribe</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script src="shared-nav-component.js"></script>
+  <script>
+    const brandData = {
+      "deccan-herald": {
+        lang: "en",
+        siteName: "Deccan Herald",
+        logoSrc: "DH Blue Logo high.png",
+        logoAlt: "Deccan Herald",
+        logoAria: "Deccan Herald Home",
+        logoHeight: "42px",
+        logoMaxWidth: "280px",
+        loginLabel: "Login",
+        epaperLabel: "Subscribe",
+        desktopNav: ["News", "Bengaluru", "Opinion", "India", "World", "Sports", "Lifestyle"],
+        mobileNav: ["News", "Cities", "Opinion", "World", "Sports"],
+        featured: [
+          { label: "Explainers", emphasis: true },
+          { label: "Budget Tracker" },
+          { label: "Heat Watch" },
+          { label: "Weekend Reads" },
+          { label: "Election Lab" }
+        ],
+        breadcrumb: ["Home", "Bengaluru", "Civic Affairs", "Urban resilience"],
+        sectionLabel: "Civic Affairs",
+        headline: "The long road from climate dashboards to cooler streets",
+        deck: "Bengaluru has no shortage of pilot projects, maps or climate pledges. The harder test is whether ward-level plans can survive budget cycles, contractor delays and the daily politics of roads, drains and shade.",
+        author: {
+          initials: "NS",
+          name: "Nisha Saldanha",
+          role: "Civic infrastructure correspondent",
+          published: "Published: March 11, 2026, 6:30 AM IST",
+          updated: "Updated: March 11, 2026, 9:05 AM IST",
+          readTime: "6 min read"
+        },
+        follow: {
+          label: "Follow",
+          primary: "WhatsApp",
+          secondary: "X Alerts"
+        },
+        hero: {
+          title: "Urban climate data translated into street-level interventions",
+          desc: "An editorial illustration showing a city street, tree canopy overlays, maps, and planning dashboards in the active brand palette.",
+          dashboardTitle: "Heat Action Dashboard",
+          dashboardSubtitle: "Shade coverage up 18% in pilot wards",
+          wardTitle: "Ward 87",
+          wardSubtitle: "Cool roofs, bus-stop shade, flood drains",
+          captionLabel: "Caption:",
+          captionText: "A ward-level heat and flooding plan is most useful when it turns into a sequence of ordinary, visible fixes such as tree cover, shaded bus stops and targeted drain work.",
+          creditLabel: "Credit:",
+          creditText: "Illustration by DH Lab"
+        },
+        body: [
+          {
+            type: "intro",
+            text: "Every civic season in Bengaluru produces a new stack of maps. Tree-canopy maps, flood-risk maps, heat-stress maps, commuter maps and now resilience dashboards that promise to turn all of them into a single operating picture. Officials like the clarity. Residents like the ambition. Contractors, ward engineers and budget officers usually inherit the harder part."
+          },
+          {
+            type: "p",
+            text: "The city has learned that data can diagnose a neighbourhood long before asphalt is cut or a storm-water line is relaid. It is far less settled on how those findings should move through the layers of procurement, ownership and maintenance that govern public works. A road that traps heat may also be dug up three times by agencies working from different calendars. A flooded junction may need as much tree preservation upstream as it needs fresh concrete at the point of complaint."
+          },
+          {
+            type: "callout",
+            title: "What officials say has changed in the last year",
+            items: [
+              "Ward engineers now receive one-page climate risk summaries before annual works are prioritised.",
+              "Heat-vulnerability scores are being paired with bus-stop and school-zone upgrades instead of remaining in planning presentations.",
+              "Budget notes increasingly describe maintenance responsibilities alongside capital spending."
+            ]
+          },
+          {
+            type: "p",
+            text: "That is why the most serious planners have stopped describing resilience as a separate \"climate\" project. They now talk about it as a discipline for choosing which ordinary civic jobs get done first. If a footpath rebuild can also improve drainage, preserve mature trees and create shaded walking stretches near a government school, the project stops being a symbolic green gesture and becomes basic city management done with better evidence."
+          },
+          {
+            type: "p",
+            text: "In several wards, the first real test has not been engineering but sequence. Residents notice when paving crews arrive before utility conflicts are sorted out. They notice when saplings are planted without a watering plan. They notice when sensors are installed but public updates disappear after the first press note. Climate dashboards can survive those failures only if they are tied to routines that outlast the announcement cycle."
+          },
+          {
+            type: "quote",
+            text: "\"A resilience plan earns trust only when citizens can point to one street corner and say the city changed this because the evidence demanded it.\"",
+            cite: "Urban planner Meera Achar, speaking at a ward review this month"
+          },
+          { type: "h2", text: "From pilot logic to city logic" },
+          {
+            type: "p",
+            text: "Pilot wards are useful because they compress complexity. Teams can spend extra time coordinating schools, markets, storm-water drains and commuter routes in a limited geography. The danger is that pilots also hide the administrative strain required to scale. What works with a special review meeting every fortnight may stall when replicated across dozens of wards with uneven staffing and far less political attention."
+          },
+          {
+            type: "p",
+            text: "That is where the better dashboards are beginning to evolve. Instead of treating every layer of data as equally urgent, they are ranking interventions that can be folded into existing maintenance windows. Cool-roof subsidies around public clinics, shade structures at transfer points and routine desilting in repeatedly flooded segments are all modest moves. Together, they create the kind of visible pattern that helps residents believe a larger plan is actually underway."
+          },
+          {
+            type: "fact",
+            title: "Three signals residents can track without waiting for an annual report",
+            items: [
+              "Whether the same hotspots appear in capital works lists, not just in public presentations.",
+              "Whether tree-protection details are published before road widening begins.",
+              "Whether ward offices can explain who maintains each new intervention after it is installed."
+            ]
+          },
+          {
+            type: "p",
+            text: "The institutional lesson is simple enough: climate resilience is easier to announce than to schedule. Yet it may finally be entering the part of civic administration where schedules matter more than slogans. If that shift holds, the city's most important dashboards will not be the ones that impress at launch. They will be the ones boring enough to survive into next year's maintenance register."
+          }
+        ],
+        tagsLabel: "Tags",
+        tags: ["Bengaluru", "Climate", "Urban Planning", "Civic Budget"],
+        engagementLabel: "Comments & Share",
+        commentCount: "52 Comments",
+        shareLabels: ["Share", "Save", "Print"],
+        authorCard: {
+          title: "About the author",
+          summary: "Nisha Saldanha covers civic infrastructure, public transport and city governance for Deccan Herald.",
+          bio: "Her reporting focuses on how public systems are experienced on the ground: ward budgets, street design, heat stress, flooding and the everyday negotiations between city planning and city life.",
+          links: ["More from Nisha", "Follow on X", "Email the reporter"]
+        },
+        rail: {
+          mostReadTitle: "Most Read",
+          mostRead: [
+            { kicker: "Bengaluru", title: "Metro feeder rethink puts bus priority back at the centre of the commute debate" },
+            { kicker: "India", title: "Centre expands district heat advisories as March temperatures rise early" },
+            { kicker: "Opinion", title: "Why the best civic reforms begin with maintenance, not announcements" },
+            { kicker: "Business", title: "Insurers are pricing urban flood risk street by street. Cities should pay attention." },
+            { kicker: "Explainers", title: "What a \"cool roof\" actually does, and why it is back in city policy notes" }
+          ],
+          latestTitle: "Latest News",
+          latest: [
+            { time: "9:18 AM IST", title: "BBMP clears new shaded waiting areas near government hospitals ahead of summer rush" },
+            { time: "8:54 AM IST", title: "Karnataka seeks ward-wise flood mitigation updates before monsoon review meeting" },
+            { time: "8:12 AM IST", title: "Traffic police to pilot cooler patrol booths at three high-exposure junctions" },
+            { time: "7:41 AM IST", title: "School route audits flag missing tree cover and unsafe crossings in eight wards" }
+          ],
+          picksTitle: "DH Picks",
+          picks: [
+            {
+              badge: "Analysis",
+              title: "When data teams and public works teams finally work from the same map",
+              summary: "The value of city intelligence is highest when it changes capital works timing, not just presentations.",
+              alt: false
+            },
+            {
+              badge: "Weekend Read",
+              title: "A quiet history of Bengaluru's shade: what old avenues still teach planners today",
+              summary: "Older neighbourhoods offer clues about canopy, walkability and why comfort is also a civic service.",
+              alt: true
+            }
+          ],
+          newsletterTitle: "Morning Brief",
+          newsletterCopy: "A concise digest of Bengaluru, India and global stories, sent before the city reaches full speed.",
+          newsletterButton: "Subscribe",
+          newsletterEmail: "reader@example.com"
+        }
+      },
+      "prajavani": {
+        lang: "kn",
+        siteName: "Prajavani",
+        logoSrc: "PV-Revamp/pv logo.svg",
+        logoAlt: "Prajavani",
+        logoAria: "Prajavani Home",
+        loginLabel: "ಲಾಗಿನ್",
+        epaperLabel: "Subscribe",
+        desktopNav: ["ಸುದ್ದಿ", "ಬೆಂಗಳೂರು", "ಅಭಿಮತ", "ಕರ್ನಾಟಕ", "ವಿಶ್ವ", "ಕ್ರೀಡೆ", "ಜೀವನಶೈಲಿ"],
+        mobileNav: ["ಸುದ್ದಿ", "ನಗರ", "ಅಭಿಮತ", "ವಿಶ್ವ", "ಕ್ರೀಡೆ"],
+        featured: [
+          { label: "ವಿವರಣೆ", emphasis: true },
+          { label: "ಬಜೆಟ್ ಟ್ರ್ಯಾಕರ್" },
+          { label: "ಬಿಸಿಲಿನ ನಿಗಾ" },
+          { label: "ವಾರಾಂತ್ಯ ಓದು" },
+          { label: "ಚುನಾವಣೆ ಲ್ಯಾಬ್" }
+        ],
+        breadcrumb: ["ಮುಖಪುಟ", "ಬೆಂಗಳೂರು", "ನಗರಾಡಳಿತ", "ನಗರ ತಾಳ್ಮೆ"],
+        sectionLabel: "ನಗರಾಡಳಿತ",
+        headline: "ನಗರದ ನಕ್ಷೆಗಳಿಂದ ನೆರಳಿನ ಬೀದಿಗಳವರೆಗೆ ದೀರ್ಘ ಪ್ರಯಾಣ",
+        deck: "ಬೆಂಗಳೂರುದಲ್ಲಿ ಹೀಟ್ ಮ್ಯಾಪ್‌, ಪ್ರವಾಹ ನಕ್ಷೆ ಹಾಗೂ ವಾರ್ಡ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳ ಕೊರತೆಯಿಲ್ಲ. ಆದರೆ ಅವು ರಸ್ತೆ, ಕಾಲುವೆ, ಮರನೆರಳು ಮತ್ತು ವಾರ್ಷಿಕ ಕಾಮಗಾರಿಗಳ ಕ್ರಮಕ್ಕೆ ಇಳಿಯುತ್ತವೆಯೇ ಎಂಬುದೇ ನಿಜವಾದ ಪರೀಕ್ಷೆ.",
+        author: {
+          initials: "ವಿ",
+          name: "ವಿದ್ಯಾ ಪ್ರಸಾದ್",
+          role: "ನಗರಾಡಳಿತ ವರದಿಗಾರ್ತಿ",
+          published: "ಪ್ರಕಟಣೆ: ಮಾರ್ಚ್ 11, 2026, ಬೆಳಿಗ್ಗೆ 6:30",
+          updated: "ನವೀಕರಣ: ಮಾರ್ಚ್ 11, 2026, ಬೆಳಿಗ್ಗೆ 9:05",
+          readTime: "6 ನಿಮಿಷ ಓದು"
+        },
+        follow: {
+          label: "ಹಿಂಬಾಲಿಸಿ",
+          primary: "ವಾಟ್ಸ್‌ಆಪ್",
+          secondary: "ತ್ವರಿತ ಅಪ್‌ಡೇಟ್"
+        },
+        hero: {
+          title: "ನಗರದ ಹವಾಮಾನ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ವಾರ್ಡ್ ಮಟ್ಟದ ಕ್ರಮಗಳಿಗೆ ಇಳಿಯುವ ಚಿತ್ರ",
+          desc: "ಸಕ್ರಿಯ ಬ್ರ್ಯಾಂಡ್ ಬಣ್ಣಗಳಲ್ಲಿ ನಗರ ರಸ್ತೆ, ಮರನೆರಳು ಮತ್ತು ಯೋಜನಾ ಫಲಕಗಳನ್ನು ತೋರಿಸುವ ಚಿತ್ರೀಕರಣ.",
+          dashboardTitle: "ತಾಪ ಕ್ರಿಯಾ ಫಲಕ",
+          dashboardSubtitle: "ಪೈಲಟ್ ವಾರ್ಡ್‌ಗಳಲ್ಲಿ ನೆರಳು 18% ಹೆಚ್ಚಳ",
+          wardTitle: "ವಾರ್ಡ್ 87",
+          wardSubtitle: "ತಂಪು ಮೇಲ್ಚಾವಣಿ, ಬಸ್ ನಿಲ್ದಾಣ ನೆರಳು, ಕಾಲುವೆ ದುರಸ್ತಿ",
+          captionLabel: "ವಿವರಣೆ:",
+          captionText: "ವಾರ್ಡ್ ಮಟ್ಟದ ಉಷ್ಣತೆ ಮತ್ತು ಪ್ರವಾಹ ಯೋಜನೆ ಮರನೆರಳು, ಬಸ್ ನಿಲ್ದಾಣ ಛಾವಣಿ ಮತ್ತು ಗುರಿತಪ್ಪದ ಕಾಲುವೆ ಕಾಮಗಾರಿ ಎಂಬಂತೆ ಕಾಣುವ ಸಾಮಾನ್ಯ ಬದಲಾವಣೆಗಳಿಗೆ ಇಳಿದಾಗ ಮಾತ್ರ ಅದು ಉಪಯುಕ್ತವಾಗುತ್ತದೆ.",
+          creditLabel: "ಕ್ರೆಡಿಟ್:",
+          creditText: "ಚಿತ್ರಣ: ಪಿವಿ ಲ್ಯಾಬ್"
+        },
+        body: [
+          {
+            type: "intro",
+            text: "ಪ್ರತಿ ಬೇಸಿಗೆ ಹಂತದಲ್ಲೂ ಬೆಂಗಳೂರಿಗೆ ಹೊಸ ಹೊಸ ನಕ್ಷೆಗಳು ಸೇರುತ್ತಿವೆ. ಮರನೆರಳಿನ ನಕ್ಷೆ, ಪ್ರವಾಹ ಅಪಾಯ ನಕ್ಷೆ, ಉಷ್ಣತೆ ಒತ್ತಡ ನಕ್ಷೆ, ಸಂಚಾರ ನಕ್ಷೆ ಹಾಗೂ ಈಗ ಎಲ್ಲವನ್ನೂ ಒಂದು ಕಾರ್ಯಪಟುವಾದ ಚಿತ್ರವಾಗಿ ತೋರಿಸುವ ತಾಳ್ಮೆ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳು. ಅಧಿಕಾರಿಗಳಿಗೆ ಇದು ಸ್ಪಷ್ಟತೆ. ನಾಗರಿಕರಿಗೆ ಇದು ಭರವಸೆ. ಆದರೆ ಅದರ ಕಠಿಣ ಭಾಗವನ್ನು ಹೊರುವವರು ವಾರ್ಡ್ ಎಂಜಿನಿಯರ್‌ಗಳು, ಗುತ್ತಿಗೆದಾರರು ಮತ್ತು ಬಜೆಟ್ ಅಧಿಕಾರಿಗಳೇ."
+          },
+          {
+            type: "p",
+            text: "ನಗರಕ್ಕೆ ಇಂದು ಡೇಟಾ ಒಂದು ಬೀದಿಯ ಸಮಸ್ಯೆಯನ್ನು ರಸ್ತೆ ಒಡೆಯುವ ಮೊದಲುಲೇ ತೋರಿಸಬಲ್ಲದು ಎನ್ನುವುದು ತಿಳಿದಿದೆ. ಆದರೆ ಆ ತಿಳುವಳಿಕೆ ಖರೀದಿ ಕ್ರಮ, ಸ್ವಾಮ್ಯ, ನಿರ್ವಹಣೆ ಮತ್ತು ವಿವಿಧ ಇಲಾಖೆ ಕ್ಯಾಲೆಂಡರ್‌ಗಳ ಮಧ್ಯೆ ಹೇಗೆ ಸಾಗಬೇಕು ಎನ್ನುವುದೇ ಇನ್ನೂ ದೊಡ್ಡ ಪ್ರಶ್ನೆ. ಬಿಸಿಲು ಹಿಡಿಯುವ ರಸ್ತೆ ಮತ್ತೆ ಮತ್ತೆ ವಿವಿಧ ಸಂಸ್ಥೆಗಳ ತೋಡು ಕಾಮಗಾರಿಗೆ ಸಿಲುಕಬಹುದು. ಪ್ರವಾಹ ಹಿಡಿಯುವ ಜಂಕ್ಷನ್‌ಗೆ ಅಲ್ಲಿ ಕಾನ್ಕ್ರೀಟ್ ಹಾಕುವುದಕ್ಕಿಂತ ಮೇಲ್ಭಾಗದ ಮರರಕ್ಷಣೆ ಹೆಚ್ಚು ಬೇಕಾಗಬಹುದು."
+          },
+          {
+            type: "callout",
+            title: "ಕಳೆದ ವರ್ಷದಲ್ಲಿ ಬದಲಾಗಿದೆ ಎಂದು ಅಧಿಕಾರಿಗಳು ಹೇಳುವ ಮೂರು ಸಂಗತಿಗಳು",
+            items: [
+              "ವಾರ್ಷಿಕ ಕಾಮಗಾರಿ ಆದ್ಯತೆ ನಿಗದಿಗಿಂತ ಮೊದಲು ವಾರ್ಡ್ ಎಂಜಿನಿಯರ್‌ಗಳಿಗೆ ಒಂದೇ ಪುಟದ ಅಪಾಯ ಸಾರಾಂಶ ನೀಡಲಾಗುತ್ತಿದೆ.",
+              "ಹೀಟ್ ಅಪಾಯ ಅಂಕೆಗಳನ್ನು ಈಗ ಶಾಲಾ ವಲಯ ಮತ್ತು ಬಸ್ ನಿಲ್ದಾಣ ಸುಧಾರಣೆಯೊಂದಿಗೆ ಜೋಡಿಸಲಾಗುತ್ತಿದೆ.",
+              "ಮೂಲಧನ ವೆಚ್ಚದ ಜೊತೆಗೆ ನಿರ್ವಹಣೆ ಹೊಣೆಗಾರಿಕೆಯನ್ನು ಬಜೆಟ್ ಟಿಪ್ಪಣಿಗಳು ಹೆಚ್ಚಾಗಿ ದಾಖಲಿಸುತ್ತಿವೆ."
+            ]
+          },
+          {
+            type: "p",
+            text: "ಆದ್ದರಿಂದ ತಾಳ್ಮೆಯನ್ನು ಪ್ರತ್ಯೇಕ 'ಹವಾಮಾನ' ಯೋಜನೆ ಎಂದು ಗಂಭೀರ ಯೋಜಕರು ನೋಡುತ್ತಿಲ್ಲ. ಯಾವ ಸಾಮಾನ್ಯ ನಗರ ಕಾಮಗಾರಿ ಮೊದಲು ಆಗಬೇಕು ಎಂಬ ಶಿಸ್ತು ಎಂದು ಅವರು ಅದನ್ನು ವಿವರಿಸುತ್ತಿದ್ದಾರೆ. ಒಂದು ಪಾದಚಾರಿ ದಾರಿ ಮರುನಿರ್ಮಾಣವು ನೀರು ಹರಿವನ್ನೂ ಸುಧಾರಿಸಬಹುದು, ದೊಡ್ಡ ಮರಗಳನ್ನೂ ಉಳಿಸಬಹುದು, ಸರ್ಕಾರಿ ಶಾಲೆಯ ಬಳಿ ನೆರಳು ನಡೆದಾಟಕ್ಕೂ ಜಾಗ ಕೊಡಬಹುದು ಅಂದರೆ ಅದು ಕೇವಲ ಹಸಿರು ಘೋಷಣೆ ಆಗದೆ ಉತ್ತಮ ನಗರ ನಿರ್ವಹಣೆಯಾಗಿ മാറುತ್ತದೆ."
+          },
+          {
+            type: "p",
+            text: "ಹಲವು ವಾರ್ಡ್‌ಗಳಲ್ಲಿ ಮೊದಲ ನಿಜವಾದ ಪರೀಕ್ಷೆ ಎಂಜಿನಿಯರಿಂಗ್ ಅಲ್ಲ, ಕ್ರಮಪದ್ಧತಿಯೇ ಆಗಿದೆ. ಯುಟಿಲಿಟಿ ಸಂಘರ್ಷಗಳು ಬಗೆಹರಿಯುವ ಮೊದಲು ಪೇವಿಂಗ್ ವಾಹನಗಳು ಬರುತ್ತವೆ ಎಂದು ನಾಗರಿಕರು ಗಮನಿಸುತ್ತಾರೆ. ನೀರು ಹಾಕುವ ಯೋಜನೆ ಇಲ್ಲದೇ ಸಸಿ ನೆಟ್ಟರೂ ಅವರಿಗೆ ಕಾಣುತ್ತದೆ. ಸೆನ್ಸರ್‌ಗಳು ಅಳವಡಿಸಿದ ನಂತರ ಸಾರ್ವಜನಿಕ ಅಪ್‌ಡೇಟ್ ಮೊದಲ ಪ್ರಕಟಣೆಯಲ್ಲೇ ನಿಂತರೂ ಗಮನಕ್ಕೆ ಬರುತ್ತದೆ. ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳು ಘೋಷಣೆ ಅವಧಿಯನ್ನು ಮೀರಿದ ರೂಢಿಗಳಿಗೆ ಜೋಡಿಸಲ್ಪಟ್ಟಾಗ ಮಾತ್ರ ಉಳಿಯುತ್ತವೆ."
+          },
+          {
+            type: "quote",
+            text: "\"ಸಾಕ್ಷ್ಯದಿಂದ ನಗರ ಏನನ್ನು ಬದಲಿಸಿತು ಎಂದು ನಾಗರಿಕರು ಒಂದು ಮೂಲೆ ತೋರಿಸಬಲ್ಲಾಗ ಮಾತ್ರ ತಾಳ್ಮೆ ಯೋಜನೆ ವಿಶ್ವಾಸ ಗಳಿಸುತ್ತದೆ.\"",
+            cite: "ನಗರ ಯೋಜಕಿಯರಾದ ಮೀರಾ ಆಚಾರ್ ವಾರ್ಡ್ ಪರಿಶೀಲನಾ ಸಭೆಯಲ್ಲಿ ಮಾಡಿದ ಮಾತು"
+          },
+          { type: "h2", text: "ಪೈಲಟ್ ಯುಕ್ತಿಯಿಂದ ನಗರ ಯುಕ್ತಿಗೆ" },
+          {
+            type: "p",
+            text: "ಪೈಲಟ್ ವಾರ್ಡ್‌ಗಳು ಉಪಯುಕ್ತವಾಗಿರುವುದು ಅವು ಜಟಿಲತೆಯನ್ನು ಒಟ್ಟುಗೂಡಿಸುವುದರಿಂದ. ಶಾಲೆ, ಮಾರುಕಟ್ಟೆ, ಮಳೆನೀರು ಕಾಲುವೆ ಮತ್ತು ಸಂಚಾರ ಮಾರ್ಗಗಳನ್ನು ಸೀಮಿತ ಭೌಗೋಳಿಕ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ ಒಂದೇ ತಂಡ ಹೆಚ್ಚು ಗಮನದಿಂದ ಹೊಂದಿಸಬಹುದು. ಆದರೆ ಅದೇ ಮಾದರಿಯನ್ನು ಅನೇಕ ವಾರ್ಡ್‌ಗಳಿಗೆ ವಿಸ್ತರಿಸುವಾಗ ಸಿಬ್ಬಂದಿ ಅಸಮತೋಲನ ಮತ್ತು ಕಡಿಮೆ ರಾಜಕೀಯ ಗಮನದ ಒತ್ತಡ ಎದುರಾಗುತ್ತದೆ."
+          },
+          {
+            type: "p",
+            text: "ಅಲ್ಲೇ ಉತ್ತಮ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳು ರೂಪಾಂತರಗೊಳ್ಳುತ್ತಿವೆ. ಪ್ರತಿಯೊಂದು ಡೇಟಾ ಪದರಕ್ಕೂ ಒಂದೇ ತುರ್ತುಸ್ಥಿತಿ ಕೊಡುವ ಬದಲು, ಈಗಿರುವ ನಿರ್ವಹಣಾ ವೇಳಾಪಟ್ಟಿಯೊಳಗೆ ಸೇರಿಸಬಹುದಾದ ಕ್ರಮಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡಲಾಗುತ್ತಿದೆ. ಸಾರ್ವಜನಿಕ ಆಸ್ಪತ್ರೆಗಳ ಸುತ್ತಲಿನ ತಂಪು ಮೇಲ್ಚಾವಣಿ ಸಹಾಯಧನ, ಬದಲಾವಣೆ ಕೇಂದ್ರಗಳ ಬಳಿ ನೆರಳು, ಮರುಮರು ಪ್ರವಾಹವಾಗುವ ಭಾಗಗಳಲ್ಲಿ ನಿಯಮಿತ ಮಣ್ಣು ತೆರವು ಇತ್ಯಾದಿ ಸಣ್ಣ ಹೆಜ್ಜೆಗಳು ಒಟ್ಟಿಗೆ ದೊಡ್ಡ ವಿಶ್ವಾಸವನ್ನು ನಿರ್ಮಿಸುತ್ತವೆ."
+          },
+          {
+            type: "fact",
+            title: "ವಾರ್ಷಿಕ ವರದಿಗೆ ಕಾಯದೇ ನಾಗರಿಕರು ಗಮನಿಸಬಹುದಾದ ಮೂರು ಸೂಚನೆಗಳು",
+            items: [
+              "ಪ್ರಸ್ತುತಿಗಳಲ್ಲಷ್ಟೇ ಅಲ್ಲ, ಮೂಲಧನ ಕಾಮಗಾರಿಗಳ ಪಟ್ಟಿಯಲ್ಲೂ ಅದೇ ಹಾಟ್‌ಸ್ಪಾಟ್‌ಗಳು ಕಾಣುತ್ತವೆಯೇ?",
+              "ರಸ್ತೆ ಅಗಲೀಕರಣಕ್ಕೂ ಮೊದಲು ಮರರಕ್ಷಣೆ ವಿವರಗಳು ಪ್ರಕಟವಾಗುತ್ತವೆಯೇ?",
+              "ಹೊಸ ಹಸ್ತಕ್ಷೇಪದ ನಿರ್ವಹಣೆ ಯಾರು ನೋಡಿಕೊಳ್ಳುತ್ತಾರೆ ಎಂದು ವಾರ್ಡ್ ಕಚೇರಿ ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಬಹುದೇ?"
+            ]
+          },
+          {
+            type: "p",
+            text: "ಸಂಸ್ಥಾತ್ಮಕ ಪಾಠ ಸರಳವೇ ಸರಿ: ಹವಾಮಾನ ತಾಳ್ಮೆಯನ್ನು ವೇಳಾಪಟ್ಟಿಗೆ ತರುವುದೇ ಘೋಷಿಸುವುದಕ್ಕಿಂತ ಕಷ್ಟ. ಆದರೂ ಅದು ಈಗ ನಗರಾಡಳಿತದ ವೇಳಾಪಟ್ಟಿ ಮುಖ್ಯವಾಗುವ ಹಂತಕ್ಕೆ ಬರುತ್ತಿರುವಂತಿದೆ. ಆ ಬದಲಾವಣೆ ಮುಂದುವರಿದರೆ ಮುಂದಿನ ವರ್ಷದ ನಿರ್ವಹಣಾ ದಾಖಲೆಯಲ್ಲೂ ಉಳಿಯುವಷ್ಟು ಸರಳವಾಗಿರುವ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳೇ ಹೆಚ್ಚು ಪರಿಣಾಮ ಬೀರುತ್ತವೆ."
+          }
+        ],
+        tagsLabel: "ಟ್ಯಾಗ್‌ಗಳು",
+        tags: ["ಬೆಂಗಳೂರು", "ಹವಾಮಾನ", "ನಗರ ಯೋಜನೆ", "ವಾರ್ಡ್ ಬಜೆಟ್"],
+        engagementLabel: "ಪ್ರতিক್ರಿಯೆ ಮತ್ತು ಹಂಚಿಕೆ",
+        commentCount: "52 ಪ್ರತಿಕ್ರಿಯೆಗಳು",
+        shareLabels: ["ಹಂಚಿಕೆ", "ಉಳಿಸು", "ಮುದ್ರಿಸು"],
+        authorCard: {
+          title: "ಲೇಖಕಿಯ ಕುರಿತು",
+          summary: "ವಿದ್ಯಾ ಪ್ರಸಾದ್ ಪ್ರಜಾವಾಣಿಗಾಗಿ ನಗರಾಡಳಿತ, ಸಾರ್ವಜನಿಕ ಸಾರಿಗೆ ಮತ್ತು ವಾರ್ಡ್ ಮಟ್ಟದ ಆಡಳಿತವನ್ನು ವರದಿ ಮಾಡುತ್ತಾರೆ.",
+          bio: "ಅವರ ಬರಹಗಳು ಬಜೆಟ್, ಬೀದಿ ವಿನ್ಯಾಸ, ಉಷ್ಣತೆ, ಪ್ರವಾಹ ಮತ್ತು ನಗರ ಯೋಜನೆ ದಿನನಿತ್ಯದ ಬದುಕಿಗೆ ಹೇಗೆ ತಾಕುತ್ತದೆ ಎಂಬುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸುತ್ತವೆ.",
+          links: ["ಇನ್ನಷ್ಟು ಲೇಖನಗಳು", "ಎಕ್ಸ್‌ನಲ್ಲಿ ಹಿಂಬಾಲಿಸಿ", "ವರದಿಗಾರರಿಗೆ ಇಮೇಲ್"]
+        },
+        rail: {
+          mostReadTitle: "ಅತಿಹೆಚ್ಚು ಓದಿದವು",
+          mostRead: [
+            { kicker: "ಬೆಂಗಳೂರು", title: "ಮೆಟ್ರೋ ಫೀಡರ್ ಮರುಪರಿಶೀಲನೆ: ಬಸ್ ಆದ್ಯತೆಯೇ ಮತ್ತೆ ಕೇಂದ್ರ ಚರ್ಚೆ" },
+            { kicker: "ಕರ್ನಾಟಕ", title: "ಬೇಸಿಗೆ ತೀವ್ರತೆಯ ನಡುವೆ ಜಿಲ್ಲಾವಾರು ಹೀಟ್ ಎಚ್ಚರಿಕೆ ವಿಸ್ತರಣೆ" },
+            { kicker: "ಅಭಿಮತ", title: "ನಿರ್ವಹಣೆಯಿಂದ ಆರಂಭವಾಗುವ ಸುಧಾರಣೆಗಳೇ ನಗರಕ್ಕೆ ಹೆಚ್ಚು ಉಪಯೋಗ" },
+            { kicker: "ವಾಣಿಜ್ಯ", title: "ಪ್ರವಾಹ ಅಪಾಯವನ್ನು ಬೀದಿ ಮಟ್ಟದಲ್ಲಿ ಅಳೆಯುತ್ತಿರುವ ವಿಮಾ ವಲಯ; ನಗರಗಳು ಗಮನಿಸಲೇಬೇಕು" },
+            { kicker: "ವಿವರಣೆ", title: "\"ತಂಪು ಮೇಲ್ಚಾವಣಿ\" ಎಂದರೇನು? ಅದು ಮತ್ತೆ ನೀತಿ ಟಿಪ್ಪಣಿಗಳಲ್ಲಿ ಯಾಕೆ ಮರಳಿದೆ?" }
+          ],
+          latestTitle: "ಇತ್ತೀಚಿನ ಸುದ್ದಿ",
+          latest: [
+            { time: "9:18 AM IST", title: "ಬೇಸಿಗೆ ಮುನ್ನ ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆಗಳ ಬಳಿ ಹೊಸ ನೆರಳು ನಿರೀಕ್ಷಣಾ ವಲಯಗಳಿಗೆ ಅನುಮೋದನೆ" },
+            { time: "8:54 AM IST", title: "ಮಳೆಗಾಲ ಪರಿಶೀಲನೆಗೂ ಮುನ್ನ ವಾರ್ಡ್‌ವಾರು ಪ್ರವಾಹ ತಡೆ ಕಾಮಗಾರಿಗಳ ವರದಿ ಕೋರಿದ ರಾಜ್ಯ" },
+            { time: "8:12 AM IST", title: "ತೀವ್ರ ಬಿಸಿಲಿನ ಜಂಕ್ಷನ್‌ಗಳಲ್ಲಿ ಪೊಲೀಸ್ ಸಿಬ್ಬಂದಿಗೆ ತಂಪು ಪೆಟ್ರೋಲ್ ಬೂತ್ ಪೈಲಟ್" },
+            { time: "7:41 AM IST", title: "ಎಂಟು ವಾರ್ಡ್‌ಗಳಲ್ಲಿ ಶಾಲಾ ಮಾರ್ಗ ಪರಿಶೀಲನೆ: ಮರನೆರಳು ಕೊರತೆ ಮತ್ತು ಅಪಾಯದ ದಾಟಣೆ ಪತ್ತೆ" }
+          ],
+          picksTitle: "ಪಿವಿ ಆಯ್ಕೆ",
+          picks: [
+            {
+              badge: "ವಿಶ್ಲೇಷಣೆ",
+              title: "ಡೇಟಾ ತಂಡ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿ ತಂಡ ಒಂದೇ ನಕ್ಷೆಯಲ್ಲಿ ಕೆಲಸ ಮಾಡಿದಾಗ ಏನು ಬದಲಾಗುತ್ತದೆ",
+              summary: "ನಗರ ಬುದ್ಧಿವಂತಿಕೆಯ ಬೆಲೆ ಅದು ಪ್ರಸ್ತುತಿಯಲ್ಲಲ್ಲ, ಕಾಮಗಾರಿಯ ವೇಳಾಪಟ್ಟಿಯಲ್ಲಿ ಬದಲಾವಣೆ ತರುವಾಗ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+              alt: false
+            },
+            {
+              badge: "ವಾರಾಂತ್ಯ ಓದು",
+              title: "ಬೆಂಗಳೂರು ಮರನೆರಳಿನ ಮೌನ ಇತಿಹಾಸ: ಹಳೆಯ ಅವೆನ್ಯೂಗಳು ಇಂದಿಗೂ ಯೋಜಕರಿಗೆ ಹೇಳುವ ಪಾಠಗಳು",
+              summary: "ಹಳೆಯ ಪ್ರದೇಶಗಳು ನೆರಳು, ನಡೆದುಹೋಗುವಿಕೆ ಮತ್ತು ಆರಾಮವೂ ಒಂದು ಸಾರ್ವಜನಿಕ ಸೇವೆಯೇ ಎಂಬುದಕ್ಕೆ ಸುಳಿವು ನೀಡುತ್ತವೆ.",
+              alt: true
+            }
+          ],
+          newsletterTitle: "ಬೆಳಗಿನ ಬುಲೆಟಿನ್",
+          newsletterCopy: "ನಗರ, ರಾಜ್ಯ ಮತ್ತು ಜಾಗತಿಕ ಪ್ರಮುಖ ಸುದ್ದಿಗಳ ಸಣ್ಣ ಸಂಗ್ರಹ, ದಿನದ ಗತಿ ಶುರುವಾಗುವ ಮೊದಲು.",
+          newsletterButton: "ಚಂದಾದಾರರಾಗಿ",
+          newsletterEmail: "reader@example.com"
+        }
+      }
+    };
+
+    const switcherOptions = [
+      { key: "prajavani", label: "Prajavani" },
+      { key: "deccan-herald", label: "Deccan Herald" }
+    ];
+
+    const elements = {
+      html: document.documentElement,
+      breadcrumb: document.getElementById("breadcrumb"),
+      sectionLabel: document.getElementById("section-label"),
+      storyTitle: document.getElementById("story-title"),
+      storyDeck: document.getElementById("story-deck"),
+      authorAvatar: document.getElementById("author-avatar"),
+      authorCardAvatar: document.getElementById("author-card-avatar"),
+      authorName: document.getElementById("author-name"),
+      authorRole: document.getElementById("author-role"),
+      publishedAt: document.getElementById("published-at"),
+      updatedAt: document.getElementById("updated-at"),
+      readTime: document.getElementById("read-time"),
+      followLabel: document.getElementById("follow-label"),
+      followPrimaryText: document.getElementById("follow-primary-text"),
+      followSecondaryText: document.getElementById("follow-secondary-text"),
+      heroCaptionLabel: document.getElementById("hero-caption-label"),
+      heroCaptionText: document.getElementById("hero-caption-text"),
+      heroCreditLabel: document.getElementById("hero-credit-label"),
+      heroCreditText: document.getElementById("hero-credit-text"),
+      storyBody: document.getElementById("story-body"),
+      tagsLabel: document.getElementById("tags-label"),
+      tagList: document.getElementById("tag-list"),
+      engagementLabel: document.getElementById("engagement-label"),
+      commentCount: document.getElementById("comment-count"),
+      shareButtonList: document.getElementById("share-button-list"),
+      authorCardTitle: document.getElementById("author-card-title"),
+      authorCardSummary: document.getElementById("author-card-summary"),
+      authorCardBio: document.getElementById("author-card-bio"),
+      authorCardLinks: document.getElementById("author-card-links"),
+      mostReadTitle: document.getElementById("most-read-title"),
+      mostReadList: document.getElementById("most-read-list"),
+      latestNewsTitle: document.getElementById("latest-news-title"),
+      latestNewsList: document.getElementById("latest-news-list"),
+      picksTitle: document.getElementById("dh-picks-title"),
+      picksGrid: document.getElementById("picks-grid"),
+      newsletterTitle: document.getElementById("newsletter-title"),
+      newsletterCopy: document.getElementById("newsletter-copy"),
+      newsletterEmail: document.getElementById("newsletter-email"),
+      newsletterButton: document.getElementById("newsletter-button")
+    };
+
+    let sharedNav = null;
+
+    function populateBreadcrumb(container, items) {
+      container.replaceChildren();
+      items.forEach((item, index) => {
+        if (index > 0) {
+          const separator = document.createElement("span");
+          separator.className = "breadcrumb-separator";
+          separator.textContent = "/";
+          container.appendChild(separator);
+        }
+        if (index === items.length - 1) {
+          const current = document.createElement("span");
+          current.setAttribute("aria-current", "page");
+          current.textContent = item;
+          container.appendChild(current);
+          return;
+        }
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = item;
+        container.appendChild(link);
+      });
+    }
+
+    function createListCard(className, title, items) {
+      const wrapper = document.createElement("div");
+      wrapper.className = className;
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+      wrapper.appendChild(heading);
+      const list = document.createElement("ul");
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      wrapper.appendChild(list);
+      return wrapper;
+    }
+
+    function renderStoryBody(container, blocks) {
+      container.replaceChildren();
+      blocks.forEach((block) => {
+        if (block.type === "intro" || block.type === "p") {
+          const p = document.createElement("p");
+          if (block.type === "intro") p.className = "story-intro";
+          p.textContent = block.text;
+          container.appendChild(p);
+          return;
+        }
+
+        if (block.type === "h2") {
+          const heading = document.createElement("h2");
+          heading.textContent = block.text;
+          container.appendChild(heading);
+          return;
+        }
+
+        if (block.type === "callout" || block.type === "fact") {
+          const className = block.type === "callout" ? "inline-callout" : "fact-sheet";
+          container.appendChild(createListCard(className, block.title, block.items));
+          return;
+        }
+
+        if (block.type === "quote") {
+          const quote = document.createElement("div");
+          quote.className = "pull-quote";
+          const text = document.createElement("p");
+          text.textContent = block.text;
+          const cite = document.createElement("cite");
+          cite.textContent = block.cite;
+          quote.append(text, cite);
+          container.appendChild(quote);
+        }
+      });
+    }
+
+    function renderTags(container, tags) {
+      container.replaceChildren();
+      tags.forEach((tag) => {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.className = "tag-chip";
+        link.textContent = tag;
+        container.appendChild(link);
+      });
+    }
+
+    function renderShareButtons(container, labels) {
+      const iconPaths = [
+        ["M8 12l8-5", "M8 12l8 5", "M6 12a2 2 0 1 0 0 .01", "M18 7a2 2 0 1 0 0 .01", "M18 17a2 2 0 1 0 0 .01"],
+        ["M6 4h12v16l-6-4-6 4V4z"],
+        ["M7 7h10v7H7z", "M9 17h6", "M9 4h6"]
+      ];
+      container.replaceChildren();
+      labels.forEach((label, index) => {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.className = "share-button";
+        const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        icon.setAttribute("viewBox", "0 0 24 24");
+        icon.setAttribute("aria-hidden", "true");
+        (iconPaths[index] || iconPaths[0]).forEach((d) => {
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", d);
+          icon.appendChild(path);
+        });
+        const text = document.createElement("span");
+        text.textContent = label;
+        link.append(icon, text);
+        container.appendChild(link);
+      });
+    }
+
+    function renderAuthorLinks(container, labels) {
+      container.replaceChildren();
+      labels.forEach((label) => {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = label;
+        container.appendChild(link);
+      });
+    }
+
+    function renderMostRead(container, items) {
+      container.replaceChildren();
+      items.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.className = "ranked-story";
+        li.innerHTML = `<span class="rank">${index + 1}</span><div><div class="rail-kicker">${item.kicker}</div><a class="rail-title" href="#">${item.title}</a></div>`;
+        container.appendChild(li);
+      });
+    }
+
+    function renderLatest(container, items) {
+      container.replaceChildren();
+      items.forEach((item) => {
+        const li = document.createElement("li");
+        li.className = "latest-story";
+        li.innerHTML = `<div class="rail-time">${item.time}</div><a class="rail-title" href="#">${item.title}</a>`;
+        container.appendChild(li);
+      });
+    }
+
+    function renderPicks(container, items) {
+      container.replaceChildren();
+      items.forEach((item) => {
+        const article = document.createElement("article");
+        article.className = "pick-card";
+        article.innerHTML = `<div class="pick-thumb${item.alt ? " alt" : ""}"><span class="pick-badge">${item.badge}</span></div><div class="pick-copy"><a class="rail-title" href="#">${item.title}</a><p>${item.summary}</p></div>`;
+        container.appendChild(article);
+      });
+    }
+
+    function setSvgColor(id, attribute, cssVariable) {
+      const node = document.getElementById(id);
+      if (!node) return;
+      const value = getComputedStyle(document.documentElement).getPropertyValue(cssVariable).trim();
+      if (value) node.setAttribute(attribute, value);
+    }
+
+
+    function applyBrand(brandKey) {
+      const brand = brandData[brandKey];
+      if (!brand) return;
+
+      elements.html.setAttribute("data-brand", brandKey);
+      elements.html.lang = brand.lang;
+      document.title = `${brand.siteName} | ${brand.headline}`;
+
+      sharedNav?.update({
+        brand: {
+          logoSrc: brand.logoSrc,
+          logoAlt: brand.logoAlt,
+          logoAria: brand.logoAria,
+          logoHeight: brand.logoHeight,
+          logoMaxWidth: brand.logoMaxWidth,
+          loginLabel: brand.loginLabel,
+          epaperLabel: brand.epaperLabel,
+          desktopNav: brand.desktopNav,
+          mobileNav: brand.mobileNav,
+          featured: brand.featured
+        },
+        switcher: {
+          options: switcherOptions,
+          activeKey: brandKey
+        }
+      });
+
+      populateBreadcrumb(elements.breadcrumb, brand.breadcrumb);
+
+      elements.sectionLabel.textContent = brand.sectionLabel;
+      elements.storyTitle.textContent = brand.headline;
+      elements.storyDeck.textContent = brand.deck;
+      elements.authorAvatar.textContent = brand.author.initials;
+      elements.authorCardAvatar.textContent = brand.author.initials;
+      elements.authorName.textContent = brand.author.name;
+      elements.authorRole.textContent = brand.author.role;
+      elements.publishedAt.textContent = brand.author.published;
+      elements.updatedAt.textContent = brand.author.updated;
+      elements.readTime.textContent = brand.author.readTime;
+      elements.followLabel.textContent = brand.follow.label;
+      elements.followPrimaryText.textContent = brand.follow.primary;
+      elements.followSecondaryText.textContent = brand.follow.secondary;
+
+      elements.heroCaptionLabel.textContent = brand.hero.captionLabel;
+      elements.heroCaptionText.textContent = brand.hero.captionText;
+      elements.heroCreditLabel.textContent = brand.hero.creditLabel;
+      elements.heroCreditText.textContent = brand.hero.creditText;
+
+      renderStoryBody(elements.storyBody, brand.body);
+      elements.tagsLabel.textContent = brand.tagsLabel;
+      renderTags(elements.tagList, brand.tags);
+      elements.engagementLabel.textContent = brand.engagementLabel;
+      elements.commentCount.textContent = brand.commentCount;
+      renderShareButtons(elements.shareButtonList, brand.shareLabels);
+
+      elements.authorCardTitle.textContent = brand.authorCard.title;
+      elements.authorCardSummary.textContent = brand.authorCard.summary;
+      elements.authorCardBio.textContent = brand.authorCard.bio;
+      renderAuthorLinks(elements.authorCardLinks, brand.authorCard.links);
+
+      elements.mostReadTitle.textContent = brand.rail.mostReadTitle;
+      renderMostRead(elements.mostReadList, brand.rail.mostRead);
+      elements.latestNewsTitle.textContent = brand.rail.latestTitle;
+      renderLatest(elements.latestNewsList, brand.rail.latest);
+      elements.picksTitle.textContent = brand.rail.picksTitle;
+      renderPicks(elements.picksGrid, brand.rail.picks);
+      elements.newsletterTitle.textContent = brand.rail.newsletterTitle;
+      elements.newsletterCopy.textContent = brand.rail.newsletterCopy;
+      elements.newsletterEmail.value = brand.rail.newsletterEmail;
+      elements.newsletterButton.textContent = brand.rail.newsletterButton;
+    }
+
+    if (!window.SharedNavComponent) {
+      throw new Error("SharedNavComponent failed to load.");
+    }
+
+    sharedNav = window.SharedNavComponent.mount(document.getElementById("sharedNavRoot"), {
+      brand: {},
+      switcher: {
+        options: switcherOptions,
+        activeKey: elements.html.getAttribute("data-brand")
+      },
+      onBrandChange: applyBrand
+    });
+
+    applyBrand(elements.html.getAttribute("data-brand"));
+  </script>
+</body>
+</html>
