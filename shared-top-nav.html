@@ -2005,7 +2005,7 @@
       <h2 class="top-news-title"><span id="topNewsTitle">Top News</span><span class="group-template-name" id="topNewsTemplateName">1 hero + 2</span></h2>
       <div class="hero-section">
         <div class="row-1">
-          <article class="story-card story-card--hero story-card--layout-top-news">
+          <article class="story-card story-card--hero story-card--layout-top-news" style="cursor:pointer" onclick="window.location.href='dh-article-page.html?brand=' + (document.documentElement.getAttribute('data-brand') || 'deccan-herald')">
             <div class="story-image-container">
               <img src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=1200" alt="" class="story-image" id="heroImage">
               <span class="category-badge" id="heroCategory">India</span>
@@ -2388,6 +2388,11 @@
       } = options;
       const article = document.createElement("article");
       article.className = ["story-card", className, `story-card--${role}`, `story-card--layout-${layout}`].filter(Boolean).join(" ");
+      article.style.cursor = "pointer";
+      article.addEventListener("click", () => {
+        const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
+        window.location.href = "dh-article-page.html?brand=" + brand;
+      });
       article.innerHTML = `
         <div class="story-image-container">
           <img src="${story.image}" alt="${story.headline}" class="story-image">
@@ -2561,7 +2566,8 @@
       onBrandChange: applyBrand
     });
 
-    applyBrand(document.documentElement.getAttribute("data-brand"));
+    const urlBrand = new URLSearchParams(window.location.search).get("brand");
+    applyBrand(urlBrand || document.documentElement.getAttribute("data-brand"));
   </script>
 </body>
 </html>

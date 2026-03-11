@@ -1419,6 +1419,7 @@
         logoSrc: "DH Blue Logo high.png",
         logoAlt: "Deccan Herald",
         logoAria: "Deccan Herald Home",
+        homeHref: "shared-top-nav.html",
         logoHeight: "42px",
         logoMaxWidth: "280px",
         loginLabel: "Login",
@@ -1569,6 +1570,7 @@
         logoSrc: "PV-Revamp/pv logo.svg",
         logoAlt: "Prajavani",
         logoAria: "Prajavani Home",
+        homeHref: "shared-top-nav.html",
         loginLabel: "ಲಾಗಿನ್",
         epaperLabel: "Subscribe",
         desktopNav: ["ಸುದ್ದಿ", "ಬೆಂಗಳೂರು", "ಅಭಿಮತ", "ಕರ್ನಾಟಕ", "ವಿಶ್ವ", "ಕ್ರೀಡೆ", "ಜೀವನಶೈಲಿ"],
@@ -1937,6 +1939,7 @@
           logoAria: brand.logoAria,
           logoHeight: brand.logoHeight,
           logoMaxWidth: brand.logoMaxWidth,
+          homeHref: brand.homeHref ? brand.homeHref + "?brand=" + brandKey : "#",
           loginLabel: brand.loginLabel,
           epaperLabel: brand.epaperLabel,
           desktopNav: brand.desktopNav,
@@ -2006,7 +2009,8 @@
       onBrandChange: applyBrand
     });
 
-    applyBrand(elements.html.getAttribute("data-brand"));
+    const urlBrand = new URLSearchParams(window.location.search).get("brand");
+    applyBrand(urlBrand || elements.html.getAttribute("data-brand"));
   </script>
 </body>
 </html>
