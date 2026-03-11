@@ -476,7 +476,14 @@
     .page-shell {
       max-width: var(--container-max-width);
       margin: 0 auto;
-      padding: 1.5rem var(--container-padding-mobile) 4rem;
+      padding: 0 var(--container-padding-mobile) 4rem;
+    }
+
+    .article-intro {
+      max-width: 80%;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      padding-bottom: 1.8rem;
     }
 
     .story-grid {
@@ -525,7 +532,6 @@
     }
 
     .story-title {
-      max-width: 16ch;
       margin-bottom: 1rem;
       font-family: var(--font-headline);
       font-size: clamp(2.55rem, 5.8vw, 4.25rem);
@@ -652,12 +658,13 @@
     }
 
     .hero-figure {
-      margin-bottom: 2rem;
+      margin: 0 calc(-1 * var(--container-padding-mobile)) 1.5rem;
       overflow: hidden;
-      border: 1px solid var(--brand-border);
-      border-radius: 10px;
+      border-left: 0;
+      border-right: 0;
+      border-top: 1px solid var(--brand-border);
+      border-bottom: 1px solid var(--brand-border);
       background: #ffffff;
-      box-shadow: var(--shadow-soft);
     }
 
     .hero-art {
@@ -1090,6 +1097,16 @@
         padding: 12px var(--container-padding-desktop);
       }
 
+      .page-shell {
+        padding-left: var(--container-padding-desktop);
+        padding-right: var(--container-padding-desktop);
+      }
+
+      .hero-figure {
+        margin-left: calc(-1 * var(--container-padding-desktop));
+        margin-right: calc(-1 * var(--container-padding-desktop));
+      }
+
       .featured-container {
         padding-left: var(--container-padding-desktop);
         padding-right: var(--container-padding-desktop);
@@ -1187,66 +1204,68 @@
   <div id="sharedNavRoot"></div>
 
   <main class="page-shell">
-    <div class="story-grid">
-      <article class="story-main">
-        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+    <div class="article-intro">
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
 
-        <div class="section-label" id="section-label">Civic Affairs</div>
-        <h1 class="story-title" id="story-title">The long road from climate dashboards to cooler streets</h1>
-        <p class="story-deck" id="story-deck">
-          Bengaluru has no shortage of pilot projects, maps or climate pledges. The harder test is whether ward-level plans can survive budget cycles, contractor delays and the daily politics of roads, drains and shade.
-        </p>
+      <div class="section-label" id="section-label">Civic Affairs</div>
+      <h1 class="story-title" id="story-title">The long road from climate dashboards to cooler streets</h1>
+      <p class="story-deck" id="story-deck">
+        Bengaluru has no shortage of pilot projects, maps or climate pledges. The harder test is whether ward-level plans can survive budget cycles, contractor delays and the daily politics of roads, drains and shade.
+      </p>
 
-        <div class="story-meta-bar">
-          <div class="meta-author-group">
-            <div class="author-avatar" id="author-avatar" aria-hidden="true">NS</div>
-            <div class="author-meta">
-              <div class="author-name-row">
-                <span class="author-name" id="author-name">Nisha Saldanha</span>
-                <span class="author-role" id="author-role">Civic infrastructure correspondent</span>
-              </div>
-              <div class="meta-times">
-                <span id="published-at">Published: March 11, 2026, 6:30 AM IST</span>
-                <span id="updated-at">Updated: March 11, 2026, 9:05 AM IST</span>
-                <span id="read-time">6 min read</span>
-              </div>
+      <div class="story-meta-bar">
+        <div class="meta-author-group">
+          <div class="author-avatar" id="author-avatar" aria-hidden="true">NS</div>
+          <div class="author-meta">
+            <div class="author-name-row">
+              <span class="author-name" id="author-name">Nisha Saldanha</span>
+              <span class="author-role" id="author-role">Civic infrastructure correspondent</span>
             </div>
-          </div>
-
-          <div class="follow-block" aria-label="Follow options">
-            <span class="follow-label" id="follow-label">Follow</span>
-            <a class="follow-pill" href="#" id="follow-primary">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 12a8 8 0 0 1 8-8h3"></path>
-                <path d="M14 4h6v6"></path>
-                <path d="M20 4l-8 8"></path>
-              </svg>
-              <span id="follow-primary-text">WhatsApp</span>
-            </a>
-            <a class="follow-pill" href="#" id="follow-secondary">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 5l7.5 7.5L4.5 20"></path>
-                <path d="M13 5h7"></path>
-                <path d="M13 12h7"></path>
-                <path d="M13 19h7"></path>
-              </svg>
-              <span id="follow-secondary-text">X Alerts</span>
-            </a>
+            <div class="meta-times">
+              <span id="published-at">Published: March 11, 2026, 6:30 AM IST</span>
+              <span id="updated-at">Updated: March 11, 2026, 9:05 AM IST</span>
+              <span id="read-time">6 min read</span>
+            </div>
           </div>
         </div>
 
-        <figure class="hero-figure">
-          <img
-            class="hero-art"
-            src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&auto=format&fit=crop&q=80"
-            alt="Bengaluru street with tree canopy and urban infrastructure"
-          >
-          <figcaption class="hero-caption">
-            <span><strong id="hero-caption-label">Caption:</strong> <span id="hero-caption-text">A ward-level heat and flooding plan is most useful when it turns into a sequence of ordinary, visible fixes such as tree cover, shaded bus stops and targeted drain work.</span></span>
-            <span><strong id="hero-credit-label">Credit:</strong> <span id="hero-credit-text">Photo: Unsplash</span></span>
-          </figcaption>
-        </figure>
+        <div class="follow-block" aria-label="Follow options">
+          <span class="follow-label" id="follow-label">Follow</span>
+          <a class="follow-pill" href="#" id="follow-primary">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12a8 8 0 0 1 8-8h3"></path>
+              <path d="M14 4h6v6"></path>
+              <path d="M20 4l-8 8"></path>
+            </svg>
+            <span id="follow-primary-text">WhatsApp</span>
+          </a>
+          <a class="follow-pill" href="#" id="follow-secondary">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5l7.5 7.5L4.5 20"></path>
+              <path d="M13 5h7"></path>
+              <path d="M13 12h7"></path>
+              <path d="M13 19h7"></path>
+            </svg>
+            <span id="follow-secondary-text">X Alerts</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
+    <figure class="hero-figure">
+      <img
+        class="hero-art"
+        src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1200&auto=format&fit=crop&q=80"
+        alt="Bengaluru street with tree canopy and urban infrastructure"
+      >
+      <figcaption class="hero-caption">
+        <span><strong id="hero-caption-label">Caption:</strong> <span id="hero-caption-text">A ward-level heat and flooding plan is most useful when it turns into a sequence of ordinary, visible fixes such as tree cover, shaded bus stops and targeted drain work.</span></span>
+        <span><strong id="hero-credit-label">Credit:</strong> <span id="hero-credit-text">Photo: Unsplash</span></span>
+      </figcaption>
+    </figure>
+
+    <div class="story-grid">
+      <article class="story-main">
         <div class="story-body" id="story-body"></div>
 
         <div class="tags-share">
