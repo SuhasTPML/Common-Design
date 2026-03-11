@@ -1894,6 +1894,135 @@
 
     }
 
+    /* ─── Opinion Row ─────────────────────────────────────── */
+    .template-opinion-4 .opinion-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .story-card--opinion {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--brand-border);
+      background: var(--brand-surface);
+      overflow: visible;
+      cursor: pointer;
+    }
+
+    .story-card--opinion .story-image-container {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      overflow: visible;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .story-card--opinion .story-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* dark scrim + author overlay at image bottom */
+    .opinion-image-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 0.75rem 0.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      gap: 0.6rem;
+    }
+
+    /* circular author photo — hangs 40% below image */
+    .opinion-avatar {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 2.5px solid #fff;
+      overflow: hidden;
+      transform: translateY(40%);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.35);
+    }
+
+    .opinion-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .opinion-byline {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding-bottom: 0.1rem;
+    }
+
+    .opinion-author-name {
+      font-family: var(--font-headline);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .opinion-author-role {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .opinion-headline-block {
+      padding: 1.5rem 0.75rem 0.75rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .opinion-headline {
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--brand-text);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .opinion-time {
+      font-size: 0.72rem;
+      color: #888;
+      margin-top: auto;
+      padding-top: 0.5rem;
+      display: block;
+    }
+
+    @media (min-width: 992px) {
+      .template-opinion-4 .opinion-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .template-opinion-4 .opinion-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
     .story-card.story-card--hero,
     .story-card.story-card--support {
       background-clip: padding-box;
@@ -2005,7 +2134,7 @@
       <h2 class="top-news-title"><span id="topNewsTitle">Top News</span><span class="group-template-name" id="topNewsTemplateName">1 hero + 2</span></h2>
       <div class="hero-section">
         <div class="row-1">
-          <article class="story-card story-card--hero story-card--layout-top-news" style="cursor:pointer" onclick="window.location.href='dh-article-page.html?brand=' + (document.documentElement.getAttribute('data-brand') || 'deccan-herald')">
+          <article class="story-card story-card--hero story-card--layout-top-news" style="cursor:pointer" onclick="window.location.href='Article.html?brand=' + (document.documentElement.getAttribute('data-brand') || 'deccan-herald')">
             <div class="story-image-container">
               <img src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?w=1200" alt="" class="story-image" id="heroImage">
               <span class="category-badge" id="heroCategory">India</span>
@@ -2252,6 +2381,48 @@
             { category: "ಅಭಿಪ್ರಾಯ", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900", headline: "ಸಾರ್ವಜನಿಕ ಸೇವೆಯಲ್ಲಿ ಜವಾಬ್ದಾರಿತನ ಹೆಚ್ಚಿಸಲು ಬೇಕಾದ ಬದಲಾವಣೆಗಳು", readTime: "5 ನಿಮಿಷ", publishTime: "4 ಗಂಟೆ" },
             { category: "ವಿಶೇಷ", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900", headline: "ನಗರ, ಗ್ರಾಮ ಮತ್ತು ಯುವಕರ ನಡುವೆ ಬೆಳೆಯುತ್ತಿರುವ ಹೊಸ ಸಂಬಂಧಗಳು", readTime: "6 ನಿಮಿಷ", publishTime: "6 ಗಂಟೆ" }
           ]
+        },
+        {
+          type: "opinion4",
+          title: "ಅಭಿಮತ",
+          cards: [
+            {
+              image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=700",
+              author: "ಸುರೇಶ್ ನಾಯ್ರ್",
+              role: "ಹಿರಿಯ ಅಂಕಣಕಾರ",
+              initials: "SN",
+              authorPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
+              headline: "ಪ್ರಜಾಪ್ರಭುತ್ವಕ್ಕೆ ಚುನಾವಣೆಗಿಂತ ಹೆಚ್ಚು ಬೇಕು — ಪ್ರತಿ ಹಂತದಲ್ಲೂ ಜವಾಬ್ದಾರಿ ಅಗತ್ಯ",
+              publishTime: "3 ಗಂ."
+            },
+            {
+              image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700",
+              author: "ಪ್ರಿಯಾ ಚಂದ್ರನ್",
+              role: "ರಾಜಕೀಯ ಸಂಪಾದಕ",
+              initials: "PC",
+              authorPhoto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
+              headline: "ನಗರ-ಗ್ರಾಮೀಣ ಅಂತರ ಭಾರತದ ಪ್ರಗತಿಯಲ್ಲಿ ಆತಂಕಕಾರಿ ರೀತಿಯಲ್ಲಿ ಹೆಚ್ಚುತ್ತಿದೆ",
+              publishTime: "6 ಗಂ."
+            },
+            {
+              image: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=700",
+              author: "ಅರ್ಜುನ್ ಮೆನನ್",
+              role: "ಅಂಕಣಕಾರ",
+              initials: "AM",
+              authorPhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+              headline: "ಹವಾಮಾನ ಸ್ಥಿತಿಸ್ಥಾಪಕತೆ ಒಮ್ಮತಕ್ಕಾಗಿ ಕಾಯಲಾರದು — ಸ್ಥಳೀಯ ಕ್ರಮ ಮುಂಚೂಣಿಯಲ್ಲಿ ಇರಬೇಕು",
+              publishTime: "1 ದಿ."
+            },
+            {
+              image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700",
+              author: "ಕವಿತಾ ರಾವ್",
+              role: "ಆರ್ಥಿಕ ವರದಿಗಾರ",
+              initials: "KR",
+              authorPhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200",
+              headline: "ಭಾರತದ ಹಣಕಾಸು ಸ್ಥಿತಿ ಗಟ್ಟಿಯಾಗಿದ್ದರೂ ಮನೆವೆಚ್ಚದ ಸಾಲ ಬೇರೆ ಕತೆ ಹೇಳುತ್ತದೆ",
+              publishTime: "2 ದಿ."
+            }
+          ]
         }
       ],
       "deccan-herald": [
@@ -2352,6 +2523,48 @@
             { category: "Opinion", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900", headline: "What stronger accountability in public service should look like", readTime: "5 min read", publishTime: "4h ago" },
             { category: "Feature", image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900", headline: "How cities, towns and young voters are building new civic ties", readTime: "6 min read", publishTime: "6h ago" }
           ]
+        },
+        {
+          type: "opinion4",
+          title: "Opinion",
+          cards: [
+            {
+              image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=700",
+              author: "Suresh Nair",
+              role: "Senior Columnist",
+              initials: "SN",
+              authorPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
+              headline: "Democracy needs more than elections — it demands accountability at every level of governance",
+              publishTime: "3h ago"
+            },
+            {
+              image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700",
+              author: "Priya Chandran",
+              role: "Political Editor",
+              initials: "PC",
+              authorPhoto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200",
+              headline: "The urban-rural divide in India's growth story is widening at an alarming pace",
+              publishTime: "6h ago"
+            },
+            {
+              image: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=700",
+              author: "Arjun Menon",
+              role: "Columnist",
+              initials: "AM",
+              authorPhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200",
+              headline: "Climate resilience cannot wait for consensus — local action must lead the way forward",
+              publishTime: "1d ago"
+            },
+            {
+              image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=700",
+              author: "Kavitha Rao",
+              role: "Economics Desk",
+              initials: "KR",
+              authorPhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200",
+              headline: "India's fiscal compact looks solid, but household debt tells a more troubling story",
+              publishTime: "2d ago"
+            }
+          ]
         }
       ]
     };
@@ -2391,7 +2604,7 @@
       article.style.cursor = "pointer";
       article.addEventListener("click", () => {
         const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
-        window.location.href = "dh-article-page.html?brand=" + brand;
+        window.location.href = "Article.html?brand=" + brand;
       });
       article.innerHTML = `
         <div class="story-image-container">
@@ -2416,6 +2629,34 @@
       return article;
     }
 
+    function createOpinionCard(card) {
+      const article = document.createElement("article");
+      article.className = "story-card story-card--opinion";
+      article.addEventListener("click", () => {
+        const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
+        window.location.href = "Article.html?brand=" + brand;
+      });
+      article.innerHTML = `
+        <div class="story-image-container">
+          <img src="${card.image}" alt="${card.headline}" class="story-image">
+          <div class="opinion-image-footer">
+            <div class="opinion-avatar">
+              <img src="${card.authorPhoto}" alt="${card.author}">
+            </div>
+            <div class="opinion-byline">
+              <span class="opinion-author-name">${card.author}</span>
+              <span class="opinion-author-role">${card.role}</span>
+            </div>
+          </div>
+        </div>
+        <div class="opinion-headline-block">
+          <h3 class="opinion-headline">${card.headline}</h3>
+          <span class="opinion-time">${card.publishTime}</span>
+        </div>
+      `;
+      return article;
+    }
+
     function createSupportingCard(story) {
       return createStoryCard(story, { role: "support", layout: "top-news" });
     }
@@ -2426,14 +2667,16 @@
         hero42: "template-grid-hero42",
         hero44: "template-grid-hero44",
         smallHero6: "template-small-hero6",
-        four2: "template-four-two"
+        four2: "template-four-two",
+        opinion4: "template-opinion-4"
       };
       const templateNameByType = {
         hero4: "1 hero + 4",
         hero42: "1 hero + 4 + 2",
         hero44: "1 hero + 4 + 4",
         smallHero6: "1 small hero + 2",
-        four2: "4 + 2"
+        four2: "4 + 2",
+        opinion4: "4 equal"
       };
       const section = document.createElement("section");
       section.className = `news-group ${layoutClassByType[group.type] || ""}`;
@@ -2500,6 +2743,13 @@
 
         heroSection.append(leftGrid, rightStack);
         section.appendChild(heroSection);
+      }
+
+      if (group.type === "opinion4") {
+        const opinionGrid = document.createElement("div");
+        opinionGrid.className = "opinion-grid";
+        group.cards.forEach((card) => opinionGrid.appendChild(createOpinionCard(card)));
+        section.appendChild(opinionGrid);
       }
 
       return section;
