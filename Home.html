@@ -2125,6 +2125,216 @@
         max-width: 100%;
       }
     }
+    /* ─── Cartoon Section ──────────────────────────────────── */
+    .template-cartoon .cartoon-viewer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .cartoon-main-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--brand-muted);
+    }
+
+    .cartoon-main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cartoon-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0 0.1rem;
+    }
+
+    .cartoon-caption {
+      font-family: var(--font-headline);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--brand-text);
+      line-height: 1.4;
+    }
+
+    .cartoon-meta {
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    .cartoon-nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .cartoon-nav-btn {
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--brand-border);
+      background: var(--brand-surface);
+      color: var(--brand-text);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .cartoon-nav-btn:hover {
+      background: var(--brand-hover);
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+    }
+
+    .cartoon-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .cartoon-nav-counter {
+      font-size: 0.75rem;
+      color: #888;
+      margin-left: 0.25rem;
+    }
+
+    /* ─── Videos Section ───────────────────────────────────── */
+    .template-videos .videos-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .template-videos .videos-grid .story-card--video:first-child {
+      grid-row: 1 / span 2;
+    }
+
+    .template-videos .videos-grid .story-card--video:nth-child(2) { grid-row: 1; }
+    .template-videos .videos-grid .story-card--video:nth-child(3) { grid-row: 2; }
+
+    .story-card--video {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      background: var(--brand-surface);
+      border: 1px solid var(--brand-border);
+      overflow: hidden;
+    }
+
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #111;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .story-card--video:hover .video-thumb img {
+      transform: scale(1.04);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .video-play-btn::before {
+      content: "";
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.52);
+      border: 2px solid rgba(255,255,255,0.85);
+    }
+
+    .video-play-btn::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0.5rem 0 0.5rem 0.85rem;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 0.15rem;
+    }
+
+    .video-duration {
+      position: absolute;
+      bottom: 0.4rem;
+      right: 0.4rem;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.3rem;
+      border-radius: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .video-text {
+      padding: 0.5rem 0.6rem 0.6rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-title {
+      font-family: var(--font-headline);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brand-text);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .video-featured .video-title {
+      font-size: 1rem;
+      -webkit-line-clamp: 3;
+    }
+
+    .video-meta {
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: auto;
+      padding-top: 0.3rem;
+    }
+
+    @media (max-width: 599px) {
+      .template-videos .videos-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+      }
+      .template-videos .videos-grid .story-card--video:first-child {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+      .template-videos .videos-grid .story-card--video:nth-child(2),
+      .template-videos .videos-grid .story-card--video:nth-child(3) {
+        grid-row: 2;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2424,6 +2634,25 @@
               publishTime: "2 ದಿ."
             }
           ]
+        },
+        {
+          type: "cartoon",
+          title: "ವ್ಯಂಗ್ಯಚಿತ್ರ",
+          cards: [
+            { image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900", caption: "ರಾಜಕೀಯ ರಂಗದ ಮೇಲೆ ಕಾರ್ಟೂನ್‌ ನೋಟ", artist: "ಕೆ. ಶ್ರೀನಿವಾಸ್", publishTime: "ಇಂದು" },
+            { image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900", caption: "ಆಡಳಿತ ಮತ್ತು ಜನ — ಒಂದು ನೋಟ", artist: "ಕೆ. ಶ್ರೀನಿವಾಸ್", publishTime: "ನಿನ್ನೆ" },
+            { image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900", caption: "ಬೆಲೆ ಏರಿಕೆಯ ಬಾಧೆ", artist: "ಕೆ. ಶ್ರೀನಿವಾಸ್", publishTime: "2 ದಿನ ಹಿಂದೆ" },
+            { image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=900", caption: "ಚುನಾವಣೆ ಮತ್ತು ಭರವಸೆಗಳು", artist: "ಕೆ. ಶ್ರೀನಿವಾಸ್", publishTime: "3 ದಿನ ಹಿಂದೆ" }
+          ]
+        },
+        {
+          type: "videos",
+          title: "ವೀಡಿಯೊ",
+          cards: [
+            { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "ರಾಜ್ಯ ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆ — ಜನಸಾಮಾನ್ಯರ ಮೇಲೆ ಪರಿಣಾಮ", category: "ರಾಜ್ಯ", duration: "3:45", publishTime: "2 ಗಂ. ಹಿಂದೆ" },
+            { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "ಕರ್ನಾಟಕದ ಮಳೆ ಮುನ್ಸೂಚನೆ ಮತ್ತು ರೈತರ ಆತಂಕ", category: "ಕೃಷಿ", duration: "1:12", publishTime: "4 ಗಂ. ಹಿಂದೆ" },
+            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "ಬೆಂಗಳೂರಿನ ಹೊಸ ಮೆಟ್ರೊ ವಿಸ್ತರಣೆ ಯೋಜನೆ", category: "ನಗರ", duration: "3:22", publishTime: "1 ದಿ. ಹಿಂದೆ" }
+          ]
         }
       ],
       "deccan-herald": [
@@ -2566,6 +2795,25 @@
               publishTime: "2d ago"
             }
           ]
+        },
+        {
+          type: "cartoon",
+          title: "Cartoons",
+          cards: [
+            { image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900", caption: "The budget speech — a performance in three acts", artist: "R. Prasad", publishTime: "Today" },
+            { image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900", caption: "Coalition arithmetic and the art of the possible", artist: "R. Prasad", publishTime: "Yesterday" },
+            { image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?w=900", caption: "Rising prices and the household budget", artist: "R. Prasad", publishTime: "2 days ago" },
+            { image: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=900", caption: "Election promises vs ground reality", artist: "R. Prasad", publishTime: "3 days ago" }
+          ]
+        },
+        {
+          type: "videos",
+          title: "Videos",
+          cards: [
+            { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "Budget 2026: What it means for the common household", category: "India", duration: "3:45", publishTime: "2h ago" },
+            { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "Monsoon forecast and the farmer's dilemma this season", category: "Nation", duration: "1:12", publishTime: "4h ago" },
+            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "Bengaluru metro phase 3 gets final nod from Centre", category: "World", duration: "3:22", publishTime: "1d ago" }
+          ]
         }
       ]
     };
@@ -2662,6 +2910,75 @@
       return createStoryCard(story, { role: "support", layout: "top-news" });
     }
 
+    function createCartoonSection(group) {
+      let currentIndex = 0;
+      const cards = group.cards;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "cartoon-viewer";
+
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "cartoon-main-image";
+      const img = document.createElement("img");
+      imgWrap.appendChild(img);
+
+      const info = document.createElement("div");
+      info.className = "cartoon-info";
+      const caption = document.createElement("span");
+      caption.className = "cartoon-caption";
+      const meta = document.createElement("span");
+      meta.className = "cartoon-meta";
+      info.append(caption, meta);
+
+      const nav = document.createElement("div");
+      nav.className = "cartoon-nav";
+      const prevBtn = document.createElement("button");
+      prevBtn.className = "cartoon-nav-btn";
+      prevBtn.textContent = "← Previous";
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "cartoon-nav-btn";
+      nextBtn.textContent = "Next →";
+      const counter = document.createElement("span");
+      counter.className = "cartoon-nav-counter";
+      nav.append(prevBtn, nextBtn, counter);
+
+      function render() {
+        const c = cards[currentIndex];
+        img.src = c.image;
+        img.alt = c.caption;
+        caption.textContent = c.caption;
+        meta.textContent = c.artist + " · " + c.publishTime;
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === cards.length - 1;
+        counter.textContent = (currentIndex + 1) + " / " + cards.length;
+      }
+
+      prevBtn.addEventListener("click", () => { if (currentIndex > 0) { currentIndex--; render(); } });
+      nextBtn.addEventListener("click", () => { if (currentIndex < cards.length - 1) { currentIndex++; render(); } });
+
+      wrapper.append(imgWrap, info, nav);
+      render();
+      return wrapper;
+    }
+
+    function createVideoCard(card, isFeatured) {
+      const article = document.createElement("article");
+      article.className = "story-card story-card--video" + (isFeatured ? " video-featured" : "");
+      article.innerHTML = `
+        <div class="video-thumb">
+          <img src="${card.thumbnail}" alt="${card.title}" loading="lazy">
+          <div class="video-play-btn"></div>
+          <span class="video-duration">${card.duration}</span>
+          <span class="category-badge">${card.category}</span>
+        </div>
+        <div class="video-text">
+          <span class="video-title">${card.title}</span>
+          <span class="video-meta">${card.publishTime}</span>
+        </div>
+      `;
+      return article;
+    }
+
     function createGroupSection(group) {
       const layoutClassByType = {
         hero4: "template-grid-hero4",
@@ -2669,7 +2986,9 @@
         hero44: "template-grid-hero44",
         smallHero6: "template-small-hero6",
         four2: "template-four-two",
-        opinion4: "template-opinion-4"
+        opinion4: "template-opinion-4",
+        cartoon: "template-cartoon",
+        videos: "template-videos"
       };
       const templateNameByType = {
         hero4: "1 hero + 4",
@@ -2677,7 +2996,9 @@
         hero44: "1 hero + 4 + 4",
         smallHero6: "1 small hero + 2",
         four2: "4 + 2",
-        opinion4: "4 equal"
+        opinion4: "4 equal",
+        cartoon: "daily cartoon",
+        videos: "1 hero + 2"
       };
       const section = document.createElement("section");
       section.className = `news-group ${layoutClassByType[group.type] || ""}`;
@@ -2751,6 +3072,17 @@
         opinionGrid.className = "opinion-grid";
         group.cards.forEach((card) => opinionGrid.appendChild(createOpinionCard(card)));
         section.appendChild(opinionGrid);
+      }
+
+      if (group.type === "cartoon") {
+        section.appendChild(createCartoonSection(group));
+      }
+
+      if (group.type === "videos") {
+        const grid = document.createElement("div");
+        grid.className = "videos-grid";
+        group.cards.forEach((c, i) => grid.appendChild(createVideoCard(c, i === 0)));
+        section.appendChild(grid);
       }
 
       return section;
