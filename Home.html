@@ -719,6 +719,7 @@
 
       .story-card--video:hover {
         border-color: var(--brand-primary);
+        cursor: pointer;
       }
 
       .story-card--video:hover .video-title {
@@ -727,8 +728,15 @@
         text-underline-offset: 0.16em;
       }
 
-      .cartoon-viewer:hover {
+      .template-cartoon .cartoon-viewer:hover {
         border-color: var(--brand-primary);
+        cursor: pointer;
+      }
+
+      .template-cartoon .cartoon-viewer:hover .cartoon-caption {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.16em;
       }
     }
 
@@ -3050,6 +3058,12 @@
 
       const wrapper = document.createElement("div");
       wrapper.className = "cartoon-viewer";
+      wrapper.style.cursor = "pointer";
+      wrapper.addEventListener("click", (e) => {
+        if (e.target.closest(".cartoon-arrow-btn") || e.target.closest(".cartoon-dot")) return;
+        const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
+        window.location.href = "Article.html?brand=" + brand;
+      });
 
       const imgWrap = document.createElement("div");
       imgWrap.className = "cartoon-main-image";
