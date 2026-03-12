@@ -722,7 +722,7 @@
         cursor: pointer;
       }
 
-      .story-card--video:hover .video-title {
+      .story-card--video:hover .story-headline {
         text-decoration: underline;
         text-decoration-thickness: 2px;
         text-underline-offset: 0.16em;
@@ -2323,54 +2323,19 @@
     }
 
     /* ─── Videos Section ───────────────────────────────────── */
-    .template-videos .videos-grid {
-      display: grid;
-      grid-template-columns: 55fr 45fr;
-      grid-template-rows: auto auto;
-      gap: 12px;
-      align-items: start;
-    }
-
-    .template-videos .videos-grid .story-card--video:first-child {
-      grid-row: 1 / span 2;
-    }
-
-    .template-videos .videos-grid .story-card--video:nth-child(2) { grid-row: 1; }
-    .template-videos .videos-grid .story-card--video:nth-child(3) { grid-row: 2; }
-
-    .story-card--video {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      border: 1px solid var(--brand-border);
-      background: var(--brand-surface);
-      background: var(--brand-surface);
-      border: 1px solid var(--brand-border);
-      overflow: hidden;
-    }
-
-    .video-thumb {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      flex-shrink: 0;
+    .template-videos .story-card--video .story-image-container {
       background: #111;
     }
 
-    .video-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .template-videos .story-card--video .story-image {
       transition: transform 0.3s ease;
     }
 
-    .story-card--video:hover .video-thumb img {
+    .template-videos .story-card--video:hover .story-image {
       transform: scale(1.04);
     }
 
-    .video-play-btn {
+    .template-videos .video-play-btn {
       position: absolute;
       inset: 0;
       display: flex;
@@ -2379,16 +2344,17 @@
       pointer-events: none;
     }
 
-    .video-play-btn::before {
+    .template-videos .video-play-btn::before {
       content: "";
-      width: 2.6rem;
-      height: 2.6rem;
+      width: 2.8rem;
+      height: 2.8rem;
       border-radius: 50%;
-      background: rgba(0,0,0,0.52);
-      border: 2px solid rgba(255,255,255,0.85);
+      background: rgba(0, 0, 0, 0.52);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
-    .video-play-btn::after {
+    .template-videos .video-play-btn::after {
       content: "";
       position: absolute;
       width: 0;
@@ -2396,68 +2362,55 @@
       border-style: solid;
       border-width: 0.5rem 0 0.5rem 0.85rem;
       border-color: transparent transparent transparent #fff;
-      margin-left: 0.15rem;
+      margin-left: 0.18rem;
     }
 
-    .video-duration {
+    .template-videos .hero-grid .video-play-btn::before {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+
+    .template-videos .hero-grid .video-play-btn::after {
+      border-width: 0.42rem 0 0.42rem 0.72rem;
+      margin-left: 0.12rem;
+    }
+
+    .template-videos .video-duration {
       position: absolute;
-      bottom: 0.4rem;
-      right: 0.4rem;
-      background: rgba(0,0,0,0.72);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 0.1rem 0.3rem;
+      right: 0.45rem;
+      bottom: 0.45rem;
+      z-index: 2;
+      padding: 0.18rem 0.42rem;
       border-radius: 2px;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
       letter-spacing: 0.02em;
     }
 
-    .video-text {
-      padding: 0.5rem 0.6rem 0.6rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
+    .template-videos .video-meta-icon {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      fill: currentColor;
+      flex-shrink: 0;
     }
 
-    .video-title {
-      font-family: var(--font-headline);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: inherit;
-      line-height: 1.35;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .template-videos .hero-grid .video-meta-icon {
+      width: 12px;
+      height: 12px;
     }
 
-    .video-featured .video-title {
-      font-size: 1rem;
-      -webkit-line-clamp: 3;
+    .template-videos .row-1 .story-metadata {
+      color: rgba(255, 255, 255, 0.85);
     }
 
-    .video-meta {
-      font-size: 0.7rem;
-      color: #888;
-      margin-top: auto;
-      padding-top: 0.3rem;
-    }
-
-    @media (max-width: 599px) {
-      .template-videos .videos-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-      }
-      .template-videos .videos-grid .story-card--video:first-child {
-        grid-column: 1 / -1;
-        grid-row: 1;
-      }
-      .template-videos .videos-grid .story-card--video:nth-child(2),
-      .template-videos .videos-grid .story-card--video:nth-child(3) {
-        grid-row: 2;
-      }
+    .template-videos .hero-grid .story-metadata {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 11px;
+      padding-top: 6px;
     }
 
   </style>
@@ -2780,7 +2733,9 @@
           cards: [
             { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "ರಾಜ್ಯ ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆ — ಜನಸಾಮಾನ್ಯರ ಮೇಲೆ ಪರಿಣಾಮ", category: "ರಾಜ್ಯ", duration: "3:45", publishTime: "2 ಗಂ. ಹಿಂದೆ" },
             { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "ಕರ್ನಾಟಕದ ಮಳೆ ಮುನ್ಸೂಚನೆ ಮತ್ತು ರೈತರ ಆತಂಕ", category: "ಕೃಷಿ", duration: "1:12", publishTime: "4 ಗಂ. ಹಿಂದೆ" },
-            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "ಬೆಂಗಳೂರಿನ ಹೊಸ ಮೆಟ್ರೊ ವಿಸ್ತರಣೆ ಯೋಜನೆ", category: "ನಗರ", duration: "3:22", publishTime: "1 ದಿ. ಹಿಂದೆ" }
+            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "ಬೆಂಗಳೂರಿನ ಹೊಸ ಮೆಟ್ರೊ ವಿಸ್ತರಣೆ ಯೋಜನೆ", category: "ನಗರ", duration: "3:22", publishTime: "1 ದಿ. ಹಿಂದೆ" },
+            { thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900", title: "ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಕ್ಕೂ ಮುನ್ನ ಶಾಲೆಗಳ ಹೊಸ ತಯಾರಿ", category: "ಶಿಕ್ಷಣ", duration: "2:48", publishTime: "1 ದಿ. ಹಿಂದೆ" },
+            { thumbnail: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=900", title: "ಜಿಲ್ಲಾ ಆರೋಗ್ಯ ಶಿಬಿರಗಳಿಗೆ ಜನಸ್ಪಂದನೆ ಹೆಚ್ಚಳ", category: "ಆರೋಗ್ಯ", duration: "2:05", publishTime: "2 ದಿ. ಹಿಂದೆ" }
           ]
         }
       ],
@@ -2945,7 +2900,9 @@
           cards: [
             { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "Budget 2026: What it means for the common household", category: "India", duration: "3:45", publishTime: "2h ago" },
             { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "Monsoon forecast and the farmer's dilemma this season", category: "Nation", duration: "1:12", publishTime: "4h ago" },
-            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "Bengaluru metro phase 3 gets final nod from Centre", category: "World", duration: "3:22", publishTime: "1d ago" }
+            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "Bengaluru metro phase 3 gets final nod from Centre", category: "Cities", duration: "3:22", publishTime: "1d ago" },
+            { thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900", title: "Exam reforms push schools to rethink classroom preparation", category: "Education", duration: "2:48", publishTime: "1d ago" },
+            { thumbnail: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=900", title: "Rural health camps expand as district outreach gains pace", category: "Health", duration: "2:05", publishTime: "2d ago" }
           ]
         }
       ]
@@ -3127,19 +3084,34 @@
       return wrapper;
     }
 
-    function createVideoCard(card, isFeatured) {
+    function createVideoCard(card, options = {}) {
+      const {
+        role = "support",
+        layout = "videos"
+      } = options;
+      const headline = card.title || card.headline;
+      const image = card.thumbnail || card.image;
       const article = document.createElement("article");
-      article.className = "story-card story-card--video" + (isFeatured ? " video-featured" : "");
+      article.className = ["story-card", "story-card--video", `story-card--${role}`, `story-card--layout-${layout}`].join(" ");
+      article.style.cursor = "pointer";
+      article.addEventListener("click", () => {
+        const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
+        window.location.href = "Article.html?brand=" + brand;
+      });
       article.innerHTML = `
-        <div class="video-thumb">
-          <img src="${card.thumbnail}" alt="${card.title}" loading="lazy">
+        <div class="story-image-container">
+          <img src="${image}" alt="${headline}" class="story-image" loading="lazy">
+          <span class="category-badge">${card.category}</span>
           <div class="video-play-btn"></div>
           <span class="video-duration">${card.duration}</span>
-          <span class="category-badge">${card.category}</span>
         </div>
-        <div class="video-text">
-          <span class="video-title">${card.title}</span>
+        <div class="headline-overlay headline-overlay--${role}">
+          <div class="story-headline story-headline--${role}">${headline}</div>
           <div class="story-metadata">
+            <span class="read-time">
+              <svg class="video-meta-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6.82v10.36a1 1 0 0 0 1.53.85l8.14-5.18a1 1 0 0 0 0-1.7L9.53 5.97A1 1 0 0 0 8 6.82Z"></path></svg>
+              <span>${card.duration}</span>
+            </span>
             <span class="publish-time">
               <svg class="time-icon" viewBox="0 0 24 24"><path d="M12 7v6l4 2"/><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"/></svg>
               <span>${card.publishTime}</span>
@@ -3159,7 +3131,7 @@
         four2: "template-four-two",
         opinion4: "template-opinion-4",
         cartoon: "template-cartoon",
-        videos: "template-videos"
+        videos: "template-grid-hero4 template-videos"
       };
       const templateNameByType = {
         hero4: "1 hero + 4",
@@ -3169,7 +3141,7 @@
         four2: "4 + 2",
         opinion4: "4 equal",
         cartoon: "daily cartoon",
-        videos: "1 hero + 2"
+        videos: "1 hero + 4"
       };
       const section = document.createElement("section");
       section.className = `news-group ${layoutClassByType[group.type] || ""}`;
@@ -3250,10 +3222,20 @@
       }
 
       if (group.type === "videos") {
-        const grid = document.createElement("div");
-        grid.className = "videos-grid";
-        group.cards.forEach((c, i) => grid.appendChild(createVideoCard(c, i === 0)));
-        section.appendChild(grid);
+        const heroSection = document.createElement("div");
+        heroSection.className = "hero-section";
+
+        const row1 = document.createElement("div");
+        row1.className = "row-1";
+        row1.appendChild(createVideoCard(group.cards[0], { role: "hero", layout: "videos" }));
+        heroSection.appendChild(row1);
+
+        const heroGrid = document.createElement("div");
+        heroGrid.className = "hero-grid";
+        group.cards.slice(1, 5).forEach((card) => heroGrid.appendChild(createVideoCard(card, { role: "support", layout: "videos" })));
+        heroSection.appendChild(heroGrid);
+
+        section.appendChild(heroSection);
       }
 
       return section;
