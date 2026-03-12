@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Home page</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2208,8 +2209,8 @@
       flex-direction: column;
       gap: 0.5rem;
       padding: 0.6rem 0.75rem 0.75rem;
-      background-color: var(--top-news-support-bg);
-      color: var(--top-news-support-text);
+      background-color: var(--top-news-hero-bg);
+      color: var(--top-news-hero-text);
     }
 
     .cartoon-info {
@@ -2228,7 +2229,8 @@
 
     .cartoon-meta {
       font-size: 0.75rem;
-      color: #888;
+      color: inherit;
+      opacity: 0.75;
     }
 
     .cartoon-nav {
@@ -2411,6 +2413,103 @@
       color: rgba(0, 0, 0, 0.7);
       font-size: 11px;
       padding-top: 6px;
+    }
+
+    body.video-modal-open {
+      overflow: hidden;
+    }
+
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.72);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .video-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .video-modal__dialog {
+      width: min(100%, 960px);
+      max-height: calc(100vh - 2rem);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #000;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .video-modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      background: var(--brand-surface);
+      color: var(--brand-text);
+    }
+
+    .video-modal__title {
+      min-width: 0;
+      font-family: var(--font-headline);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .video-modal__close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      flex-shrink: 0;
+      border-radius: 999px;
+      color: var(--brand-text);
+      background: rgba(0, 0, 0, 0.06);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .video-modal__close:hover {
+      background: var(--brand-primary);
+      color: #fff;
+    }
+
+    .video-modal__frame-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-modal__frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 767.98px) {
+      .video-modal {
+        padding: 0.75rem;
+      }
+
+      .video-modal__dialog {
+        width: 100%;
+        max-height: calc(100vh - 1.5rem);
+      }
+
+      .video-modal__header {
+        padding: 0.75rem 0.85rem;
+      }
     }
 
   </style>
@@ -2731,11 +2830,11 @@
           type: "videos",
           title: "ವೀಡಿಯೊ",
           cards: [
-            { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "ರಾಜ್ಯ ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆ — ಜನಸಾಮಾನ್ಯರ ಮೇಲೆ ಪರಿಣಾಮ", category: "ರಾಜ್ಯ", duration: "3:45", publishTime: "2 ಗಂ. ಹಿಂದೆ" },
-            { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "ಕರ್ನಾಟಕದ ಮಳೆ ಮುನ್ಸೂಚನೆ ಮತ್ತು ರೈತರ ಆತಂಕ", category: "ಕೃಷಿ", duration: "1:12", publishTime: "4 ಗಂ. ಹಿಂದೆ" },
-            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "ಬೆಂಗಳೂರಿನ ಹೊಸ ಮೆಟ್ರೊ ವಿಸ್ತರಣೆ ಯೋಜನೆ", category: "ನಗರ", duration: "3:22", publishTime: "1 ದಿ. ಹಿಂದೆ" },
-            { thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900", title: "ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಕ್ಕೂ ಮುನ್ನ ಶಾಲೆಗಳ ಹೊಸ ತಯಾರಿ", category: "ಶಿಕ್ಷಣ", duration: "2:48", publishTime: "1 ದಿ. ಹಿಂದೆ" },
-            { thumbnail: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=900", title: "ಜಿಲ್ಲಾ ಆರೋಗ್ಯ ಶಿಬಿರಗಳಿಗೆ ಜನಸ್ಪಂದನೆ ಹೆಚ್ಚಳ", category: "ಆರೋಗ್ಯ", duration: "2:05", publishTime: "2 ದಿ. ಹಿಂದೆ" }
+            { youtubeId: "M7lc1UVf-VE", title: "ರಾಜ್ಯ ಬಜೆಟ್ ವಿಶ್ಲೇಷಣೆ — ಜನಸಾಮಾನ್ಯರ ಮೇಲೆ ಪರಿಣಾಮ", category: "ರಾಜ್ಯ", duration: "3:45", publishTime: "2 ಗಂ. ಹಿಂದೆ" },
+            { youtubeId: "aqz-KE-bpKQ", title: "ಕರ್ನಾಟಕದ ಮಳೆ ಮುನ್ಸೂಚನೆ ಮತ್ತು ರೈತರ ಆತಂಕ", category: "ಕೃಷಿ", duration: "1:12", publishTime: "4 ಗಂ. ಹಿಂದೆ" },
+            { youtubeId: "jNQXAC9IVRw", title: "ಬೆಂಗಳೂರಿನ ಹೊಸ ಮೆಟ್ರೊ ವಿಸ್ತರಣೆ ಯೋಜನೆ", category: "ನಗರ", duration: "3:22", publishTime: "1 ದಿ. ಹಿಂದೆ" },
+            { youtubeId: "ScMzIvxBSi4", title: "ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶಕ್ಕೂ ಮುನ್ನ ಶಾಲೆಗಳ ಹೊಸ ತಯಾರಿ", category: "ಶಿಕ್ಷಣ", duration: "2:48", publishTime: "1 ದಿ. ಹಿಂದೆ" },
+            { youtubeId: "dQw4w9WgXcQ", title: "ಜಿಲ್ಲಾ ಆರೋಗ್ಯ ಶಿಬಿರಗಳಿಗೆ ಜನಸ್ಪಂದನೆ ಹೆಚ್ಚಳ", category: "ಆರೋಗ್ಯ", duration: "2:05", publishTime: "2 ದಿ. ಹಿಂದೆ" }
           ]
         }
       ],
@@ -2898,11 +2997,11 @@
           type: "videos",
           title: "Videos",
           cards: [
-            { thumbnail: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=900", title: "Budget 2026: What it means for the common household", category: "India", duration: "3:45", publishTime: "2h ago" },
-            { thumbnail: "https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=900", title: "Monsoon forecast and the farmer's dilemma this season", category: "Nation", duration: "1:12", publishTime: "4h ago" },
-            { thumbnail: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=900", title: "Bengaluru metro phase 3 gets final nod from Centre", category: "Cities", duration: "3:22", publishTime: "1d ago" },
-            { thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900", title: "Exam reforms push schools to rethink classroom preparation", category: "Education", duration: "2:48", publishTime: "1d ago" },
-            { thumbnail: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=900", title: "Rural health camps expand as district outreach gains pace", category: "Health", duration: "2:05", publishTime: "2d ago" }
+            { youtubeId: "M7lc1UVf-VE", title: "Budget 2026: What it means for the common household", category: "India", duration: "3:45", publishTime: "2h ago" },
+            { youtubeId: "aqz-KE-bpKQ", title: "Monsoon forecast and the farmer's dilemma this season", category: "Nation", duration: "1:12", publishTime: "4h ago" },
+            { youtubeId: "jNQXAC9IVRw", title: "Bengaluru metro phase 3 gets final nod from Centre", category: "Cities", duration: "3:22", publishTime: "1d ago" },
+            { youtubeId: "ScMzIvxBSi4", title: "Exam reforms push schools to rethink classroom preparation", category: "Education", duration: "2:48", publishTime: "1d ago" },
+            { youtubeId: "dQw4w9WgXcQ", title: "Rural health camps expand as district outreach gains pace", category: "Health", duration: "2:05", publishTime: "2d ago" }
           ]
         }
       ]
@@ -2930,6 +3029,102 @@
     };
 
     let sharedNav = null;
+    let videoModal = null;
+
+    function getYouTubeThumbnail(card) {
+      if (card.youtubeId) {
+        return `https://i.ytimg.com/vi/${card.youtubeId}/hqdefault.jpg`;
+      }
+      return card.thumbnail || card.image;
+    }
+
+    function getYouTubeEmbedUrl(card) {
+      if (!card.youtubeId) return "";
+      const params = new URLSearchParams({
+        autoplay: "1",
+        rel: "0",
+        playsinline: "1"
+      });
+
+      if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+        params.set("origin", window.location.origin);
+        params.set("widget_referrer", window.location.href);
+      }
+
+      return `https://www.youtube.com/embed/${card.youtubeId}?${params.toString()}`;
+    }
+
+    function ensureVideoModal() {
+      if (videoModal) return videoModal;
+
+      const root = document.createElement("div");
+      root.className = "video-modal";
+      root.hidden = true;
+      root.innerHTML = `
+        <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+          <div class="video-modal__header">
+            <div class="video-modal__title" id="videoModalTitle"></div>
+            <button type="button" class="video-modal__close" aria-label="Close video">&times;</button>
+          </div>
+          <div class="video-modal__frame-wrap">
+            <iframe
+              class="video-modal__frame"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="YouTube video player"></iframe>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(root);
+
+      const closeButton = root.querySelector(".video-modal__close");
+      const title = root.querySelector(".video-modal__title");
+      const frame = root.querySelector(".video-modal__frame");
+
+      function closeVideoModal() {
+        root.classList.remove("is-open");
+        root.hidden = true;
+        frame.src = "";
+        document.body.classList.remove("video-modal-open");
+      }
+
+      root.addEventListener("click", (event) => {
+        if (event.target === root) {
+          closeVideoModal();
+        }
+      });
+
+      closeButton.addEventListener("click", closeVideoModal);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && root.classList.contains("is-open")) {
+          closeVideoModal();
+        }
+      });
+
+      videoModal = {
+        root,
+        frame,
+        title,
+        closeButton,
+        open(card) {
+          const embedUrl = getYouTubeEmbedUrl(card);
+          if (!embedUrl) return false;
+          title.textContent = card.title || card.headline || "Video";
+          frame.src = embedUrl;
+          root.hidden = false;
+          root.classList.add("is-open");
+          document.body.classList.add("video-modal-open");
+          closeButton.focus();
+          return true;
+        },
+        close: closeVideoModal
+      };
+
+      return videoModal;
+    }
 
     function createStoryCard(story, options = {}) {
       const {
@@ -3090,11 +3285,14 @@
         layout = "videos"
       } = options;
       const headline = card.title || card.headline;
-      const image = card.thumbnail || card.image;
+      const image = getYouTubeThumbnail(card);
       const article = document.createElement("article");
       article.className = ["story-card", "story-card--video", `story-card--${role}`, `story-card--layout-${layout}`].join(" ");
       article.style.cursor = "pointer";
       article.addEventListener("click", () => {
+        if (card.youtubeId && ensureVideoModal().open(card)) {
+          return;
+        }
         const brand = document.documentElement.getAttribute("data-brand") || "deccan-herald";
         window.location.href = "Article.html?brand=" + brand;
       });
@@ -3248,6 +3446,8 @@
     function applyBrand(brandKey) {
       const brand = brandData[brandKey];
       if (!brand) return;
+
+      videoModal?.close();
 
       elements.html.setAttribute("data-brand", brandKey);
       elements.html.lang = brand.lang;
